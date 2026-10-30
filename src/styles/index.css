@@ -107,3 +107,19 @@ html {
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* Smooth Fade In for Mega Dropdowns & Popovers */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInScale 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

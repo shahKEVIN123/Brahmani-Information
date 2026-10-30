@@ -1,7 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ArrowRight,
+  ChevronDown,
+  Globe,
+  Smartphone,
+  Code2,
+  Cloud,
+  Palette,
+  Sparkles,
+  BarChart3,
+  CheckSquare,
+  Layers,
+  ShieldCheck,
+  TrendingUp,
+  Activity,
+  ArrowUpRight
+} from 'lucide-react';
 import { Link, NavLink, useLocation } from '../router/Router';
 import { COMPANY_INFO, SERVICES_LIST } from '../data/companyData';
+
+// Domain Category Groupings for the 12 Specialized Services
+const SERVICE_CATEGORIES = [
+  {
+    category: 'Engineering & Cloud',
+    badge: 'CORE DEV',
+    color: 'text-[#005EDA] bg-blue-50 border-blue-200/60',
+    slugs: ['web-development', 'mobile-app-development', 'software-development', 'cloud-devops'],
+  },
+  {
+    category: 'Design & Intelligence',
+    badge: 'INNOVATION',
+    color: 'text-indigo-600 bg-indigo-50 border-indigo-200/60',
+    slugs: ['ui-ux-design', 'ai-machine-learning', 'data-analytics', 'qa-software-testing'],
+  },
+  {
+    category: 'Enterprise & Operations',
+    badge: 'BUSINESS',
+    color: 'text-emerald-600 bg-emerald-50 border-emerald-200/60',
+    slugs: ['crm-erp-solutions', 'cybersecurity', 'digital-marketing', 'maintenance-support'],
+  },
+];
+
+// Mapping of service slugs to recognizable Lucide icons
+const SERVICE_ICONS: Record<string, React.ElementType> = {
+  'web-development': Globe,
+  'mobile-app-development': Smartphone,
+  'software-development': Code2,
+  'cloud-devops': Cloud,
+  'ui-ux-design': Palette,
+  'ai-machine-learning': Sparkles,
+  'data-analytics': BarChart3,
+  'qa-software-testing': CheckSquare,
+  'crm-erp-solutions': Layers,
+  'cybersecurity': ShieldCheck,
+  'digital-marketing': TrendingUp,
+  'maintenance-support': Activity,
+};
+
+// Punchy, concise 1-line taglines that fit without awkward truncation
+const SERVICE_TAGLINES: Record<string, string> = {
+  'web-development': 'Responsive websites & web applications',
+  'mobile-app-development': 'Native iOS & Android mobile apps',
+  'software-development': 'Bespoke software & API architecture',
+  'cloud-devops': 'Cloud infrastructure & CI/CD deployment',
+  'ui-ux-design': 'Design systems, wireframes & prototypes',
+  'ai-machine-learning': 'Intelligent automation & predictive models',
+  'data-analytics': 'Data pipelines, BI & executive dashboards',
+  'qa-software-testing': 'Automated testing & quality assurance',
+  'crm-erp-solutions': 'Enterprise workflows & systems integration',
+  'cybersecurity': 'Security audits, hardening & compliance',
+  'digital-marketing': 'Performance marketing & SEO campaigns',
+  'maintenance-support': 'Proactive monitoring & continuous SLA support',
+};
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,10 +108,11 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-[0_4px_20px_rgba(15,23,42,0.06)] py-3'
-          : 'bg-white/90 backdrop-blur-sm border-b border-slate-100 py-4'
+        isScrolled || servicesDropdownOpen
+          ? 'bg-white border-b border-slate-200 shadow-[0_4px_20px_rgba(15,23,42,0.06)] py-3'
+          : 'bg-white/95 backdrop-blur-sm border-b border-slate-100 py-4'
       }`}
+      style={servicesDropdownOpen ? { backgroundColor: '#ffffff' } : undefined}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -89,40 +162,84 @@ export const Navbar: React.FC = () => {
                       />
                     </NavLink>
 
-                    {/* Desktop Services Mega Dropdown */}
+                    {/* Modern Enterprise Services Mega Dropdown — 100% Solid Opaque Background */}
                     {servicesDropdownOpen && (
-                      <div className="absolute top-full left-0 w-[580px] -mt-1 pt-2 z-50">
-                        <div className="bg-white rounded-2xl border border-slate-200 shadow-[0_20px_45px_-10px_rgba(15,23,42,0.12)] p-4 grid grid-cols-2 gap-2">
-                          {SERVICES_LIST.map((srv) => (
-                            <Link
-                              key={srv.slug}
-                              to={`/services/${srv.slug}`}
-                              className="group p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors flex items-start space-x-3"
-                            >
-                              <span className="text-[11px] font-mono text-slate-400 group-hover:text-[#005EDA] font-semibold mt-0.5">
-                                {srv.number}
-                              </span>
-                              <div>
-                                <h4 className="text-xs font-semibold text-slate-800 group-hover:text-[#005EDA] transition-colors">
-                                  {srv.title}
-                                </h4>
-                                <p className="text-[11px] text-slate-500 line-clamp-1 leading-snug mt-0.5">
-                                  {srv.shortDesc}
-                                </p>
+                      <div className="absolute top-full -left-16 sm:-left-20 lg:-left-24 w-[760px] lg:w-[800px] xl:w-[840px] pt-2 z-[100] animate-fadeIn">
+                        <div 
+                          className="bg-white rounded-2xl border border-slate-200/90 shadow-[0_25px_60px_-10px_rgba(15,23,42,0.22),0_8px_25px_rgba(0,94,218,0.08)] overflow-hidden"
+                          style={{ backgroundColor: '#ffffff', opacity: 1 }}
+                        >
+                          
+                          {/* Mega Dropdown Header Strip */}
+                          <div 
+                            className="bg-slate-50 border-b border-slate-100 px-6 py-2.5 flex items-center justify-between"
+                            style={{ backgroundColor: '#f8fafc' }}
+                          >
+                            <div className="flex items-center space-x-2">            
+                            </div>
+                            
+                          </div>
+
+                          {/* 3 Domain Columns */}
+                          <div 
+                            className="p-6 grid grid-cols-3 gap-6 divide-x divide-slate-100 bg-white"
+                            style={{ backgroundColor: '#ffffff' }}
+                          >
+                            {SERVICE_CATEGORIES.map((group) => (
+                              <div key={group.category} className="space-y-3 first:pl-0 pl-5">
+                                {/* Category Header */}
+                                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 font-display">
+                                    {group.category}
+                                  </span>
+                                  <span className={`text-[9px] font-semibold px-2 py-0.5 rounded border ${group.color}`}>
+                                    {group.badge}
+                                  </span>
+                                </div>
+
+                                {/* Service Cards List */}
+                                <div className="space-y-1.5">
+                                  {group.slugs.map((slug) => {
+                                    const srv = SERVICES_LIST.find((s) => s.slug === slug);
+                                    if (!srv) return null;
+                                    const IconComponent = SERVICE_ICONS[slug] || Globe;
+                                    const tagline = SERVICE_TAGLINES[slug] || srv.shortDesc;
+                                    return (
+                                      <Link
+                                        key={srv.slug}
+                                        to={`/services/${srv.slug}`}
+                                        className="group flex items-start space-x-3 p-2.5 rounded-xl hover:bg-blue-50/80 border border-transparent hover:border-blue-200/60 transition-all duration-150"
+                                      >
+                                        {/* Icon Squircle Badge */}
+                                        <div className="w-8 h-8 rounded-lg bg-blue-50/80 border border-blue-100 group-hover:bg-[#005EDA] text-[#005EDA] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-2xs group-hover:scale-105">
+                                          <IconComponent className="w-4 h-4" />
+                                        </div>
+
+                                        {/* Service Details */}
+                                        <div className="min-w-0 flex-1">
+                                          <div className="flex items-center justify-between">
+                                            <h4 className="text-xs font-semibold text-slate-800 group-hover:text-[#005EDA] transition-colors truncate">
+                                              {srv.title}
+                                            </h4>
+                                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#005EDA] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all opacity-0 group-hover:opacity-100 flex-shrink-0 ml-1" />
+                                          </div>
+                                          <p className="text-[11px] text-slate-500 line-clamp-1 leading-snug mt-0.5 group-hover:text-slate-600">
+                                            {tagline}
+                                          </p>
+                                        </div>
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
                               </div>
-                            </Link>
-                          ))}
-                          <div className="col-span-2 pt-2 border-t border-slate-100 flex items-center justify-between px-2">
-                            <span className="text-[11px] text-slate-500 font-medium">
-                              12 Specialized IT & Digital Capabilities
-                            </span>
-                            <Link
-                              to="/services"
-                              className="text-xs font-semibold text-[#005EDA] hover:underline inline-flex items-center space-x-1"
-                            >
-                              <span>Explore All Services</span>
-                              <ArrowRight className="w-3 h-3" />
-                            </Link>
+                            ))}
+                          </div>
+
+                          {/* Mega Dropdown Footer Banner */}
+                          <div 
+                            className="bg-slate-50 border-t border-slate-100 px-6 py-3 flex items-center justify-between"
+                            style={{ backgroundColor: '#f8fafc' }}
+                          >                
                           </div>
                         </div>
                       </div>
@@ -174,7 +291,7 @@ export const Navbar: React.FC = () => {
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#005EDA]" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-[#005EDA]" /> : <Menu className="w-6 h-6 text-slate-800" />}
             </button>
           </div>
         </div>
@@ -182,7 +299,10 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/98 border-b border-slate-200 px-4 pt-3 pb-6 shadow-2xl animate-fadeIn max-h-[85vh] overflow-y-auto">
+        <div 
+          className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-2xl animate-fadeIn max-h-[85vh] overflow-y-auto"
+          style={{ backgroundColor: '#ffffff' }}
+        >
           <div className="space-y-1">
             {navLinks.map((link) => (
               <div key={link.name}>
@@ -201,20 +321,28 @@ export const Navbar: React.FC = () => {
                 </NavLink>
 
                 {link.hasDropdown && (
-                  <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-blue-100 ml-4 my-1">
-                    {SERVICES_LIST.map((srv) => (
-                      <NavLink
-                        key={srv.slug}
-                        to={`/services/${srv.slug}`}
-                        className={({ isActive }) =>
-                          `block px-3 py-1.5 rounded-lg text-xs font-medium ${
-                            isActive ? 'text-[#005EDA] font-semibold bg-blue-50/60' : 'text-slate-600 hover:text-[#005EDA]'
-                          }`
-                        }
-                      >
-                        {srv.number} — {srv.title}
-                      </NavLink>
-                    ))}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-3 pr-1 py-2 border-l-2 border-blue-100 ml-4 my-1">
+                    {SERVICES_LIST.map((srv) => {
+                      const IconComponent = SERVICE_ICONS[srv.slug] || Globe;
+                      return (
+                        <NavLink
+                          key={srv.slug}
+                          to={`/services/${srv.slug}`}
+                          className={({ isActive }) =>
+                            `flex items-center space-x-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                              isActive
+                                ? 'text-[#005EDA] font-semibold bg-blue-50/80 border border-blue-200/60'
+                                : 'text-slate-600 hover:text-[#005EDA] hover:bg-slate-50'
+                            }`
+                          }
+                        >
+                          <div className="w-6 h-6 rounded bg-blue-50 text-[#005EDA] flex items-center justify-center flex-shrink-0">
+                            <IconComponent className="w-3.5 h-3.5" />
+                          </div>
+                          <span className="truncate">{srv.title}</span>
+                        </NavLink>
+                      );
+                    })}
                   </div>
                 )}
               </div>

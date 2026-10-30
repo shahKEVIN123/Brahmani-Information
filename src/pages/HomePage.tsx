@@ -204,16 +204,6 @@ export const HomePage: React.FC = () => {
                 Twelve specialized engineering disciplines designed to solve operational challenges, accelerate digital transformation, and build dependable software products.
               </p>
             </div>
-
-            <div className="flex items-center space-x-4 shrink-0">
-              <Link
-                to="/services"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#005EDA] bg-white hover:bg-blue-50 border border-slate-300 hover:border-blue-300 transition-colors shadow-sm"
-              >
-                <span>View All 12 Capabilities</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
           </div>
 
           {/* 4 Cards Per Row Grid (12 Services Across 3 Rows on Desktop) */}

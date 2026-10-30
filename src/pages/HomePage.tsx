@@ -1,23 +1,99 @@
-import React from 'react';
-import { ArrowRight, CheckCircle2, ChevronRight, Layers, ShieldCheck, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronRight,
+  Globe,
+  Smartphone,
+  Code2,
+  Palette,
+  CheckSquare,
+  Cloud,
+  ShieldCheck,
+  BarChart3,
+  Cpu,
+  Layers,
+  TrendingUp,
+  Activity,
+  Terminal,
+} from 'lucide-react';
 import { Link } from '../router/Router';
 import { HeroVideoVisual } from '../components/HeroVideoVisual';
 import { SectionHeader } from '../components/SectionHeader';
+import { TechIcon } from '../components/TechnologyIcons';
+import { PredictableDeliverySection } from '../components/PredictableDeliverySection';
 import {
   COMPANY_INFO,
   SERVICES_LIST,
-  WORK_PROJECTS,
-  PROCESS_STAGES,
   TECHNOLOGIES_DATA,
   WHY_US_PILLARS,
 } from '../data/companyData';
 
+// Service-specific real raster PNG image assets mapping
+const serviceImageMap: Record<string, string> = {
+  'web-development': '/assets/services/web-development.png',
+  'mobile-app-development': '/assets/services/mobile-app-development.png',
+  'ai-machine-learning': '/assets/services/ai-machine-learning.png',
+  'data-analytics': '/assets/services/data-analytics.png',
+  'ui-ux-design': '/assets/services/ui-ux-design.png',
+  'qa-software-testing': '/assets/services/qa-software-testing.png',
+  'cloud-devops': '/assets/services/cloud-devops.png',
+  'cybersecurity': '/assets/services/cybersecurity.png',
+  'crm-erp-solutions': '/assets/services/crm-erp-solutions.png',
+  'digital-marketing': '/assets/services/digital-marketing.png',
+  'software-development': '/assets/services/software-development.png',
+  'maintenance-support': '/assets/services/maintenance-support.png',
+};
+
 export const HomePage: React.FC = () => {
+  // Interactive state for Technology Index circular cloud inspection
+  const [selectedTechName, setSelectedTechName] = useState<string>('React');
+  const [activeTechCategory, setActiveTechCategory] = useState<string>('All');
+
+  // Flattened 15 technologies with category tags
+  const allTechnologies = TECHNOLOGIES_DATA.flatMap((cat) =>
+    cat.items.map((item) => ({ ...item, category: cat.category }))
+  );
+  const currentTech = allTechnologies.find((t) => t.name === selectedTechName) || allTechnologies[0];
+
+  // Icon mapping for Services Directory
+  const getServiceIcon = (slug: string) => {
+    switch (slug) {
+      case 'web-development':
+        return Globe;
+      case 'mobile-app-development':
+        return Smartphone;
+      case 'software-development':
+        return Code2;
+      case 'ui-ux-design':
+        return Palette;
+      case 'qa-software-testing':
+        return CheckSquare;
+      case 'cloud-devops':
+        return Cloud;
+      case 'cybersecurity':
+        return ShieldCheck;
+      case 'data-analytics':
+        return BarChart3;
+      case 'ai-machine-learning':
+        return Cpu;
+      case 'crm-erp-solutions':
+        return Layers;
+      case 'digital-marketing':
+        return TrendingUp;
+      case 'maintenance-support':
+        return Activity;
+      default:
+        return Globe;
+    }
+  };
+
   return (
     <div className="space-y-0">
       
-      {/* 01: HERO SECTION */}
-      {/* Target desktop height: ~620-680px, 52% text / 48% visual, non-full-100vh */}
+      {/* ======================================================== */}
+      {/* 1. HERO SECTION (BALANCED & MODERNIZED LAYOUT)            */}
+      {/* ======================================================== */}
       <section
         id="hero"
         aria-label="Hero Introduction"
@@ -31,24 +107,26 @@ export const HomePage: React.FC = () => {
         <div className="absolute bottom-0 left-10 w-80 h-80 bg-slate-200/40 rounded-full blur-2xl pointer-events-none -z-10" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[500px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-12 items-center">
             
-            {/* Left Column: ~52% width (lg:col-span-6 xl:col-span-6) */}
+            {/* Left Column: lg:col-span-6 xl:col-span-6 */}
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left">
               
-              {/* Brand Label */}
-              <div className="inline-flex items-center space-x-2.5 mb-5">
-                <span className="w-2 h-2 rounded-full bg-[#005EDA] shadow-sm" />
-                <span className="text-xs uppercase tracking-[0.24em] font-bold text-[#005EDA] font-display">
+              {/* Brand Label Pill */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-2xs mb-5 self-start">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#005EDA]"></span>
+                </span>
+                <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#005EDA] font-display">
                   BRAHMANI INFORMATION
                 </span>
-                <div className="h-px w-10 bg-blue-200" />
               </div>
 
               {/* Sophisticated Two-Color Hero Headline: Deep Navy + Brahmani Brand Blue */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.25rem] font-bold tracking-tight leading-[1.08] font-display mb-6">
-                <span className="text-[#0F172A] block sm:inline">WE BUILD DIGITAL EXPERIENCES </span>
-                <span className="text-[#005EDA] block sm:inline">THAT HELP BUSINESSES MOVE FORWARD.</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] font-display mb-6">
+                <span className="text-[#0F172A] block">WE BUILD DIGITAL EXPERIENCES</span>
+                <span className="text-[#005EDA] block mt-1">THAT HELP BUSINESSES MOVE FORWARD.</span>
               </h1>
 
               {/* Exact Master Prompt Supporting Text */}
@@ -57,7 +135,7 @@ export const HomePage: React.FC = () => {
               </p>
 
               {/* Button System */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-8">
                 <Link
                   to="/start-a-project"
                   className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_16px_rgba(0,94,218,0.28)] hover:shadow-[0_6px_22px_rgba(0,94,218,0.4)] transition-all duration-200 active:scale-95"
@@ -68,31 +146,32 @@ export const HomePage: React.FC = () => {
 
                 <Link
                   to="/work"
-                  className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-sm transition-all duration-200"
+                  className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-xs transition-all duration-200"
                 >
                   <span>Explore Our Work</span>
                   <ArrowRight className="ml-2 w-4 h-4 text-slate-400 group-hover:text-slate-700" />
                 </Link>
               </div>
 
-              {/* Status Bar */}
-              <div className="mt-10 pt-6 border-t border-slate-200/80 flex flex-wrap items-center gap-5 text-xs text-slate-500 font-medium">
-                <div className="flex items-center space-x-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span>Available for New Projects</span>
+              {/* Balanced Bottom Status / Metric Strip */}
+              <div className="pt-6 border-t border-slate-200/90 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-white/90 border border-slate-200/80 shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-700 truncate">Available for Projects</span>
                 </div>
-                <span>•</span>
-                <div className="flex items-center space-x-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
-                  <span>Enterprise Software Standards</span>
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-white/90 border border-slate-200/80 shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-[#005EDA] flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-700 truncate">Enterprise Standards</span>
                 </div>
-                <span>•</span>
-                <span>Modern React & Node.js Stack</span>
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-white/90 border border-slate-200/80 shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-700 truncate">React & Node Stack</span>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: ~48% width (lg:col-span-6 xl:col-span-6) */}
-            <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center">
+            {/* Right Column: lg:col-span-6 xl:col-span-6 */}
+            <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end">
               <HeroVideoVisual />
             </div>
 
@@ -100,398 +179,229 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 02: INTRO / COMPANY OVERVIEW */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-5 space-y-4">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold uppercase tracking-wider text-[#005EDA]">
-                <span>Company Overview</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 font-display leading-tight">
-                Transforming Ambition into Dependable Digital Products.
-              </h2>
-            </div>
-
-            <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
-              <p>
-                {COMPANY_INFO.description}
-              </p>
-              <p className="text-sm sm:text-base text-slate-500">
-                {COMPANY_INFO.mission}
-              </p>
-              <div className="pt-2">
-                <Link
-                  to="/about"
-                  className="inline-flex items-center space-x-1.5 text-sm font-semibold text-[#005EDA] hover:text-[#004BBB] group"
-                >
-                  <span>Learn more about our approach</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 03: SERVICES PREVIEW — EDITORIAL LIST (12 CATEGORIES) */}
-      <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
+      {/* ======================================================== */}
+      {/* 2. SERVICES DIRECTORY (CARD-GRID CATALOG LAYOUT)        */}
+      {/* ======================================================== */}
+      <section
+        id="services-directory"
+        aria-label="Services Directory"
+        className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <SectionHeader
-              badge="Services Directory"
-              title="Comprehensive IT & Digital Capabilities."
-              description="Twelve specialized disciplines engineered to solve complex operational challenges and deliver modern software."
-              className="mb-0 max-w-2xl"
-            />
-            <div className="mt-4 md:mt-0">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-slate-200/90 gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold uppercase tracking-wider text-[#005EDA] mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
+                <span>SERVICES DIRECTORY</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight font-display leading-[1.12]">
+                <span className="text-[#0F172A]">Digital Capabilities Built for </span>
+                <span className="text-[#005EDA]">Real Business Needs.</span>
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mt-3 leading-relaxed">
+                Twelve specialized engineering disciplines designed to solve operational challenges, accelerate digital transformation, and build dependable software products.
+              </p>
+            </div>
+
+            <div className="flex items-center space-x-4 shrink-0">
               <Link
                 to="/services"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#005EDA] bg-blue-50 hover:bg-blue-100/80 border border-blue-200 transition-colors"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#005EDA] bg-white hover:bg-blue-50 border border-slate-300 hover:border-blue-300 transition-colors shadow-sm"
               >
-                <span>View All Services</span>
+                <span>View All 12 Capabilities</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
-          {/* Editorial List of 12 Services */}
-          <div className="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100 shadow-depth-sm">
-            {SERVICES_LIST.map((service) => (
-              <Link
-                key={service.slug}
-                to={`/services/${service.slug}`}
-                className="group p-5 sm:p-6 lg:px-8 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-blue-50/50 transition-all duration-200"
-              >
-                <div className="flex items-start sm:items-center space-x-4 sm:space-x-6">
-                  <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-[#005EDA] transition-colors mt-0.5 sm:mt-0">
-                    {service.number}
-                  </span>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#005EDA] transition-colors font-display">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-500 mt-0.5 max-w-2xl line-clamp-1">
-                      {service.shortDesc}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-3 sm:mt-0 flex items-center space-x-2 text-xs font-semibold text-slate-400 group-hover:text-[#005EDA] transition-colors self-end sm:self-center">
-                  <span className="hidden sm:inline">Explore Details</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-                </div>
-              </Link>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 04: TECHNOLOGY INDEX (IMMEDIATELY AFTER SERVICES) */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <SectionHeader
-            badge="TECHNOLOGY INDEX"
-            title="THE TECHNOLOGY BEHIND WHAT WE BUILD."
-            description="A practical technology stack used to design, develop, connect and maintain modern digital experiences."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {TECHNOLOGIES_DATA.map((cat) => (
-              <div
-                key={cat.category}
-                className="bg-[#F8FAFC] rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between hover:border-slate-300 transition-colors shadow-depth-sm"
-              >
-                <div>
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-200/80 mb-4">
-                    <h3 className="text-sm font-mono font-bold text-[#005EDA] uppercase tracking-wider">
-                      {cat.category}
-                    </h3>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      {cat.items.length} Tech
-                    </span>
+          {/* 4 Cards Per Row Grid (12 Services Across 3 Rows on Desktop) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+            {SERVICES_LIST.map((service) => {
+              const imageSrc = serviceImageMap[service.slug] || '/assets/services/web-development.png';
+              return (
+                <Link
+                  key={service.slug}
+                  to={`/services/${service.slug}`}
+                  className="group flex flex-col bg-white rounded-2xl border border-slate-200/90 hover:border-[#005EDA]/60 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-8px_rgba(0,94,218,0.16)] transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+                >
+                  {/* TOP: Large Service-Specific Image */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50 border-b border-slate-100">
+                    <img
+                      src={imageSrc}
+                      alt={`${service.title} architectural capability`}
+                      className="w-full h-full object-cover object-center transform transition-transform duration-500 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    
+                    {/* Floating Monospace Number Badge */}
+                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-white/95 backdrop-blur-sm border border-slate-200/80 shadow-sm text-[11px] font-mono font-bold text-slate-700 group-hover:text-[#005EDA] group-hover:border-blue-200 transition-colors">
+                      {service.number}
+                    </div>
                   </div>
 
-                  <p className="text-xs text-slate-500 mb-5 leading-relaxed">
-                    {cat.description}
-                  </p>
+                  {/* BOTTOM HALF: Content Area */}
+                  <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                      {/* MIDDLE: Service Name + Action Arrow */}
+                      <div className="flex items-start justify-between gap-2 mb-2.5">
+                        <h3 className="text-base sm:text-lg font-bold font-display text-[#0F172A] group-hover:text-[#005EDA] transition-colors leading-snug">
+                          {service.title}
+                        </h3>
+                        <div className="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-[#005EDA] text-slate-400 group-hover:text-white flex items-center justify-center transition-all duration-200 shrink-0 mt-0.5 shadow-sm">
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                      </div>
 
-                  <ul className="space-y-3">
-                    {cat.items.map((item) => (
-                      <li key={item.name} className="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
-                        <span className="text-xs font-bold text-slate-800 block">
-                          {item.name}
-                        </span>
-                        <span className="text-[11px] text-slate-500 line-clamp-2 mt-0.5 leading-snug">
-                          {item.description}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                      {/* BOTTOM: Short, Clear Description */}
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                        {service.shortDesc}
+                      </p>
+                    </div>
 
-                <div className="pt-4 mt-4 border-t border-slate-200/60">
-                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-                    Genuine Verified Stack
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link
-              to="/technology"
-              className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#005EDA] hover:underline"
-            >
-              <span>View full technology index and architectural rationale</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 05: WHY BRAHMANI INFORMATION */}
-      <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <SectionHeader
-            badge="Engineering Principles"
-            title="Why Brahmani Information."
-            description="Our foundation is grounded in deliberate design, modern engineering standards, and direct accountability."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {WHY_US_PILLARS.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-depth-sm hover:shadow-depth-md transition-shadow"
-              >
-                <div className="space-y-4">
-                  <span className="text-xs font-mono font-bold text-[#005EDA]">
-                    {pillar.number}
-                  </span>
-
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900 font-display">
-                      {pillar.title}
-                    </h3>
-                    <span className="text-xs font-medium text-slate-500 block mt-0.5">
-                      {pillar.tagline}
-                    </span>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-[#005EDA] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
-                    {pillar.metricLabel}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 06: SELECTED WORK (EDITORIAL PRESENTATION) */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <SectionHeader
-              badge="Selected Case Studies"
-              title="Purposeful Engineering in Production."
-              description="A selection of real web applications and digital interfaces built with modern component architectures."
-              className="mb-0 max-w-2xl"
-            />
-            <div className="mt-4 md:mt-0">
-              <Link
-                to="/work"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#005EDA] bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors"
-              >
-                <span>View All Projects</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {WORK_PROJECTS.slice(0, 2).map((proj) => (
-              <div
-                key={proj.id}
-                className="bg-[#F8FAFC] rounded-2xl border border-slate-200 overflow-hidden shadow-depth-sm hover:shadow-depth-md transition-all group flex flex-col justify-between"
-              >
-                <div className="p-6 sm:p-8 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-semibold text-[#005EDA] bg-blue-50 px-3 py-1 rounded-full border border-blue-200/60">
-                      {proj.category}
-                    </span>
-                    <span className="text-xs text-slate-500 font-mono">
-                      {proj.clientType}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display group-hover:text-[#005EDA] transition-colors">
-                    {proj.name}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {proj.description}
-                  </p>
-
-                  <div className="pt-2 flex flex-wrap gap-1.5">
-                    {proj.technologies.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-white text-slate-600 border border-slate-200"
-                      >
-                        {t}
+                    {/* Sub-Service Capability Tag & Explore Trigger */}
+                    <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-xs">
+                      <span className="font-mono text-[11px] text-slate-400 truncate max-w-[130px]">
+                        {service.subServices[0]?.title || 'Core Capability'}
                       </span>
-                    ))}
+                      <span className="font-semibold text-[#005EDA] group-hover:translate-x-1 transition-transform inline-flex items-center text-[12px]">
+                        Explore
+                        <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-                <div className="bg-white px-6 sm:px-8 py-4 border-t border-slate-200 flex items-center justify-between text-xs">
-                  <span className="font-medium text-slate-600">
-                    {proj.highlight}
-                  </span>
-                  <Link
-                    to="/work"
-                    className="font-semibold text-[#005EDA] group-hover:underline inline-flex items-center space-x-1"
+      {/* ======================================================== */}
+      {/* 3. PREDICTABLE DELIVERY (INTERACTIVE 7-STAGE FLIGHT DECK) */}
+      {/* ======================================================== */}
+      <PredictableDeliverySection />
+
+      {/* ======================================================== */}
+      {/* 4. TECHNOLOGY INDEX (INTERACTIVE CIRCULAR STACK CLOUD)    */}
+      {/* ======================================================== */}
+      <section
+        id="technology-index"
+        aria-label="Technology Index"
+        className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80 relative overflow-hidden"
+      >
+        {/* Subtle Ambient Dot Grid Background (exact match to user reference UI) */}
+        <div 
+          className="absolute inset-0 bg-[radial-gradient(#CBD5E1_1.3px,transparent_1.3px)] [background-size:24px_24px] pointer-events-none opacity-60" 
+          aria-hidden="true"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Centered Section Header */}
+          <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 sm:mb-14">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold uppercase tracking-wider text-[#005EDA]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
+              <span>TECHNOLOGY INDEX</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight font-display text-slate-900 leading-[1.12]">
+              <span className="text-[#0F172A]">THE TECHNOLOGY </span>
+              <span className="text-[#005EDA]">BEHIND WHAT WE BUILD.</span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              A practical, battle-tested technology stack used to design, develop, connect and maintain modern digital experiences.
+            </p>
+
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+              {['All', 'Frontend', 'Backend', 'Design', 'Database', 'DevOps & Infrastructure', 'Security & Authentication'].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveTechCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                    activeTechCategory === cat
+                      ? 'bg-[#005EDA] text-white shadow-sm shadow-blue-500/20'
+                      : 'bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/80 shadow-xs'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Circular Technology Icon Cloud (UI matching user reference screenshot) */}
+          <div className="relative max-w-4xl mx-auto py-4">
+            <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 lg:gap-5">
+              {allTechnologies.map((tech) => {
+                const isSelected = selectedTechName === tech.name;
+                const isCategoryActive = activeTechCategory === 'All' || activeTechCategory === tech.category;
+
+                return (
+                  <div
+                    key={tech.name}
+                    onClick={() => setSelectedTechName(tech.name)}
+                    onMouseEnter={() => setSelectedTechName(tech.name)}
+                    className={`relative group/pill transition-all duration-300 ${
+                      isCategoryActive ? 'opacity-100 scale-100' : 'opacity-30 scale-95 pointer-events-none'
+                    }`}
                   >
-                    <span>Read Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                    {/* Circular White Badge */}
+                    <div
+                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center p-3.5 sm:p-4 cursor-pointer transition-all duration-300 ${
+                        isSelected
+                          ? 'border-2 border-[#005EDA] shadow-[0_12px_28px_rgba(0,94,218,0.24)] -translate-y-1.5 ring-4 ring-blue-500/10'
+                          : 'border border-slate-200/90 shadow-[0_4px_16px_rgba(15,23,42,0.06),0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_24px_rgba(0,94,218,0.18)] hover:border-[#005EDA]/60 hover:-translate-y-1'
+                      }`}
+                    >
+                      <TechIcon
+                        name={tech.name}
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover/pill:scale-110"
+                      />
+                    </div>
+
+                    {/* Floating Tooltip */}
+                    <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#0F172A] text-white rounded-md text-[11px] font-semibold whitespace-nowrap shadow-xl opacity-0 pointer-events-none group-hover/pill:opacity-100 group-hover/pill:-top-13 transition-all duration-200 z-30 flex items-center gap-1.5">
+                      <span>{tech.name}</span>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0F172A]" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Active Inspected Technology Card */}
+          {currentTech && (
+            <div className="max-w-xl mx-auto mt-8 sm:mt-10">
+              <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)] flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 transition-all duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200 shadow-sm p-3.5 flex items-center justify-center shrink-0">
+                  <TechIcon name={currentTech.name} className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1 text-center sm:text-left space-y-1">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <h3 className="text-lg sm:text-xl font-bold font-display text-slate-900">
+                      {currentTech.name}
+                    </h3>
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#005EDA] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200/60">
+                      {currentTech.category}
+                    </span>
+                  </div>
+                  <div className="text-xs font-semibold text-[#005EDA]">
+                    {currentTech.role}
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-1">
+                    {currentTech.description}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 07: PROCESS PREVIEW */}
-      <section className="py-20 lg:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <SectionHeader
-              badge="Predictable Delivery"
-              title="A Structured 7-Stage Process."
-              description="From discovery to long-term lifecycle support, our delivery methodology guarantees transparency and technical rigor."
-              className="mb-0 max-w-2xl"
-            />
-            <div className="mt-4 md:mt-0">
-              <Link
-                to="/process"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#005EDA] bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors"
-              >
-                <span>Explore Full Process</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
-            {PROCESS_STAGES.map((st) => (
-              <div
-                key={st.step}
-                className="bg-white rounded-xl border border-slate-200 p-4 space-y-2 shadow-depth-sm"
-              >
-                <span className="text-xs font-mono font-bold text-[#005EDA] block">
-                  {st.step}
-                </span>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-display">
-                  {st.title}
-                </h4>
-                <p className="text-[11px] text-slate-500 line-clamp-2 leading-tight">
-                  {st.subtitle}
-                </p>
-              </div>
-            ))}
-          </div>
-
+          )}
         </div>
       </section>
-
-      {/* 08: ABOUT PREVIEW */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            <div className="lg:col-span-8 space-y-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#005EDA] block">
-                ABOUT BRAHMANI INFORMATION
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-display">
-                Dedicated to Digital Longevity and Technical Clarity.
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
-                We believe digital products should be built to endure. By uniting human-centered design principles with clean modular code, we help organizations establish reliable digital capabilities that advance their strategic goals.
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 flex justify-start lg:justify-end">
-              <Link
-                to="/about"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-sm transition-colors"
-              >
-                <span>Read About Our Team</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 09: FINAL CTA */}
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-[#F8FAFC] to-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold uppercase tracking-wider text-[#005EDA] mb-5">
-            <span>START A PROJECT</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight font-display mb-6">
-            Ready to Build What’s Next?
-          </h2>
-
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Whether launching a new web application or modernizing existing technology, our engineers are prepared to review your requirements and provide architectural guidance.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/start-a-project"
-              className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_16px_rgba(0,94,218,0.28)] hover:shadow-[0_6px_24px_rgba(0,94,218,0.45)] transition-all active:scale-95"
-            >
-              <span>Start a Project</span>
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-sm transition-colors"
-            >
-              <span>General Inquiries</span>
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
     </div>
   );
 };

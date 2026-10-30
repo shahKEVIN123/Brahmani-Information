@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
+import { Mail, ShieldCheck, Cpu } from 'lucide-react';
 import { Link } from '../router/Router';
 import { COMPANY_INFO, SERVICES_LIST } from '../data/companyData';
 
@@ -8,36 +8,17 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#0B132B] text-slate-300 pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Tier: Pre-footer Callout */}
-        <div className="pb-14 border-b border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#38BDF8] block mb-2">
-              Ready to collaborate?
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
-              Let’s build something purposeful together.
-            </h3>
-          </div>
-          <Link
-            to="/start-a-project"
-            className="inline-flex items-center space-x-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_16px_rgba(0,94,218,0.3)] hover:shadow-[0_6px_22px_rgba(0,94,218,0.45)] transition-all duration-200"
-          >
-            <span>Start a Project</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
         {/* Main Multi-Column Content */}
-        <div className="py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+        <div className="pb-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           
           {/* Col 1: Brand & Philosophy (4 cols) */}
           <div className="lg:col-span-4 space-y-5">
             <Link to="/" className="inline-block">
-              <div className="bg-white/95 rounded-xl p-2.5 inline-block shadow-sm">
+              <div >
                 <img
-                  src="/brahmani-logo-transparent.png"
+                  src="/brahmani-logo-cropped.png"
                   alt="Brahmani Information Logo"
-                  className="h-10 w-auto object-contain"
+                  className="h-[50px] w-auto object-contain"
                 />
               </div>
             </Link>

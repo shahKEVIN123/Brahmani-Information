@@ -3,6 +3,8 @@ import { ArrowRight, CheckCircle2, Code2, Server, Database, Palette, Cpu, Shield
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
+import { HeroImageVisual } from '../components/HeroImageVisual';
+import { TechIcon } from '../components/TechnologyIcons';
 import { TECHNOLOGIES_DATA } from '../data/companyData';
 
 export const TechnologyPage: React.FC = () => {
@@ -12,7 +14,12 @@ export const TechnologyPage: React.FC = () => {
       {/* 1. Technology Hero */}
       <PageHero
         badge="Technology Index"
-        title="THE TECHNOLOGY BEHIND WHAT WE BUILD."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">THE TECHNOLOGY BEHIND </span>
+            <span className="text-[#005EDA] block sm:inline">WHAT WE BUILD.</span>
+          </>
+        }
         description="A practical, battle-tested technology stack used to design, develop, connect and maintain modern digital experiences."
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -27,6 +34,7 @@ export const TechnologyPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
+        visual={<HeroImageVisual src="/assets/heroes/technology-hero.png" alt="Connected Multi-Tier Technology Stack and Enterprise Architecture" />}
       />
 
       {/* 2. Architectural Philosophy: Why This Stack */}
@@ -83,7 +91,7 @@ export const TechnologyPage: React.FC = () => {
           <SectionHeader
             badge="Stack Directory"
             title="Categorized Technology Index."
-            description="Detailed breakdown of each tier of our engineering stack: frontend, backend, database, and design."
+            description="Detailed breakdown of each tier of our engineering stack across frontend, backend, design, database, infrastructure, and security."
           />
 
           {TECHNOLOGIES_DATA.map((cat, idx) => (
@@ -117,12 +125,17 @@ export const TechnologyPage: React.FC = () => {
                 {cat.items.map((tech) => (
                   <div
                     key={tech.name}
-                    className="p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 space-y-3 hover:border-slate-300 transition-colors"
+                    className="group p-6 rounded-2xl bg-[#F8FAFC] hover:bg-white border border-slate-200/80 hover:border-[#005EDA]/40 space-y-3 shadow-none hover:shadow-[0_4px_16px_rgba(15,23,42,0.06)] hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="text-lg font-bold text-slate-900 font-display">
-                        {tech.name}
-                      </h4>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-sm p-2 flex items-center justify-center shrink-0 group-hover:border-blue-200 group-hover:bg-blue-50/30 transition-colors">
+                          <TechIcon name={tech.name} className="w-6 h-6 object-contain transition-transform duration-200 group-hover:scale-105" />
+                        </div>
+                        <h4 className="text-lg font-bold text-slate-900 font-display group-hover:text-[#005EDA] transition-colors">
+                          {tech.name}
+                        </h4>
+                      </div>
                       <span className="text-[11px] font-mono text-slate-500 bg-white px-2.5 py-0.5 rounded border border-slate-200">
                         {tech.role}
                       </span>

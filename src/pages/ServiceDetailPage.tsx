@@ -3,7 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Layers, ShieldCheck,
 import { Link, useParams } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
-import { ServiceVisual } from '../components/ServiceVisual';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { SERVICES_LIST, ServiceDetail } from '../data/companyData';
 import { NotFoundPage } from './NotFoundPage';
 
@@ -26,13 +26,51 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
   const prevService = serviceIndex > 0 ? SERVICES_LIST[serviceIndex - 1] : SERVICES_LIST[SERVICES_LIST.length - 1];
   const nextService = serviceIndex < SERVICES_LIST.length - 1 ? SERVICES_LIST[serviceIndex + 1] : SERVICES_LIST[0];
 
+  // Topic-specific custom generated raster architectural digital concept images
+  const serviceHeroImageMap: Record<string, string> = {
+    'web-development': '/assets/services/web-development.png',
+    'mobile-app-development': '/assets/services/mobile-app-development.png',
+    'ai-machine-learning': '/assets/services/ai-machine-learning.png',
+    'data-analytics': '/assets/services/data-analytics.png',
+    'ui-ux-design': '/assets/services/ui-ux-design.png',
+    'qa-software-testing': '/assets/services/qa-software-testing.png',
+    'cloud-devops': '/assets/services/cloud-devops.png',
+    'cybersecurity': '/assets/services/cybersecurity.png',
+    'crm-erp-solutions': '/assets/services/crm-erp-solutions.png',
+    'digital-marketing': '/assets/services/digital-marketing.png',
+    'software-development': '/assets/services/software-development.png',
+    'maintenance-support': '/assets/services/maintenance-support.png',
+  };
+
+  // Tailored Two-Color Heading Treatment
+  const renderDualColorTitle = (t: string) => {
+    const words = t.split(' ');
+    if (words.length <= 1) {
+      return (
+        <>
+          <span className="text-[#0F172A]">{t} </span>
+          <span className="text-[#005EDA]">Services</span>
+        </>
+      );
+    }
+    const mid = Math.ceil(words.length / 2);
+    const part1 = words.slice(0, mid).join(' ');
+    const part2 = words.slice(mid).join(' ');
+    return (
+      <>
+        <span className="text-[#0F172A] block sm:inline">{part1} </span>
+        <span className="text-[#005EDA] block sm:inline">{part2}</span>
+      </>
+    );
+  };
+
   return (
     <div className="space-y-0">
       
       {/* 1. Service Hero */}
       <PageHero
         badge={`Service ${service.number} // ${service.title}`}
-        title={service.title}
+        title={renderDualColorTitle(service.title)}
         description={service.shortDesc}
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -57,7 +95,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             </Link>
           </div>
         }
-        visual={<ServiceVisual type={service.visualType} title={service.title} />}
+        visual={
+          <HeroImageVisual
+            src={serviceHeroImageMap[service.slug] || '/assets/services/web-development.png'}
+            alt={`Brahmani Information ${service.title} Architecture and Technology Practice`}
+          />
+        }
       />
 
       {/* 2. Overview & Problem/Value Section */}

@@ -48,7 +48,7 @@ export interface ProcessStage {
 }
 
 export interface TechCategory {
-  category: 'Frontend' | 'Backend' | 'Database' | 'Design';
+  category: 'Frontend' | 'Backend' | 'Design' | 'Database' | 'DevOps & Infrastructure' | 'Security & Authentication';
   description: string;
   items: {
     name: string;
@@ -66,7 +66,7 @@ export const COMPANY_INFO = {
   mission: "To engineer reliable, aesthetically refined, and technologically robust digital solutions that empower businesses and elevate user interactions.",
   vision: "To set an enduring standard in digital craftsmanship where design elegance and modern software engineering unite to solve meaningful real-world challenges.",
   established: "2026",
-  email: "contact@brahmani-information.com",
+  email: " info@brahmaniinformation.com",
   inquiryTypes: [
     "Web Application Development",
     "Custom Web Development",
@@ -637,9 +637,9 @@ export const TECHNOLOGIES_DATA: TechCategory[] = [
         role: "Primary Component Framework"
       },
       {
-        name: "JavaScript (ES6+)",
+        name: "JavaScript",
         description: "Modern ECMAScript standards powering asynchronous data flows, dynamic state logic, and browser APIs.",
-        role: "Core Programming Language"
+        role: "Core Web Programming Language"
       },
       {
         name: "HTML5",
@@ -647,20 +647,41 @@ export const TECHNOLOGIES_DATA: TechCategory[] = [
         role: "Semantic Structure & Markup"
       },
       {
-        name: "CSS3 / Tailwind",
+        name: "CSS3",
         description: "Utility-first responsive layouts, CSS grid/flexbox, custom properties, and hardware-accelerated transitions.",
-        role: "Styling & Responsive Systems"
+        role: "Styling & Responsive Layouts"
       }
     ]
   },
   {
     category: "Backend",
-    description: "Reliable, event-driven server runtime handling business logic, API endpoints, and authentication.",
+    description: "Reliable, event-driven server runtimes and scripting environments handling business logic, API endpoints, and data processing.",
     items: [
       {
         name: "Node.js",
         description: "Event-driven, non-blocking asynchronous runtime designed for scalable network applications and RESTful APIs.",
         role: "Server Runtime & API Engine"
+      },
+      {
+        name: "PHP",
+        description: "Proven server-side scripting environment for dynamic web content delivery, CMS backends, and API services.",
+        role: "Server-Side Scripting"
+      },
+      {
+        name: "Python",
+        description: "Versatile programming language applied for data processing, automated workflows, and backend services.",
+        role: "Backend & Automation Logic"
+      }
+    ]
+  },
+  {
+    category: "Design",
+    description: "Precision design tooling enabling iterative wireframing, high-fidelity prototypes, and design system component libraries.",
+    items: [
+      {
+        name: "Figma",
+        description: "Collaborative interface design tool for layout wireframing, interactive prototyping, and design token curation.",
+        role: "UI/UX & Design Systems"
       }
     ]
   },
@@ -672,17 +693,48 @@ export const TECHNOLOGIES_DATA: TechCategory[] = [
         name: "MongoDB",
         description: "Document-oriented NoSQL database providing high flexibility, schema indexing, and horizontal scalability.",
         role: "Document Data Store"
+      },
+      {
+        name: "MySQL",
+        description: "Relational database management system engineered for structured, ACID-compliant transactions and relational integrity.",
+        role: "Relational Database Management"
       }
     ]
   },
   {
-    category: "Design",
-    description: "Precision design tooling enabling iterative wireframing, high-fidelity prototypes, and component libraries.",
+    category: "DevOps & Infrastructure",
+    description: "Standardized containerization, operating system environments, and scalable cloud delivery architectures.",
     items: [
       {
-        name: "Figma",
-        description: "Collaborative interface design tool for layout wireframing, interactive prototyping, and design token curation.",
-        role: "UI/UX & Design Systems"
+        name: "Docker",
+        description: "Container virtualization platform ensuring consistent environment execution from local development to production.",
+        role: "Application Containerization"
+      },
+      {
+        name: "Linux",
+        description: "Enterprise open-source operating system foundation providing security, stability, and high performance for servers.",
+        role: "Server Operating System"
+      },
+      {
+        name: "Cloud Infrastructure",
+        description: "Multi-region compute, content delivery networks (CDN), and automated scaling systems for maximum uptime.",
+        role: "Cloud Hosting & Global Delivery"
+      }
+    ]
+  },
+  {
+    category: "Security & Authentication",
+    description: "Cryptographic transport protection and standardized identity authorization safeguarding enterprise digital assets.",
+    items: [
+      {
+        name: "JWT / OAuth2",
+        description: "Stateless JSON Web Tokens and token-based OAuth2 authorization protocols for secure API communications.",
+        role: "Token Authorization & Identity"
+      },
+      {
+        name: "SSL/TLS",
+        description: "End-to-end transport layer security and cryptographic certificate management ensuring encrypted client-server traffic.",
+        role: "Encrypted Transport Security"
       }
     ]
   }

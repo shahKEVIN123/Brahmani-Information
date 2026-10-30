@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Target, HeartHandshake, Lightbul
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { COMPANY_INFO } from '../data/companyData';
 
 export const AboutPage: React.FC = () => {
@@ -12,7 +13,12 @@ export const AboutPage: React.FC = () => {
       {/* 1. About Hero */}
       <PageHero
         badge="Company Profile"
-        title="Engineering Meaningful Digital Experiences with Technical Clarity."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">Engineering Meaningful Digital Experiences </span>
+            <span className="text-[#005EDA] block sm:inline">with Technical Clarity.</span>
+          </>
+        }
         description="Brahmani Information is a modern IT and digital technology company focused on creating purposeful, scalable, and resilient digital solutions."
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -27,31 +33,7 @@ export const AboutPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
-        visual={
-          <div className="relative w-full max-w-md mx-auto">
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-depth-lg p-6 space-y-4">
-              <div className="flex items-center space-x-3 pb-3 border-b border-slate-100">
-                <img
-                  src="/brahmani-logo-transparent.png"
-                  alt="Brahmani Information"
-                  className="h-9 w-auto object-contain"
-                />
-              </div>
-              <div className="space-y-2">
-                <span className="text-[11px] font-mono text-[#005EDA] font-semibold uppercase tracking-wider block">
-                  Foundational Principle
-                </span>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  "Technology should remain understandable and useful to people. We prioritize ergonomics, accessibility, and frictionless operation for every end user."
-                </p>
-              </div>
-              <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-slate-500 border-t border-slate-100">
-                <span>EST. {COMPANY_INFO.established}</span>
-                <span className="text-emerald-600 font-semibold">Active Practice</span>
-              </div>
-            </div>
-          </div>
-        }
+        visual={<HeroImageVisual src="/assets/heroes/about-hero.png" alt="Brahmani Information Digital Technology Architecture and Craftsmanship" />}
       />
 
       {/* 2. Company Introduction */}

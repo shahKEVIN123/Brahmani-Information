@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { SERVICES_LIST } from '../data/companyData';
 
 export const ServicesPage: React.FC = () => {
@@ -12,7 +13,12 @@ export const ServicesPage: React.FC = () => {
       {/* Services Hero */}
       <PageHero
         badge="Services Index"
-        title="Comprehensive Digital & Technology Solutions."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">Comprehensive Digital & </span>
+            <span className="text-[#005EDA] block sm:inline">Technology Solutions.</span>
+          </>
+        }
         description="Twelve specialized disciplines engineered to solve complex operational challenges, accelerate digital transformation, and deliver modern software products."
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -27,6 +33,7 @@ export const ServicesPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
+        visual={<HeroImageVisual src="/assets/heroes/services-hero.png" alt="Comprehensive Digital and Technology Solutions Architecture" />}
       />
 
       {/* Main 12 Categories Editorial Index */}

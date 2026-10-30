@@ -3,6 +3,7 @@ import { Mail, Send, CheckCircle2, AlertCircle, ShieldCheck, Clock, MapPin, Arro
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { COMPANY_INFO } from '../data/companyData';
 
 export const ContactPage: React.FC = () => {
@@ -55,12 +56,18 @@ export const ContactPage: React.FC = () => {
       {/* 1. Contact Hero */}
       <PageHero
         badge="Direct Communication"
-        title="Let’s Discuss Your Next Digital Project."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">Let’s Discuss Your </span>
+            <span className="text-[#005EDA] block sm:inline">Next Digital Project.</span>
+          </>
+        }
         description="Whether scoping a new web application, modernizing existing software, or seeking architectural guidance, our team is ready to assist."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Contact', href: '/contact' },
         ]}
+        visual={<HeroImageVisual src="/assets/heroes/contact-hero.png" alt="Direct Digital Communication and Technical Consultation" />}
       />
 
       {/* 2. Main Contact Form & Information */}

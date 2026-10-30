@@ -320,7 +320,7 @@ export const HeroWorkflowVisual: React.FC = () => {
                     <span className="text-[9px] font-bold uppercase tracking-wider text-[#005EDA] block">
                       Brahmani Information
                     </span>
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-display mt-0.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-display mt-0.5 ">
                       WE BUILD DIGITAL EXPERIENCES THAT HELP BUSINESSES MOVE FORWARD.
                     </h4>
                     <p className="text-[10px] text-slate-600 mt-1 line-clamp-2">

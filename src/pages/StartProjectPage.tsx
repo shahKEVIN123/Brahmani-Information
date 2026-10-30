@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CheckCircle2, ArrowRight, ShieldCheck, Clock, FileText, Send, AlertCircle, HelpCircle } from 'lucide-react';
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { COMPANY_INFO, SERVICES_LIST } from '../data/companyData';
 
 export const StartProjectPage: React.FC = () => {
@@ -71,12 +72,18 @@ export const StartProjectPage: React.FC = () => {
       {/* 1. Page Hero */}
       <PageHero
         badge="Project Intake & Scoping"
-        title="Start a Project with Brahmani Information."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">Start a Project with </span>
+            <span className="text-[#005EDA] block sm:inline">Brahmani Information.</span>
+          </>
+        }
         description="Provide high-level details regarding your upcoming project. Our technical architects will evaluate your objectives and prepare a detailed roadmap."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Start a Project', href: '/start-a-project' },
         ]}
+        visual={<HeroImageVisual src="/assets/heroes/start-project-hero.png" alt="Project Scoping and Architectural Roadmap Intake" />}
       />
 
       {/* 2. Conversion Intake Form Container */}

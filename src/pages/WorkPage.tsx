@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ExternalLink, Layers, X, Shield, Terminal, Gl
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { WORK_PROJECTS, WorkProject } from '../data/companyData';
 
 export const WorkPage: React.FC = () => {
@@ -21,7 +22,12 @@ export const WorkPage: React.FC = () => {
       {/* 1. Work Hero */}
       <PageHero
         badge="Case Studies & Work Index"
-        title="Purposeful Engineering in Production."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">Purposeful Engineering </span>
+            <span className="text-[#005EDA] block sm:inline">in Production.</span>
+          </>
+        }
         description="A curation of web applications, interfaces, and bespoke digital platforms engineered for operational clarity, reliability, and modern performance."
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -36,6 +42,7 @@ export const WorkPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
+        visual={<HeroImageVisual src="/assets/heroes/work-hero.png" alt="Completed Digital Products and Portfolio Engineering Showcase" />}
       />
 
       {/* 2. Portfolio Filter & Editorial Projects List */}

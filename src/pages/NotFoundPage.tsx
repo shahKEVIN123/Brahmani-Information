@@ -10,8 +10,9 @@ export const NotFoundPage: React.FC = () => {
           404 // ROUTE NOT FOUND
         </span>
 
-        <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 font-display">
-          Page Not Found.
+        <h1 className="text-4xl sm:text-5xl font-bold font-display">
+          <span className="text-[#0F172A]">Page </span>
+          <span className="text-[#005EDA]">Not Found.</span>
         </h1>
 
         <p className="text-sm text-slate-600 leading-relaxed">

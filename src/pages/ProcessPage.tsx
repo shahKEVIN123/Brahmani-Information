@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ChevronRight, Compass, Calendar, ShieldCheck,
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
+import { HeroImageVisual } from '../components/HeroImageVisual';
 import { PROCESS_STAGES } from '../data/companyData';
 
 export const ProcessPage: React.FC = () => {
@@ -12,7 +13,12 @@ export const ProcessPage: React.FC = () => {
       {/* 1. Process Hero */}
       <PageHero
         badge="Delivery Methodology"
-        title="A Structured 7-Stage Engineering Process."
+        title={
+          <>
+            <span className="text-[#0F172A] block sm:inline">A Structured 7-Stage </span>
+            <span className="text-[#005EDA] block sm:inline">Engineering Process.</span>
+          </>
+        }
         description="We follow a disciplined, transparent execution framework that bridges initial discovery to launch and continuous lifecycle care."
         breadcrumbs={[
           { label: 'Home', href: '/' },
@@ -27,6 +33,7 @@ export const ProcessPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
+        visual={<HeroImageVisual src="/assets/heroes/process-hero.png" alt="Structured 7-Stage Digital Product Engineering Workflow" />}
       />
 
       {/* 2. Process Overview & Philosophy */}

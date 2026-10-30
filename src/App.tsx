@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from './router/Router';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -60,6 +61,9 @@ export const App: React.FC = () => {
 
         {/* Global Reusable Multi-Column Footer */}
         <Footer />
+
+        {/* Global Persistent Bottom-Right WhatsApp Quick Contact */}
+        <WhatsAppButton />
 
       </div>
     </BrowserRouter>

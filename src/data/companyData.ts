@@ -67,6 +67,8 @@ export const COMPANY_INFO = {
   vision: "To set an enduring standard in digital craftsmanship where design elegance and modern software engineering unite to solve meaningful real-world challenges.",
   established: "2026",
   email: " info@brahmaniinformation.com",
+  whatsappNumber: "+919328054690",
+  phone: "+91 9328054690",
   inquiryTypes: [
     "Web Application Development",
     "Custom Web Development",

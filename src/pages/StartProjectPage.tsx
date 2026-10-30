@@ -74,7 +74,7 @@ export const StartProjectPage: React.FC = () => {
         badge="Project Intake & Scoping"
         title={
           <>
-            <span className="text-[#0F172A] block sm:inline">Start a Project with </span>
+            <span className="text-white block sm:inline">Start a Project with </span>
             <span className="text-[#005EDA] block sm:inline">Brahmani Information.</span>
           </>
         }
@@ -87,36 +87,36 @@ export const StartProjectPage: React.FC = () => {
       />
 
       {/* 2. Conversion Intake Form Container */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {isSubmitted ? (
-            <div className="bg-[#F8FAFC] rounded-3xl border border-slate-200 p-8 sm:p-14 text-center space-y-6 shadow-depth-md animate-fadeIn">
-              <div className="w-20 h-20 rounded-full bg-blue-50 border-2 border-[#005EDA] text-[#005EDA] mx-auto flex items-center justify-center shadow-[0_0_25px_rgba(0,94,218,0.2)]">
+            <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-14 text-center space-y-6 shadow-depth-md animate-fadeIn">
+              <div className="w-20 h-20 rounded-full bg-blue-500/10 border-2 border-[#005EDA] text-[#38BDF8] mx-auto flex items-center justify-center shadow-[0_0_25px_rgba(0,94,218,0.3)]">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-display">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
                   Project Request Received.
                 </h3>
-                <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
-                  Thank you, <span className="font-semibold text-slate-900">{formData.name}</span>. Your project brief for <span className="font-semibold text-[#005EDA]">{selectedService}</span> has been logged directly into our system.
+                <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
+                  Thank you, <span className="font-semibold text-white">{formData.name}</span>. Your project brief for <span className="font-semibold text-[#005EDA]">{selectedService}</span> has been logged directly into our system.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 max-w-md mx-auto text-left space-y-2 text-xs font-mono text-slate-600">
-                <div className="flex justify-between border-b border-slate-100 pb-1.5">
+              <div className="bg-[#1A1A1A] p-6 rounded-2xl border border-white/10 max-w-md mx-auto text-left space-y-2 text-xs font-mono text-slate-300">
+                <div className="flex justify-between border-b border-white/10 pb-1.5">
                   <span className="text-slate-400">Category:</span>
-                  <span className="font-bold text-slate-800">{selectedService}</span>
+                  <span className="font-bold text-white">{selectedService}</span>
                 </div>
-                <div className="flex justify-between border-b border-slate-100 pb-1.5">
+                <div className="flex justify-between border-b border-white/10 pb-1.5">
                   <span className="text-slate-400">Timeline:</span>
-                  <span className="font-bold text-slate-800">{selectedTimeline}</span>
+                  <span className="font-bold text-white">{selectedTimeline}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Estimated Response:</span>
-                  <span className="font-bold text-emerald-600">Within 24 Hours</span>
+                  <span className="font-bold text-emerald-400">Within 24 Hours</span>
                 </div>
               </div>
 
@@ -129,7 +129,7 @@ export const StartProjectPage: React.FC = () => {
                 </Link>
                 <Link
                   to="/work"
-                  className="px-7 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider bg-white text-slate-700 hover:bg-slate-50 border border-slate-300 transition-colors"
+                  className="px-7 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#1A1A1A] text-slate-200 hover:bg-[#222222] border border-white/10 transition-colors"
                 >
                   Explore Our Work
                 </Link>
@@ -139,16 +139,16 @@ export const StartProjectPage: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-12">
               
               {/* Step 1: Select Primary Capability */}
-              <div className="bg-[#F8FAFC] rounded-3xl border border-slate-200 p-8 sm:p-10 space-y-6 shadow-depth-sm">
-                <div className="flex items-center space-x-3 pb-3 border-b border-slate-200">
+              <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 space-y-6 shadow-depth-sm">
+                <div className="flex items-center space-x-3 pb-3 border-b border-white/10">
                   <span className="w-7 h-7 rounded-lg bg-[#005EDA] text-white font-mono text-xs flex items-center justify-center font-bold">
                     1
                   </span>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 font-display">
+                    <h3 className="text-lg font-bold text-white font-display">
                       Select Primary Project Discipline
                     </h3>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-400">
                       Choose the capability that best aligns with your primary goal.
                     </p>
                   </div>
@@ -163,7 +163,7 @@ export const StartProjectPage: React.FC = () => {
                       className={`p-3.5 rounded-xl border text-left transition-all ${
                         selectedService === srv.title
                           ? 'bg-[#005EDA] border-[#005EDA] text-white shadow-sm'
-                          : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                          : 'bg-[#1A1A1A] border-white/10 text-slate-200 hover:border-white/20 hover:bg-[#202020]'
                       }`}
                     >
                       <span className={`text-[10px] font-mono block ${selectedService === srv.title ? 'text-blue-100' : 'text-slate-400'}`}>
@@ -178,16 +178,16 @@ export const StartProjectPage: React.FC = () => {
               </div>
 
               {/* Step 2: Timeline & Budget Scope */}
-              <div className="bg-[#F8FAFC] rounded-3xl border border-slate-200 p-8 sm:p-10 space-y-8 shadow-depth-sm">
-                <div className="flex items-center space-x-3 pb-3 border-b border-slate-200">
+              <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 space-y-8 shadow-depth-sm">
+                <div className="flex items-center space-x-3 pb-3 border-b border-white/10">
                   <span className="w-7 h-7 rounded-lg bg-[#005EDA] text-white font-mono text-xs flex items-center justify-center font-bold">
                     2
                   </span>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 font-display">
+                    <h3 className="text-lg font-bold text-white font-display">
                       Target Timeline & Scope Tier
                     </h3>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-400">
                       Helps our engineering leads plan delivery velocity.
                     </p>
                   </div>
@@ -195,7 +195,7 @@ export const StartProjectPage: React.FC = () => {
 
                 {/* Timeline Selection */}
                 <div className="space-y-3">
-                  <label className="block text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
                     Target Completion Horizon:
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -207,7 +207,7 @@ export const StartProjectPage: React.FC = () => {
                         className={`p-3 rounded-xl border text-xs font-medium transition-all ${
                           selectedTimeline === tl.value
                             ? 'bg-[#005EDA] border-[#005EDA] text-white font-semibold'
-                            : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                            : 'bg-[#1A1A1A] border-white/10 text-slate-200 hover:bg-[#202020]'
                         }`}
                       >
                         {tl.label}
@@ -218,7 +218,7 @@ export const StartProjectPage: React.FC = () => {
 
                 {/* Budget Selection */}
                 <div className="space-y-3">
-                  <label className="block text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
                     Investment Tier:
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -230,7 +230,7 @@ export const StartProjectPage: React.FC = () => {
                         className={`p-3 rounded-xl border text-xs font-medium transition-all ${
                           selectedBudget === bg.value
                             ? 'bg-[#005EDA] border-[#005EDA] text-white font-semibold'
-                            : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                            : 'bg-[#1A1A1A] border-white/10 text-slate-200 hover:bg-[#202020]'
                         }`}
                       >
                         {bg.label}
@@ -241,31 +241,31 @@ export const StartProjectPage: React.FC = () => {
               </div>
 
               {/* Step 3: Project Brief & Contact Information */}
-              <div className="bg-[#F8FAFC] rounded-3xl border border-slate-200 p-8 sm:p-10 space-y-6 shadow-depth-sm">
-                <div className="flex items-center space-x-3 pb-3 border-b border-slate-200">
+              <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 space-y-6 shadow-depth-sm">
+                <div className="flex items-center space-x-3 pb-3 border-b border-white/10">
                   <span className="w-7 h-7 rounded-lg bg-[#005EDA] text-white font-mono text-xs flex items-center justify-center font-bold">
                     3
                   </span>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 font-display">
+                    <h3 className="text-lg font-bold text-white font-display">
                       Project Brief & Contact Information
                     </h3>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-400">
                       Outline your goals and provide details so our architects can follow up.
                     </p>
                   </div>
                 </div>
 
                 {errorMessage && (
-                  <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
-                    <AlertCircle className="w-4 h-4 text-red-500 shrink-0" />
+                  <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-xs text-red-300">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                     <span>{errorMessage}</span>
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                    <label htmlFor="name" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Full Name <span className="text-[#005EDA]">*</span>
                     </label>
                     <input
@@ -276,12 +276,12 @@ export const StartProjectPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g. Jordan Smith"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                    <label htmlFor="email" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Work Email <span className="text-[#005EDA]">*</span>
                     </label>
                     <input
@@ -292,14 +292,14 @@ export const StartProjectPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="jordan@company.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="company" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                    <label htmlFor="company" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Company / Organization
                     </label>
                     <input
@@ -309,12 +309,12 @@ export const StartProjectPage: React.FC = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Company Name"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                    <label htmlFor="phone" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Phone Number (Optional)
                     </label>
                     <input
@@ -324,13 +324,13 @@ export const StartProjectPage: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="projectBrief" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                  <label htmlFor="projectBrief" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Project Goals, Requirements & Context <span className="text-[#005EDA]">*</span>
                   </label>
                   <textarea
@@ -341,13 +341,13 @@ export const StartProjectPage: React.FC = () => {
                     value={formData.projectBrief}
                     onChange={handleInputChange}
                     placeholder="Describe the problem you are solving, core user features, any existing systems to integrate, or relevant technical context..."
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all resize-y"
+                    className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all resize-y"
                   />
                 </div>
 
                 {/* Submit Action */}
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center space-x-2 text-xs text-slate-500">
+                  <div className="flex items-center space-x-2 text-xs text-slate-400">
                     <ShieldCheck className="w-4 h-4 text-[#005EDA]" />
                     <span>Protected by Mutual Non-Disclosure Standard</span>
                   </div>
@@ -380,23 +380,23 @@ export const StartProjectPage: React.FC = () => {
       </section>
 
       {/* 3. Reassurance & Guarantees */}
-      <section className="py-16 bg-[#F8FAFC] border-b border-slate-200/80">
+      <section className="py-16 bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-2">
-              <span className="text-xs font-mono font-bold text-[#005EDA] block">GUARANTEE 01</span>
-              <h4 className="text-sm font-bold text-slate-900">Direct Engineer Scoping</h4>
-              <p className="text-xs text-slate-600">Your brief is reviewed by software architects, not commissioned sales agents.</p>
+            <div className="p-5 rounded-2xl bg-[#151515] border border-white/10 space-y-2">
+              <span className="text-xs font-mono font-bold text-[#38BDF8] block">GUARANTEE 01</span>
+              <h4 className="text-sm font-bold text-white">Direct Engineer Scoping</h4>
+              <p className="text-xs text-slate-400">Your brief is reviewed by software architects, not commissioned sales agents.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-2">
-              <span className="text-xs font-mono font-bold text-[#005EDA] block">GUARANTEE 02</span>
-              <h4 className="text-sm font-bold text-slate-900">Rapid 24h Turnaround</h4>
-              <p className="text-xs text-slate-600">We respond with an initial architectural perspective within one business day.</p>
+            <div className="p-5 rounded-2xl bg-[#151515] border border-white/10 space-y-2">
+              <span className="text-xs font-mono font-bold text-[#38BDF8] block">GUARANTEE 02</span>
+              <h4 className="text-sm font-bold text-white">Rapid 24h Turnaround</h4>
+              <p className="text-xs text-slate-400">We respond with an initial architectural perspective within one business day.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-2">
-              <span className="text-xs font-mono font-bold text-[#005EDA] block">GUARANTEE 03</span>
-              <h4 className="text-sm font-bold text-slate-900">No Obligation</h4>
-              <p className="text-xs text-slate-600">Our initial scoping session is completely confidential and complimentary.</p>
+            <div className="p-5 rounded-2xl bg-[#151515] border border-white/10 space-y-2">
+              <span className="text-xs font-mono font-bold text-[#38BDF8] block">GUARANTEE 03</span>
+              <h4 className="text-sm font-bold text-white">No Obligation</h4>
+              <p className="text-xs text-slate-400">Our initial scoping session is completely confidential and complimentary.</p>
             </div>
           </div>
         </div>

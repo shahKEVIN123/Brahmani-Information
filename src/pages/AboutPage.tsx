@@ -15,7 +15,7 @@ export const AboutPage: React.FC = () => {
         badge="Company Profile"
         title={
           <>
-            <span className="text-[#0F172A] block sm:inline">Engineering Meaningful Digital Experiences </span>
+            <span className="text-white block sm:inline">Engineering Meaningful Digital Experiences </span>
             <span className="text-[#005EDA] block sm:inline">with Technical Clarity.</span>
           </>
         }
@@ -37,7 +37,7 @@ export const AboutPage: React.FC = () => {
       />
 
       {/* 2. Company Introduction */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -49,7 +49,7 @@ export const AboutPage: React.FC = () => {
                 className="mb-0"
               />
 
-              <div className="space-y-4 text-base text-slate-600 leading-relaxed">
+              <div className="space-y-4 text-base text-slate-400 leading-relaxed">
                 <p>
                   At Brahmani Information, we reject superficial digital trends in favor of durable software engineering and clean ergonomics. Whether developing dynamic web applications, architecting bespoke APIs, or crafting design systems, our focus is always on solving genuine business challenges.
                 </p>
@@ -60,26 +60,26 @@ export const AboutPage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-8 space-y-6 shadow-depth-sm">
-                <h3 className="text-lg font-bold text-slate-900 font-display">
+              <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-6 shadow-depth-sm">
+                <h3 className="text-lg font-bold text-white font-display">
                   Core Mission & Vision
                 </h3>
 
                 <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-white border border-slate-200/80 space-y-1.5 shadow-sm">
-                    <span className="text-xs font-mono font-bold text-[#005EDA] uppercase tracking-wider">
+                  <div className="p-4 rounded-xl bg-[#1A1A1A] border border-white/10 space-y-1.5 shadow-sm">
+                    <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
                       Our Mission
                     </span>
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <p className="text-sm text-slate-300 leading-relaxed">
                       {COMPANY_INFO.mission}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white border border-slate-200/80 space-y-1.5 shadow-sm">
-                    <span className="text-xs font-mono font-bold text-[#005EDA] uppercase tracking-wider">
+                  <div className="p-4 rounded-xl bg-[#1A1A1A] border border-white/10 space-y-1.5 shadow-sm">
+                    <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
                       Our Vision
                     </span>
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <p className="text-sm text-slate-300 leading-relaxed">
                       {COMPANY_INFO.vision}
                     </p>
                   </div>
@@ -92,7 +92,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* 3. Design + Technology Philosophy */}
-      <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
+      <section className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -103,38 +103,38 @@ export const AboutPage: React.FC = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 space-y-4 shadow-depth-sm">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#005EDA] flex items-center justify-center border border-blue-100">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 font-display">
+              <h3 className="text-lg font-bold text-white font-display">
                 Intentional Architecture
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed">
                 We design system structures before writing lines of code. This ensures clear data flows, predictable state management, and straightforward maintainability for internal teams.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 space-y-4 shadow-depth-sm">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#005EDA] flex items-center justify-center border border-blue-100">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 font-display">
+              <h3 className="text-lg font-bold text-white font-display">
                 Ergonomic Precision
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed">
                 Interfaces should feel natural and effortless to operate. We prioritize accessible touch targets, legible typography, and intuitive user paths across all viewports.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 space-y-4 shadow-depth-sm">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#005EDA] flex items-center justify-center border border-blue-100">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20">
                 <Code2 className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 font-display">
+              <h3 className="text-lg font-bold text-white font-display">
                 Modular Code Integrity
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed">
                 We write clean, modular, and self-documenting code. Standardized component repositories allow software to adapt seamlessly as organizational needs evolve.
               </p>
             </div>
@@ -144,7 +144,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* 4. Our Collaborative Approach */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -154,42 +154,42 @@ export const AboutPage: React.FC = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F8FAFC] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">01 // PRIVACY</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">01 // PRIVACY</span>
+              <h4 className="text-base font-bold text-white font-display">
                 NDA & Confidentiality
               </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Complete intellectual property protection and confidentiality agreements in place before project discussions begin.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F8FAFC] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">02 // SCOPE</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">02 // SCOPE</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Milestone Scoping
               </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Clear scope definitions with transparent timelines and measurable deliverables tied to specific validation gates.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F8FAFC] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">03 // OWNERSHIP</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">03 // OWNERSHIP</span>
+              <h4 className="text-base font-bold text-white font-display">
                 100% Code Handover
               </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Full source code ownership, repository access, and deployment documentation delivered cleanly upon launch.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F8FAFC] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">04 // SUPPORT</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">04 // SUPPORT</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Lifecycle Continuity
               </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Proactive maintenance, dependency patching, and on-demand engineering to keep your software performant.
               </p>
             </div>
@@ -199,12 +199,12 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* 5. CTA */}
-      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-white text-center">
+      <section className="py-20 bg-gradient-to-b from-[#0E0E0E] to-[#0A0A0A] border-t border-white/10 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Partner with Brahmani Information.
           </h2>
-          <p className="text-slate-600 text-base max-w-xl mx-auto mb-8">
+          <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
             Tell us about your project or technical requirements. We will review your goals and provide an architectural roadmap.
           </p>
           <Link

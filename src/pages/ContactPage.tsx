@@ -58,7 +58,7 @@ export const ContactPage: React.FC = () => {
         badge="Direct Communication"
         title={
           <>
-            <span className="text-[#0F172A] block sm:inline">Let’s Discuss Your </span>
+            <span className="text-white block sm:inline">Let’s Discuss Your </span>
             <span className="text-[#005EDA] block sm:inline">Next Digital Project.</span>
           </>
         }
@@ -71,24 +71,24 @@ export const ContactPage: React.FC = () => {
       />
 
       {/* 2. Main Contact Form & Information */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Column: Inquiry Form (7 cols) */}
-            <div className="lg:col-span-7 bg-[#F8FAFC] rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-depth-sm">
+            <div className="lg:col-span-7 bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 shadow-depth-sm">
               
               {isSubmitted ? (
                 <div className="py-12 text-center space-y-5 animate-fadeIn">
-                  <div className="w-16 h-16 rounded-full bg-blue-50 border border-blue-200 mx-auto flex items-center justify-center text-[#005EDA] shadow-sm">
+                  <div className="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-400/20 mx-auto flex items-center justify-center text-[#38BDF8] shadow-sm">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
 
-                  <h3 className="text-2xl font-bold text-slate-900 font-display">
+                  <h3 className="text-2xl font-bold text-white font-display">
                     Inquiry Received Successfully.
                   </h3>
 
-                  <p className="text-slate-600 max-w-md mx-auto text-sm leading-relaxed">
+                  <p className="text-slate-400 max-w-md mx-auto text-sm leading-relaxed">
                     Thank you for reaching out to Brahmani Information. We have logged your project details and our engineering team will respond promptly.
                   </p>
 
@@ -112,17 +112,17 @@ export const ContactPage: React.FC = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 font-display mb-1">
+                    <h3 className="text-xl font-bold text-white font-display mb-1">
                       Send an Inquiry
                     </h3>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-400">
                       Fill out the form below. We typically respond within one business day.
                     </p>
                   </div>
 
                   {errorMessage && (
-                    <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
-                      <AlertCircle className="w-4 h-4 text-red-500 shrink-0" />
+                    <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-xs text-red-300">
+                      <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
                   )}
@@ -130,7 +130,7 @@ export const ContactPage: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Name */}
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                      <label htmlFor="name" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                         Your Name <span className="text-[#005EDA]">*</span>
                       </label>
                       <input
@@ -141,13 +141,13 @@ export const ContactPage: React.FC = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Alex Morgan"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                       />
                     </div>
 
                     {/* Email */}
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                      <label htmlFor="email" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                         Work Email <span className="text-[#005EDA]">*</span>
                       </label>
                       <input
@@ -158,7 +158,7 @@ export const ContactPage: React.FC = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="alex@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                       />
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export const ContactPage: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Company */}
                     <div>
-                      <label htmlFor="company" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                      <label htmlFor="company" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                         Company / Organization
                       </label>
                       <input
@@ -176,13 +176,13 @@ export const ContactPage: React.FC = () => {
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Company Name"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                       />
                     </div>
 
                     {/* Project Type */}
                     <div>
-                      <label htmlFor="projectType" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                      <label htmlFor="projectType" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                         Inquiry Scope
                       </label>
                       <select
@@ -190,10 +190,10 @@ export const ContactPage: React.FC = () => {
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all"
                       >
                         {COMPANY_INFO.inquiryTypes.map((type) => (
-                          <option key={type} value={type}>
+                          <option key={type} value={type} className="bg-[#1A1A1A] text-white">
                             {type}
                           </option>
                         ))}
@@ -203,7 +203,7 @@ export const ContactPage: React.FC = () => {
 
                   {/* Message */}
                   <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                    <label htmlFor="message" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Project Goals & Details <span className="text-[#005EDA]">*</span>
                     </label>
                     <textarea
@@ -214,7 +214,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Describe your project goals, desired timeline, or key technical challenges..."
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all resize-y"
+                      className="w-full px-4 py-3 rounded-xl bg-[#1A1A1A] border border-white/10 text-white placeholder-slate-500 text-sm focus:border-[#005EDA] focus:outline-none focus:ring-1 focus:ring-[#005EDA] transition-all resize-y"
                     />
                   </div>
 
@@ -248,35 +248,35 @@ export const ContactPage: React.FC = () => {
             <div className="lg:col-span-5 space-y-6">
               
               {/* Direct Inlet Card */}
-              <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 space-y-4 shadow-depth-sm">
-                <span className="text-xs font-mono font-bold text-[#005EDA] uppercase tracking-wider block">
+              <div className="p-8 rounded-3xl bg-[#151515] border border-white/10 space-y-4 shadow-depth-sm">
+                <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
                   Official Communication Inlet
                 </span>
                 
-                <h4 className="text-xl font-bold text-slate-900 font-display">
+                <h4 className="text-xl font-bold text-white font-display">
                   Direct Inquiries
                 </h4>
 
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   Prefer direct correspondence? Reach out via our primary corporate email address:
                 </p>
 
                 <a
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="inline-flex items-center space-x-2.5 text-sm font-semibold text-[#005EDA] hover:underline p-3 bg-white rounded-xl border border-slate-200 w-full"
+                  className="inline-flex items-center space-x-2.5 text-sm font-semibold text-[#38BDF8] hover:text-white hover:underline p-3 bg-[#1A1A1A] rounded-xl border border-white/10 w-full transition-colors"
                 >
-                  <Mail className="w-4 h-4 text-[#005EDA] shrink-0" />
+                  <Mail className="w-4 h-4 text-[#38BDF8] shrink-0" />
                   <span className="truncate">{COMPANY_INFO.email}</span>
                 </a>
               </div>
 
               {/* Engagement Guarantees */}
-              <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 space-y-4 shadow-depth-sm">
-                <h4 className="text-sm font-mono font-bold text-slate-800 uppercase tracking-wider">
+              <div className="p-8 rounded-3xl bg-[#151515] border border-white/10 space-y-4 shadow-depth-sm">
+                <h4 className="text-sm font-mono font-bold text-slate-200 uppercase tracking-wider">
                   Our Engagement Standards
                 </h4>
 
-                <div className="space-y-3 text-xs sm:text-sm text-slate-600">
+                <div className="space-y-3 text-xs sm:text-sm text-slate-400">
                   <div className="flex items-start space-x-3">
                     <ShieldCheck className="w-4 h-4 text-[#005EDA] shrink-0 mt-0.5" />
                     <span>Non-disclosure agreement (NDA) protection from day one.</span>
@@ -293,12 +293,12 @@ export const ContactPage: React.FC = () => {
               </div>
 
               {/* Start a Project Shortcut */}
-              <div className="p-6 rounded-3xl bg-blue-50/70 border border-blue-200/80 flex items-center justify-between">
+              <div className="p-6 rounded-3xl bg-blue-500/10 border border-blue-400/20 flex items-center justify-between">
                 <div>
-                  <h5 className="text-sm font-bold text-slate-900">
+                  <h5 className="text-sm font-bold text-white">
                     Ready to define project scope?
                   </h5>
-                  <p className="text-xs text-slate-600 mt-0.5">
+                  <p className="text-xs text-slate-400 mt-0.5">
                     Use our dedicated project intake flow.
                   </p>
                 </div>

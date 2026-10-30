@@ -11,39 +11,40 @@
 :root {
   --brand-blue: #005EDA;
   --brand-blue-hover: #004BBB;
-  --brand-blue-light: #EFF6FF;
-  --brand-navy: #0F172A;
-  --brand-navy-light: #1E293B;
-  --surface-base: #FFFFFF;
-  --surface-subtle: #F8FAFC;
-  --surface-muted: #F1F5F9;
-  --border-subtle: #E2E8F0;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
+  --brand-blue-light: rgba(0, 94, 218, 0.15);
+  --brand-navy: #0A0A0A;
+  --brand-navy-light: #151515;
+  --surface-base: #0A0A0A;
+  --surface-subtle: #111111;
+  --surface-muted: #151515;
+  --border-subtle: #262626;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
   --text-muted: #64748B;
 }
 
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
-/* Custom Clean Scrollbar */
+/* Custom Clean Scrollbar for Dark Theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #111111;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #262626;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #3B3B3B;
 }
 
 /* Reduced motion accessibility */
@@ -64,37 +65,37 @@ html {
   outline-offset: 3px;
 }
 
-/* Subtle architectural grid pattern */
+/* Subtle architectural grid pattern in dark theme */
 .bg-corporate-grid {
   background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 .bg-dot-grid {
-  background-image: radial-gradient(rgba(0, 94, 218, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* 2.5D Strategic Depth Utility Classes */
+/* 2.5D Strategic Depth Utility Classes in Dark Theme */
 .card-depth-sm {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04), 0 1px 3px -1px rgba(15, 23, 42, 0.02);
+  background: #151515;
+  border: 1px solid #262626;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-depth-sm:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
-  border-color: #CBD5E1;
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 94, 218, 0.2);
+  border-color: #3B3B3B;
 }
 
 .card-depth-lg {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(15, 23, 42, 0.02);
+  background: #151515;
+  border: 1px solid #262626;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .border-accent-offset {

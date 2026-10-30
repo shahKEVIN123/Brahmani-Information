@@ -59,7 +59,7 @@ export const WhatsAppButton: React.FC = () => {
     >
       {/* Interactive WhatsApp Chat Popup Card */}
       {isOpen && (
-        <div className="mb-4 w-[340px] sm:w-[360px] bg-white rounded-2xl shadow-[0_20px_50px_rgba(15,23,42,0.22),0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 overflow-hidden animate-fadeIn">
+        <div className="mb-4 w-[340px] sm:w-[360px] bg-[#151515] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_4px_16px_rgba(0,0,0,0.4)] border border-white/10 overflow-hidden animate-fadeIn">
           
           {/* Card Header (Authentic WhatsApp Theme) */}
           <div className="bg-[#075E54] text-white p-4 flex items-center justify-between">
@@ -98,40 +98,40 @@ export const WhatsAppButton: React.FC = () => {
           </div>
 
           {/* Chat Body Canvas */}
-          <div className="p-4 bg-slate-50 space-y-3 max-h-[280px] overflow-y-auto">
+          <div className="p-4 bg-[#111111] space-y-3 max-h-[280px] overflow-y-auto">
             {/* Incoming Message Bubble */}
-            <div className="bg-white rounded-2xl rounded-tl-none p-3.5 shadow-xs border border-slate-200/80 max-w-[90%] text-slate-800 text-xs leading-relaxed space-y-1">
-              <p className="font-semibold text-slate-900">
+            <div className="bg-[#1E1E1E] rounded-2xl rounded-tl-none p-3.5 shadow-xs border border-white/10 max-w-[90%] text-slate-200 text-xs leading-relaxed space-y-1">
+              <p className="font-semibold text-white">
                 👋 Hello! Welcome to Brahmani Information.
               </p>
-              <p className="text-slate-600">
+              <p className="text-slate-400">
                 How can our web and software engineering team assist you with your project today?
               </p>
-              <span className="block text-[10px] text-slate-400 text-right pt-0.5">
+              <span className="block text-[10px] text-slate-500 text-right pt-0.5">
                 Just now
               </span>
             </div>
 
             {/* Quick Prompt Suggestions */}
             <div className="space-y-1.5 pt-1">
-              <p className="text-[10px] uppercase tracking-wider font-semibold text-slate-500 px-1">
+              <p className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 px-1">
                 Frequently Asked Topics:
               </p>
               {quickPrompts.map((prompt, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSend(prompt)}
-                  className="w-full text-left text-xs bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 p-2.5 rounded-xl border border-slate-200/90 hover:border-emerald-300 transition-all flex items-center justify-between group shadow-2xs"
+                  className="w-full text-left text-xs bg-[#1A1A1A] hover:bg-emerald-950/40 text-slate-200 hover:text-emerald-300 p-2.5 rounded-xl border border-white/10 hover:border-emerald-500/50 transition-all flex items-center justify-between group shadow-2xs"
                 >
                   <span className="truncate pr-2">{prompt}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
                 </button>
               ))}
             </div>
           </div>
 
           {/* Footer Input & Direct WhatsApp Action */}
-          <div className="p-3 bg-white border-t border-slate-200 flex items-center space-x-2">
+          <div className="p-3 bg-[#151515] border-t border-white/10 flex items-center space-x-2">
             <input
               type="text"
               value={message}
@@ -143,7 +143,7 @@ export const WhatsAppButton: React.FC = () => {
                 }
               }}
               placeholder="Type your message..."
-              className="flex-1 bg-slate-100 text-xs text-slate-800 rounded-xl px-3 py-2.5 border border-transparent focus:border-[#25D366] focus:bg-white focus:outline-none transition-colors"
+              className="flex-1 bg-[#1E1E1E] text-xs text-white rounded-xl px-3 py-2.5 border border-white/10 focus:border-[#25D366] focus:bg-[#252525] focus:outline-none transition-colors placeholder-slate-500"
             />
             <button
               onClick={() => handleSend()}
@@ -162,7 +162,7 @@ export const WhatsAppButton: React.FC = () => {
         {/* Hover / Status Callout Pill */}
         {!isOpen && (
           <div 
-            className={`hidden sm:flex items-center space-x-2 px-3.5 py-2 rounded-full bg-white border border-slate-200/90 shadow-lg text-xs font-semibold text-slate-800 transition-all duration-200 ${
+            className={`hidden sm:flex items-center space-x-2 px-3.5 py-2 rounded-full bg-[#151515] border border-white/10 shadow-lg text-xs font-semibold text-white transition-all duration-200 ${
               showTooltip ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
             }`}
           >

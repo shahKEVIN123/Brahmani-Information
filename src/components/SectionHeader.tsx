@@ -23,19 +23,19 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     >
       {badge && (
         <div
-          className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-xs font-semibold uppercase tracking-wider text-[#005EDA] mb-4`}
+          className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-semibold uppercase tracking-wider text-[#38BDF8] mb-4`}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
           <span>{badge}</span>
         </div>
       )}
 
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-[1.16] font-display mb-4">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-[1.16] font-display mb-4">
         {title}
       </h2>
 
       {description && (
-        <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
           {description}
         </p>
       )}

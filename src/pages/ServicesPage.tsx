@@ -15,7 +15,7 @@ export const ServicesPage: React.FC = () => {
         badge="Services Index"
         title={
           <>
-            <span className="text-[#0F172A] block sm:inline">Comprehensive Digital & </span>
+            <span className="text-white block sm:inline">Comprehensive Digital & </span>
             <span className="text-[#005EDA] block sm:inline">Technology Solutions.</span>
           </>
         }
@@ -37,7 +37,7 @@ export const ServicesPage: React.FC = () => {
       />
 
       {/* Main 12 Categories Editorial Index */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -50,13 +50,13 @@ export const ServicesPage: React.FC = () => {
             {SERVICES_LIST.map((srv) => (
               <div
                 key={srv.slug}
-                className="bg-[#F8FAFC] rounded-2xl border border-slate-200/90 p-7 sm:p-8 flex flex-col justify-between hover:bg-white hover:border-[#005EDA]/40 hover:shadow-depth-md transition-all duration-300 group"
+                className="bg-[#151515] rounded-2xl border border-white/10 p-7 sm:p-8 flex flex-col justify-between hover:bg-[#1A1A1A] hover:border-[#005EDA]/60 hover:shadow-depth-md transition-all duration-300 group"
               >
                 <div className="space-y-4">
                   
                   {/* Service Number & Category Indicator */}
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-                    <span className="text-xs font-mono font-bold text-[#005EDA] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/60">
+                  <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                    <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-400/20">
                       {srv.number}
                     </span>
                     <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
@@ -65,12 +65,12 @@ export const ServicesPage: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#005EDA] transition-colors font-display">
+                  <h3 className="text-xl font-bold text-white group-hover:text-[#005EDA] transition-colors font-display">
                     {srv.title}
                   </h3>
 
                   {/* Short Description */}
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-slate-400 leading-relaxed">
                     {srv.shortDesc}
                   </p>
 
@@ -79,7 +79,7 @@ export const ServicesPage: React.FC = () => {
                     {srv.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-600 border border-slate-200/80 shadow-xs"
+                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1E1E1E] text-slate-300 border border-white/10 shadow-xs"
                       >
                         {tech}
                       </span>
@@ -89,10 +89,10 @@ export const ServicesPage: React.FC = () => {
                 </div>
 
                 {/* Direct Link to Dedicated Page */}
-                <div className="pt-6 mt-6 border-t border-slate-200/80">
+                <div className="pt-6 mt-6 border-t border-white/10">
                   <Link
                     to={`/services/${srv.slug}`}
-                    className="inline-flex items-center space-x-2 text-xs font-semibold text-[#005EDA] group-hover:text-[#004BBB] group-hover:underline"
+                    className="inline-flex items-center space-x-2 text-xs font-semibold text-[#38BDF8] group-hover:text-[#60A5FA]"
                   >
                     <span>View {srv.title} Details</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -106,7 +106,7 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* Cross-functional Capability Matrix */}
-      <section className="py-20 lg:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -117,32 +117,32 @@ export const ServicesPage: React.FC = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-3 shadow-depth-sm">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">01 // DISCOVERY TO LAUNCH</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">01 // DISCOVERY TO LAUNCH</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Design & Front-End Synergy
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Our UI/UX designers and front-end developers share tokens and layout systems directly in code, eliminating translation drift and ensuring 100% pixel fidelity.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-3 shadow-depth-sm">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">02 // ARCHITECTURE & RESILIENCE</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">02 // ARCHITECTURE & RESILIENCE</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Full-Stack & Cloud Integration
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Node.js backends and cloud container infrastructure are engineered together, ensuring zero-latency communication, automated backups, and autoscaling.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-3 shadow-depth-sm">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">03 // INTEGRITY & EVOLUTION</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">03 // INTEGRITY & EVOLUTION</span>
+              <h4 className="text-base font-bold text-white font-display">
                 QA & Continuous Maintenance
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Disciplined regression test suites and scheduled vulnerability patches protect your software against regressions and security exposures long after launch.
               </p>
             </div>
@@ -152,12 +152,12 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-white text-center">
+      <section className="py-20 bg-[#0E0E0E] text-center border-t border-white/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Need Guidance on the Right Capability?
           </h2>
-          <p className="text-slate-600 text-base max-w-xl mx-auto mb-8">
+          <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
             Share your operational objectives with our team. We will identify the optimal combination of technology services for your roadmap.
           </p>
           <Link

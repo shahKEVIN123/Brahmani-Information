@@ -97,14 +97,14 @@ export const HomePage: React.FC = () => {
       <section
         id="hero"
         aria-label="Hero Introduction"
-        className="relative pt-32 pb-16 lg:pt-36 lg:pb-20 bg-gradient-to-b from-white via-slate-50/70 to-slate-100/50 border-b border-slate-200/80 overflow-hidden"
+        className="relative pt-32 pb-16 lg:pt-36 lg:pb-20 bg-gradient-to-b from-[#0A0A0A] via-[#111111] to-[#0E0E0E] border-b border-white/10 overflow-hidden"
       >
         {/* Subtle Architectural Grid */}
-        <div className="absolute inset-0 bg-corporate-grid opacity-70 pointer-events-none" />
+        <div className="absolute inset-0 bg-corporate-grid opacity-30 pointer-events-none" />
 
         {/* Strategic 2.5D Ambient Lighting */}
-        <div className="absolute -top-10 right-1/4 w-[420px] h-[420px] bg-blue-100/50 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute bottom-0 left-10 w-80 h-80 bg-slate-200/40 rounded-full blur-2xl pointer-events-none -z-10" />
+        <div className="absolute -top-10 right-1/4 w-[420px] h-[420px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute bottom-0 left-10 w-80 h-80 bg-blue-500/5 rounded-full blur-2xl pointer-events-none -z-10" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-12 items-center">
@@ -113,24 +113,24 @@ export const HomePage: React.FC = () => {
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left">
               
               {/* Brand Label Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-2xs mb-5 self-start">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 shadow-2xs mb-5 self-start">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#005EDA]"></span>
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#005EDA] font-display">
+                <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#38BDF8] font-display">
                   BRAHMANI INFORMATION
                 </span>
               </div>
 
               {/* Sophisticated Two-Color Hero Headline: Deep Navy + Brahmani Brand Blue */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] font-display mb-6">
-                <span className="text-[#0F172A] block">WE BUILD DIGITAL EXPERIENCES</span>
+                <span className="text-white block">WE BUILD DIGITAL EXPERIENCES</span>
                 <span className="text-[#005EDA] block mt-1">THAT HELP BUSINESSES MOVE FORWARD.</span>
               </h1>
 
               {/* Exact Master Prompt Supporting Text */}
-              <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed mb-8">
                 We design and develop modern websites and digital experiences that turn ideas into purposeful digital products.
               </p>
 
@@ -146,26 +146,26 @@ export const HomePage: React.FC = () => {
 
                 <Link
                   to="/work"
-                  className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-xs transition-all duration-200"
+                  className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl shadow-xs transition-all duration-200 group"
                 >
                   <span>Explore Our Work</span>
-                  <ArrowRight className="ml-2 w-4 h-4 text-slate-400 group-hover:text-slate-700" />
+                  <ArrowRight className="ml-2 w-4 h-4 text-slate-400 group-hover:text-white" />
                 </Link>
               </div>
 
               {/* Balanced Bottom Status / Metric Strip */}
-              <div className="pt-6 border-t border-slate-200/90 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-white/90 border border-slate-200/80 shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-700 truncate">Available for Projects</span>
+              <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-300 truncate">Available for Projects</span>
                 </div>
-                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-white/90 border border-slate-200/80 shadow-2xs">
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-[#005EDA] flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-700 truncate">Enterprise Standards</span>
+                  <span className="text-xs font-medium text-slate-300 truncate">Enterprise Standards</span>
                 </div>
-                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-white/90 border border-slate-200/80 shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-700 truncate">React & Node Stack</span>
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-300 truncate">React & Node Stack</span>
                 </div>
               </div>
             </div>
@@ -185,22 +185,22 @@ export const HomePage: React.FC = () => {
       <section
         id="services-directory"
         aria-label="Services Directory"
-        className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80"
+        className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-slate-200/90 gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-white/10 gap-6 mb-12">
             <div>
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold uppercase tracking-wider text-[#005EDA] mb-4">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-semibold uppercase tracking-wider text-[#38BDF8] mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
                 <span>SERVICES DIRECTORY</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight font-display leading-[1.12]">
-                <span className="text-[#0F172A]">Digital Capabilities Built for </span>
+                <span className="text-white">Digital Capabilities Built for </span>
                 <span className="text-[#005EDA]">Real Business Needs.</span>
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mt-3 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-400 max-w-2xl mt-3 leading-relaxed">
                 Twelve specialized engineering disciplines designed to solve operational challenges, accelerate digital transformation, and build dependable software products.
               </p>
             </div>
@@ -214,10 +214,10 @@ export const HomePage: React.FC = () => {
                 <Link
                   key={service.slug}
                   to={`/services/${service.slug}`}
-                  className="group flex flex-col bg-white rounded-2xl border border-slate-200/90 hover:border-[#005EDA]/60 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-8px_rgba(0,94,218,0.16)] transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+                  className="group flex flex-col bg-[#151515] rounded-2xl border border-white/10 hover:border-[#005EDA]/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] hover:shadow-[0_16px_36px_-8px_rgba(0,94,218,0.25)] transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
                 >
                   {/* TOP: Large Service-Specific Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50 border-b border-slate-100">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1A1A1A] border-b border-white/5">
                     <img
                       src={imageSrc}
                       alt={`${service.title} architectural capability`}
@@ -226,7 +226,7 @@ export const HomePage: React.FC = () => {
                     />
                     
                     {/* Floating Monospace Number Badge */}
-                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-white/95 backdrop-blur-sm border border-slate-200/80 shadow-sm text-[11px] font-mono font-bold text-slate-700 group-hover:text-[#005EDA] group-hover:border-blue-200 transition-colors">
+                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-[#151515]/95 backdrop-blur-sm border border-white/10 shadow-sm text-[11px] font-mono font-bold text-slate-300 group-hover:text-[#005EDA] group-hover:border-[#005EDA]/40 transition-colors">
                       {service.number}
                     </div>
                   </div>
@@ -236,26 +236,26 @@ export const HomePage: React.FC = () => {
                     <div>
                       {/* MIDDLE: Service Name + Action Arrow */}
                       <div className="flex items-start justify-between gap-2 mb-2.5">
-                        <h3 className="text-base sm:text-lg font-bold font-display text-[#0F172A] group-hover:text-[#005EDA] transition-colors leading-snug">
+                        <h3 className="text-base sm:text-lg font-bold font-display text-white group-hover:text-[#005EDA] transition-colors leading-snug">
                           {service.title}
                         </h3>
-                        <div className="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-[#005EDA] text-slate-400 group-hover:text-white flex items-center justify-center transition-all duration-200 shrink-0 mt-0.5 shadow-sm">
+                        <div className="w-7 h-7 rounded-full bg-[#222222] group-hover:bg-[#005EDA] text-slate-300 group-hover:text-white flex items-center justify-center transition-all duration-200 shrink-0 mt-0.5 shadow-sm">
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </div>
                       </div>
 
                       {/* BOTTOM: Short, Clear Description */}
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-3">
                         {service.shortDesc}
                       </p>
                     </div>
 
                     {/* Sub-Service Capability Tag & Explore Trigger */}
-                    <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-xs">
+                    <div className="pt-4 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
                       <span className="font-mono text-[11px] text-slate-400 truncate max-w-[130px]">
                         {service.subServices[0]?.title || 'Core Capability'}
                       </span>
-                      <span className="font-semibold text-[#005EDA] group-hover:translate-x-1 transition-transform inline-flex items-center text-[12px]">
+                      <span className="font-semibold text-[#38BDF8] group-hover:text-[#60A5FA] group-hover:translate-x-1 transition-transform inline-flex items-center text-[12px]">
                         Explore
                         <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                       </span>
@@ -279,11 +279,11 @@ export const HomePage: React.FC = () => {
       <section
         id="technology-index"
         aria-label="Technology Index"
-        className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80 relative overflow-hidden"
+        className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10 relative overflow-hidden"
       >
-        {/* Subtle Ambient Dot Grid Background (exact match to user reference UI) */}
+        {/* Subtle Ambient Dot Grid Background */}
         <div 
-          className="absolute inset-0 bg-[radial-gradient(#CBD5E1_1.3px,transparent_1.3px)] [background-size:24px_24px] pointer-events-none opacity-60" 
+          className="absolute inset-0 bg-[radial-gradient(#334155_1.3px,transparent_1.3px)] [background-size:24px_24px] pointer-events-none opacity-30" 
           aria-hidden="true"
         />
 
@@ -291,17 +291,17 @@ export const HomePage: React.FC = () => {
           
           {/* Centered Section Header */}
           <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 sm:mb-14">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-semibold uppercase tracking-wider text-[#005EDA]">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-semibold uppercase tracking-wider text-[#38BDF8]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
               <span>TECHNOLOGY INDEX</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight font-display text-slate-900 leading-[1.12]">
-              <span className="text-[#0F172A]">THE TECHNOLOGY </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight font-display leading-[1.12]">
+              <span className="text-white">THE TECHNOLOGY </span>
               <span className="text-[#005EDA]">BEHIND WHAT WE BUILD.</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
               A practical, battle-tested technology stack used to design, develop, connect and maintain modern digital experiences.
             </p>
 
@@ -313,8 +313,8 @@ export const HomePage: React.FC = () => {
                   onClick={() => setActiveTechCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
                     activeTechCategory === cat
-                      ? 'bg-[#005EDA] text-white shadow-sm shadow-blue-500/20'
-                      : 'bg-white hover:bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200/80 shadow-xs'
+                      ? 'bg-[#005EDA] text-white shadow-sm shadow-blue-500/25'
+                      : 'bg-[#151515] hover:bg-[#1E1E1E] text-slate-300 hover:text-white border border-white/10 shadow-xs'
                   }`}
                 >
                   {cat}
@@ -323,7 +323,7 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Circular Technology Icon Cloud (UI matching user reference screenshot) */}
+          {/* Circular Technology Icon Cloud */}
           <div className="relative max-w-4xl mx-auto py-4">
             <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 lg:gap-5">
               {allTechnologies.map((tech) => {
@@ -339,12 +339,12 @@ export const HomePage: React.FC = () => {
                       isCategoryActive ? 'opacity-100 scale-100' : 'opacity-30 scale-95 pointer-events-none'
                     }`}
                   >
-                    {/* Circular White Badge */}
+                    {/* Circular Dark Surface Badge */}
                     <div
-                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center p-3.5 sm:p-4 cursor-pointer transition-all duration-300 ${
+                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#151515] flex items-center justify-center p-3.5 sm:p-4 cursor-pointer transition-all duration-300 ${
                         isSelected
-                          ? 'border-2 border-[#005EDA] shadow-[0_12px_28px_rgba(0,94,218,0.24)] -translate-y-1.5 ring-4 ring-blue-500/10'
-                          : 'border border-slate-200/90 shadow-[0_4px_16px_rgba(15,23,42,0.06),0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_24px_rgba(0,94,218,0.18)] hover:border-[#005EDA]/60 hover:-translate-y-1'
+                          ? 'border-2 border-[#005EDA] shadow-[0_12px_28px_rgba(0,94,218,0.35)] -translate-y-1.5 ring-4 ring-blue-500/20'
+                          : 'border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.5)] hover:shadow-[0_10px_24px_rgba(0,94,218,0.25)] hover:border-[#005EDA]/60 hover:-translate-y-1'
                       }`}
                     >
                       <TechIcon
@@ -354,9 +354,9 @@ export const HomePage: React.FC = () => {
                     </div>
 
                     {/* Floating Tooltip */}
-                    <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#0F172A] text-white rounded-md text-[11px] font-semibold whitespace-nowrap shadow-xl opacity-0 pointer-events-none group-hover/pill:opacity-100 group-hover/pill:-top-13 transition-all duration-200 z-30 flex items-center gap-1.5">
+                    <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#1E293B] text-white border border-white/10 rounded-md text-[11px] font-semibold whitespace-nowrap shadow-xl opacity-0 pointer-events-none group-hover/pill:opacity-100 group-hover/pill:-top-13 transition-all duration-200 z-30 flex items-center gap-1.5">
                       <span>{tech.name}</span>
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0F172A]" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#1E293B]" />
                     </div>
                   </div>
                 );
@@ -367,23 +367,23 @@ export const HomePage: React.FC = () => {
           {/* Active Inspected Technology Card */}
           {currentTech && (
             <div className="max-w-xl mx-auto mt-8 sm:mt-10">
-              <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)] flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 transition-all duration-300">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border border-slate-200 shadow-sm p-3.5 flex items-center justify-center shrink-0">
+              <div className="bg-[#151515] rounded-2xl border border-white/10 p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.6)] flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 transition-all duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1E1E1E] border border-white/10 shadow-sm p-3.5 flex items-center justify-center shrink-0">
                   <TechIcon name={currentTech.name} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1 text-center sm:text-left space-y-1">
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                    <h3 className="text-lg sm:text-xl font-bold font-display text-slate-900">
+                    <h3 className="text-lg sm:text-xl font-bold font-display text-white">
                       {currentTech.name}
                     </h3>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#005EDA] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200/60">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#38BDF8] bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-400/20">
                       {currentTech.category}
                     </span>
                   </div>
                   <div className="text-xs font-semibold text-[#005EDA]">
                     {currentTech.role}
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-1">
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pt-1">
                     {currentTech.description}
                   </p>
                 </div>

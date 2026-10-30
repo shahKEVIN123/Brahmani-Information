@@ -19,7 +19,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <div className="relative min-h-screen flex flex-col justify-between bg-[#F8FAFC] text-slate-900 font-sans selection:bg-[#005EDA]/15 selection:text-[#005EDA]">
+      <div className="relative min-h-screen flex flex-col justify-between bg-[#0A0A0A] text-slate-100 font-sans selection:bg-[#005EDA]/30 selection:text-white">
         
         {/* Global Reusable Responsive Navbar */}
         <Navbar />

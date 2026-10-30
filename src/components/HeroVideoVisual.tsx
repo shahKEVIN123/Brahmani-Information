@@ -20,12 +20,12 @@ export const HeroVideoVisual: React.FC = () => {
     <div className="relative w-full max-w-[580px] lg:max-w-[600px] xl:max-w-[640px] mx-auto select-none">
       {/* Subtle 2.5D Ambient Depth Glow Behind Video */}
       <div 
-        className="absolute -inset-2 sm:-inset-4 bg-gradient-to-tr from-blue-200/35 via-indigo-100/25 to-blue-100/35 rounded-3xl blur-2xl -z-10 pointer-events-none" 
+        className="absolute -inset-2 sm:-inset-4 bg-gradient-to-tr from-blue-600/20 via-indigo-950/30 to-blue-500/15 rounded-3xl blur-2xl -z-10 pointer-events-none" 
         aria-hidden="true"
       />
 
-      {/* Clean Premium Video Container — Pure Video Only, Taller on Desktop */}
-      <div className="relative rounded-2xl border border-slate-200/90 bg-slate-950 shadow-[0_20px_45px_-12px_rgba(15,23,42,0.14),0_4px_12px_rgba(0,94,218,0.04)] overflow-hidden aspect-[16/10] sm:aspect-[16/11] lg:aspect-[4/3] xl:aspect-[5/4]">
+      {/* Clean Premium Video Container — Pure Video Only, Dark Theme Border & Depth */}
+      <div className="relative rounded-2xl border border-white/10 bg-slate-950 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_4px_16px_rgba(0,94,218,0.1)] overflow-hidden aspect-[16/10] sm:aspect-[16/11] lg:aspect-[4/3] xl:aspect-[5/4]">
         <video
           ref={videoRef}
           className="w-full h-full object-cover object-center block"

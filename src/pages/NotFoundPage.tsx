@@ -4,18 +4,18 @@ import { Link } from '../router/Router';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 min-h-[70vh] flex items-center justify-center bg-white px-4">
+    <div className="pt-32 pb-24 min-h-[70vh] flex items-center justify-center bg-[#0A0A0A] px-4">
       <div className="max-w-md w-full text-center space-y-6">
-        <span className="text-xs font-mono font-bold text-[#005EDA] bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+        <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20">
           404 // ROUTE NOT FOUND
         </span>
 
         <h1 className="text-4xl sm:text-5xl font-bold font-display">
-          <span className="text-[#0F172A]">Page </span>
+          <span className="text-white">Page </span>
           <span className="text-[#005EDA]">Not Found.</span>
         </h1>
 
-        <p className="text-sm text-slate-600 leading-relaxed">
+        <p className="text-sm text-slate-400 leading-relaxed">
           The requested URL does not match any active route on the Brahmani Information corporate website.
         </p>
 
@@ -29,27 +29,27 @@ export const NotFoundPage: React.FC = () => {
           </Link>
           <Link
             to="/services"
-            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 text-xs font-semibold uppercase tracking-wider text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 text-xs font-semibold uppercase tracking-wider text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl transition-all"
           >
             <Layers className="w-4 h-4" />
             <span>Explore Services</span>
           </Link>
         </div>
 
-        <div className="pt-6 border-t border-slate-100 flex items-center justify-center space-x-6 text-xs text-slate-500">
-          <Link to="/work" className="hover:text-[#005EDA] transition-colors">
+        <div className="pt-6 border-t border-white/10 flex items-center justify-center space-x-6 text-xs text-slate-400">
+          <Link to="/work" className="hover:text-white transition-colors">
             Work
           </Link>
           <span>•</span>
-          <Link to="/process" className="hover:text-[#005EDA] transition-colors">
+          <Link to="/process" className="hover:text-white transition-colors">
             Process
           </Link>
           <span>•</span>
-          <Link to="/technology" className="hover:text-[#005EDA] transition-colors">
+          <Link to="/technology" className="hover:text-white transition-colors">
             Technology
           </Link>
           <span>•</span>
-          <Link to="/contact" className="hover:text-[#005EDA] transition-colors">
+          <Link to="/contact" className="hover:text-white transition-colors">
             Contact
           </Link>
         </div>

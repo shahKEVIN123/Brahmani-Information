@@ -15,7 +15,7 @@ export const ProcessPage: React.FC = () => {
         badge="Delivery Methodology"
         title={
           <>
-            <span className="text-[#0F172A] block sm:inline">A Structured 7-Stage </span>
+            <span className="text-white block sm:inline">A Structured 7-Stage </span>
             <span className="text-[#005EDA] block sm:inline">Engineering Process.</span>
           </>
         }
@@ -37,20 +37,20 @@ export const ProcessPage: React.FC = () => {
       />
 
       {/* 2. Process Overview & Philosophy */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-mono font-bold text-[#005EDA] uppercase tracking-wider block">
+              <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
                 Execution Standards
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 font-display leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-display leading-tight">
                 Predictability, Direct Communication, and Zero Guesswork.
               </h2>
             </div>
 
-            <div className="lg:col-span-6 space-y-4 text-base text-slate-600 leading-relaxed">
+            <div className="lg:col-span-6 space-y-4 text-base text-slate-400 leading-relaxed">
               <p>
                 Building software succeeds or fails on the clarity of its process. We reject chaotic ad-hoc development in favor of milestone-based roadmaps, continuous integration, and transparent stakeholder check-ins.
               </p>
@@ -64,7 +64,7 @@ export const ProcessPage: React.FC = () => {
       </section>
 
       {/* 3. The 7 Process Stages (Large Numbered Stages + Connecting Structure) */}
-      <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
+      <section className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -77,7 +77,7 @@ export const ProcessPage: React.FC = () => {
           <div className="relative mt-16 space-y-12">
             
             {/* Visual Connecting Vertical Line */}
-            <div className="hidden md:block absolute top-8 bottom-8 left-[39px] w-0.5 bg-gradient-to-b from-[#005EDA] via-blue-300 to-slate-200 -z-0" />
+            <div className="hidden md:block absolute top-8 bottom-8 left-[39px] w-0.5 bg-gradient-to-b from-[#005EDA] via-blue-500/40 to-slate-800 -z-0" />
 
             {PROCESS_STAGES.map((stage, idx) => (
               <div
@@ -85,47 +85,47 @@ export const ProcessPage: React.FC = () => {
                 className="relative z-10 flex flex-col md:flex-row items-start md:space-x-8 group"
               >
                 {/* Large Number Badge */}
-                <div className="shrink-0 w-20 h-20 rounded-2xl bg-white border-2 border-[#005EDA] shadow-[0_4px_16px_rgba(0,94,218,0.15)] flex flex-col items-center justify-center text-[#005EDA] mb-4 md:mb-0 group-hover:scale-105 transition-transform">
+                <div className="shrink-0 w-20 h-20 rounded-2xl bg-[#151515] border-2 border-[#005EDA] shadow-[0_4px_16px_rgba(0,94,218,0.25)] flex flex-col items-center justify-center text-[#005EDA] mb-4 md:mb-0 group-hover:scale-105 transition-transform">
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
                     STAGE
                   </span>
-                  <span className="text-2xl font-bold font-mono">
+                  <span className="text-2xl font-bold font-mono text-white">
                     {stage.step}
                   </span>
                 </div>
 
                 {/* Content Card with 2.5D Depth */}
-                <div className="flex-1 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-depth-sm hover:shadow-depth-md transition-all duration-300 space-y-4">
+                <div className="flex-1 bg-[#151515] rounded-2xl border border-white/10 p-6 sm:p-8 shadow-depth-sm hover:shadow-depth-md transition-all duration-300 space-y-4">
                   
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-3 gap-2">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
                         {stage.title}
                       </h3>
-                      <span className="text-xs font-medium text-[#005EDA] block mt-0.5">
+                      <span className="text-xs font-medium text-[#38BDF8] block mt-0.5">
                         {stage.subtitle}
                       </span>
                     </div>
 
-                    <span className="text-xs font-mono text-slate-400 self-start sm:self-center bg-slate-100 px-3 py-1 rounded-md">
+                    <span className="text-xs font-mono text-slate-400 self-start sm:self-center bg-[#1E1E1E] border border-white/10 px-3 py-1 rounded-md">
                       {stage.timeframe}
                     </span>
                   </div>
 
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
                     {stage.description}
                   </p>
 
                   {/* Deliverables Checklist */}
                   <div className="pt-2">
-                    <span className="text-xs font-mono font-bold text-slate-800 uppercase tracking-wider block mb-3">
+                    <span className="text-xs font-mono font-bold text-slate-200 uppercase tracking-wider block mb-3">
                       Stage Deliverables:
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {stage.deliverables.map((del) => (
                         <div
                           key={del}
-                          className="flex items-center space-x-2 text-xs sm:text-sm text-slate-700 bg-slate-50 p-2.5 rounded-xl border border-slate-200/70"
+                          className="flex items-center space-x-2 text-xs sm:text-sm text-slate-300 bg-[#1A1A1A] p-2.5 rounded-xl border border-white/10"
                         >
                           <CheckCircle2 className="w-4 h-4 text-[#005EDA] shrink-0" />
                           <span>{del}</span>
@@ -137,14 +137,13 @@ export const ProcessPage: React.FC = () => {
                 </div>
               </div>
             ))}
-
           </div>
 
         </div>
       </section>
 
       {/* 4. Quality Guarantees */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -154,32 +153,32 @@ export const ProcessPage: React.FC = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">01 // SCOPING RIGOR</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">01 // SCOPING RIGOR</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Transparent Milestones
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Clear project roadmaps with measurable completion milestones and regular progress reviews.
               </p>
             </div>
 
-            <div className="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">02 // ACCESSIBILITY</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">02 // ACCESSIBILITY</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Direct Engineer Access
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Communicate directly with the technical architects and engineers building your software, not through layers of account managers.
               </p>
             </div>
 
-            <div className="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-[#005EDA]">03 // STANDARDS</span>
-              <h4 className="text-base font-bold text-slate-900 font-display">
+            <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3">
+              <span className="text-xs font-mono font-bold text-[#38BDF8]">03 // STANDARDS</span>
+              <h4 className="text-base font-bold text-white font-display">
                 Clean Handover & Ownership
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Complete source code, CI/CD pipeline access, and comprehensive technical documentation delivered upon launch.
               </p>
             </div>
@@ -189,12 +188,12 @@ export const ProcessPage: React.FC = () => {
       </section>
 
       {/* 5. CTA */}
-      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-white text-center">
+      <section className="py-20 bg-[#0A0A0A] border-t border-white/10 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Ready to Begin the Journey?
           </h2>
-          <p className="text-slate-600 text-base max-w-xl mx-auto mb-8">
+          <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
             Let's start at Stage 01: Discover. We will review your vision and map out the optimal technical path.
           </p>
           <Link

@@ -48,7 +48,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
     if (words.length <= 1) {
       return (
         <>
-          <span className="text-[#0F172A]">{t} </span>
+          <span className="text-white">{t} </span>
           <span className="text-[#005EDA]">Services</span>
         </>
       );
@@ -58,7 +58,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
     const part2 = words.slice(mid).join(' ');
     return (
       <>
-        <span className="text-[#0F172A] block sm:inline">{part1} </span>
+        <span className="text-white block sm:inline">{part1} </span>
         <span className="text-[#005EDA] block sm:inline">{part2}</span>
       </>
     );
@@ -88,7 +88,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center space-x-2 px-5 py-3 text-sm font-medium text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl transition-colors"
+              className="inline-flex items-center space-x-2 px-5 py-3 text-sm font-medium text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>All Services</span>
@@ -104,30 +104,30 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       />
 
       {/* 2. Overview & Problem/Value Section */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-mono font-bold text-[#005EDA] uppercase tracking-wider block">
+              <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
                 Overview & Engineering Scope
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-display leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white font-display leading-tight">
                 Engineering with Purpose, Precision, and Measurable Longevity.
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
                 {service.overview}
               </p>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-4 shadow-depth-sm">
-                <h3 className="text-sm font-mono font-bold text-[#005EDA] uppercase tracking-wider">
+              <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 sm:p-8 space-y-4 shadow-depth-sm">
+                <h3 className="text-sm font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
                   Core Architectural Standards
                 </h3>
                 <div className="space-y-3">
                   {service.capabilities.map((cap) => (
-                    <div key={cap} className="flex items-start space-x-3 text-xs sm:text-sm text-slate-700">
+                    <div key={cap} className="flex items-start space-x-3 text-xs sm:text-sm text-slate-300">
                       <CheckCircle2 className="w-4 h-4 text-[#005EDA] shrink-0 mt-0.5" />
                       <span>{cap}</span>
                     </div>
@@ -141,7 +141,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       </section>
 
       {/* 3. What We Offer (Detailed Sub-Services Breakdown) */}
-      <section className="py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
+      <section className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -154,21 +154,21 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             {service.subServices.map((sub, index) => (
               <div
                 key={sub.title}
-                className="bg-white rounded-2xl border border-slate-200 p-6 space-y-3 shadow-depth-sm hover:border-slate-300 transition-colors flex flex-col justify-between"
+                className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm hover:border-[#005EDA]/50 transition-colors flex flex-col justify-between"
               >
                 <div className="space-y-2.5">
                   <span className="text-[11px] font-mono text-slate-400 font-semibold block">
                     SUB-SERVICE // 0{index + 1}
                   </span>
-                  <h4 className="text-base font-bold text-slate-900 font-display">
+                  <h4 className="text-base font-bold text-white font-display">
                     {sub.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                     {sub.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-[#005EDA]">
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#38BDF8]">
                   <span>Brahmani Standard</span>
                   <span>Active Service</span>
                 </div>
@@ -180,7 +180,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       </section>
 
       {/* 4. Specialized Delivery Process */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
+      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -193,15 +193,15 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             {service.processStages.map((st) => (
               <div
                 key={st.step}
-                className="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-6 space-y-3 shadow-depth-sm"
+                className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm"
               >
-                <span className="text-xs font-mono font-bold text-[#005EDA] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/60 inline-block">
+                <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-400/20 inline-block">
                   Stage {st.step}
                 </span>
-                <h4 className="text-base font-bold text-slate-900 font-display">
+                <h4 className="text-base font-bold text-white font-display">
                   {st.title}
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                   {st.description}
                 </p>
               </div>
@@ -213,20 +213,20 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
 
       {/* 5. Technologies Used for this Service */}
       {service.technologies && service.technologies.length > 0 && (
-        <section className="py-16 lg:py-20 bg-[#F8FAFC] border-b border-slate-200/80">
+        <section className="py-16 lg:py-20 bg-[#0A0A0A] border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 mb-8 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 mb-8 gap-4">
               <div>
-                <span className="text-xs font-mono font-bold text-[#005EDA] uppercase tracking-wider block mb-1">
+                <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block mb-1">
                   Technology Foundation
                 </span>
-                <h3 className="text-xl font-bold text-slate-900 font-display">
+                <h3 className="text-xl font-bold text-white font-display">
                   Tools & Technologies for {service.title}
                 </h3>
               </div>
               <Link
                 to="/technology"
-                className="text-xs font-semibold text-[#005EDA] hover:underline inline-flex items-center space-x-1"
+                className="text-xs font-semibold text-[#38BDF8] hover:underline inline-flex items-center space-x-1"
               >
                 <span>Full Technology Index</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -237,7 +237,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
               {service.technologies.map((tech) => (
                 <div
                   key={tech}
-                  className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm font-mono text-slate-800 shadow-sm"
+                  className="px-4 py-2 rounded-xl bg-[#151515] border border-white/10 text-xs sm:text-sm font-mono text-slate-300 shadow-sm"
                 >
                   {tech}
                 </div>
@@ -248,22 +248,22 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       )}
 
       {/* 6. Service Navigation: Next & Previous */}
-      <section className="py-12 bg-white border-b border-slate-200/80">
+      <section className="py-12 bg-[#0E0E0E] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             
             <Link
               to={`/services/${prevService.slug}`}
-              className="group p-5 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/50 border border-slate-200 hover:border-[#005EDA]/30 transition-all flex items-center space-x-4"
+              className="group p-5 rounded-2xl bg-[#151515] hover:bg-[#1A1A1A] border border-white/10 hover:border-[#005EDA]/40 transition-all flex items-center space-x-4"
             >
-              <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-[#005EDA] group-hover:border-[#005EDA] transition-colors shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-[#1E1E1E] border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-[#005EDA] group-hover:border-[#005EDA] transition-colors shrink-0">
                 <ArrowLeft className="w-4 h-4" />
               </div>
               <div>
                 <span className="text-[11px] font-mono text-slate-400 block uppercase">
                   Previous Service ({prevService.number})
                 </span>
-                <span className="text-sm font-bold text-slate-800 group-hover:text-[#005EDA] transition-colors font-display">
+                <span className="text-sm font-bold text-white group-hover:text-[#005EDA] transition-colors font-display">
                   {prevService.title}
                 </span>
               </div>
@@ -271,17 +271,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
 
             <Link
               to={`/services/${nextService.slug}`}
-              className="group p-5 rounded-2xl bg-[#F8FAFC] hover:bg-blue-50/50 border border-slate-200 hover:border-[#005EDA]/30 transition-all flex items-center justify-between sm:justify-end sm:space-x-4 text-right"
+              className="group p-5 rounded-2xl bg-[#151515] hover:bg-[#1A1A1A] border border-white/10 hover:border-[#005EDA]/40 transition-all flex items-center justify-between sm:justify-end sm:space-x-4 text-right"
             >
               <div>
                 <span className="text-[11px] font-mono text-slate-400 block uppercase">
                   Next Service ({nextService.number})
                 </span>
-                <span className="text-sm font-bold text-slate-800 group-hover:text-[#005EDA] transition-colors font-display">
+                <span className="text-sm font-bold text-white group-hover:text-[#005EDA] transition-colors font-display">
                   {nextService.title}
                 </span>
               </div>
-              <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-[#005EDA] group-hover:border-[#005EDA] transition-colors shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-[#1E1E1E] border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-[#005EDA] group-hover:border-[#005EDA] transition-colors shrink-0">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
@@ -291,12 +291,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       </section>
 
       {/* 7. Conversion CTA */}
-      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-white text-center">
+      <section className="py-20 bg-[#0A0A0A] border-t border-white/10 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Ready to Begin Your {service.title} Project?
           </h2>
-          <p className="text-slate-600 text-base max-w-xl mx-auto mb-8">
+          <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
             Tell us about your technical challenges and goals. We will provide an actionable proposal tailored to your business.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -309,7 +309,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl transition-colors"
+              className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl transition-colors"
             >
               <span>General Inquiries</span>
             </Link>

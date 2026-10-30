@@ -5,7 +5,7 @@ import { COMPANY_INFO, SERVICES_LIST } from '../data/companyData';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0B132B] text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <footer className="bg-[#0A0A0A] text-slate-300 pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Multi-Column Content */}
@@ -14,9 +14,9 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand & Philosophy (4 cols) */}
           <div className="lg:col-span-4 space-y-5">
             <Link to="/" className="inline-block">
-              <div >
+              <div>
                 <img
-                  src="/brahmani-logo-cropped.png"
+                  src="/Brahmani Information Logo.png"
                   alt="Brahmani Information Logo"
                   className="h-[50px] w-auto object-contain"
                 />
@@ -28,11 +28,11 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="pt-2 flex items-center space-x-3 text-xs text-slate-400">
-              <div className="flex items-center space-x-1.5 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/60">
+              <div className="flex items-center space-x-1.5 bg-[#151515] px-3 py-1.5 rounded-lg border border-white/10">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>Enterprise Standards</span>
               </div>
-              <div className="flex items-center space-x-1.5 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/60">
+              <div className="flex items-center space-x-1.5 bg-[#151515] px-3 py-1.5 rounded-lg border border-white/10">
                 <Cpu className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span>Modern Engineering</span>
               </div>
@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
               ))}
             </ul>
 
-            <div className="pt-4 border-t border-slate-800">
+            <div className="pt-4 border-t border-white/10">
               <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">
                 Direct Communication
               </span>
@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Tier: Copyright & Disclaimers */}
-        <div className="pt-8 mt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 mt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {COMPANY_INFO.established} {COMPANY_INFO.name}. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <span>Modern Web & Digital Solutions</span>

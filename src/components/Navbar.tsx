@@ -169,23 +169,6 @@ export const Navbar: React.FC = () => {
                           className="bg-[#111111] rounded-2xl border border-white/10 shadow-[0_25px_60px_-10px_rgba(0,0,0,0.8),0_8px_25px_rgba(0,94,218,0.1)] overflow-hidden"
                           style={{ backgroundColor: '#111111', opacity: 1 }}
                         >
-                          
-                          {/* Mega Dropdown Header Strip */}
-                          <div 
-                            className="bg-[#151515] border-b border-white/5 px-6 py-2.5 flex items-center justify-between"
-                            style={{ backgroundColor: '#151515' }}
-                          >
-                            <div className="flex items-center space-x-2">
-                              <span className="w-2 h-2 rounded-full bg-[#005EDA]" />
-                              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-300 font-display">
-                                Specialized IT & Digital Capabilities
-                              </span>
-                            </div>
-                            <span className="text-[11px] text-slate-400 font-mono">
-                              12 Enterprise Services • Milestone-Driven
-                            </span>
-                          </div>
-
                           {/* 3 Domain Columns */}
                           <div 
                             className="p-6 grid grid-cols-3 gap-6 divide-x divide-white/5 bg-[#111111]"
@@ -240,36 +223,6 @@ export const Navbar: React.FC = () => {
                               </div>
                             ))}
                           </div>
-
-                          {/* Mega Dropdown Footer Banner */}
-                          <div 
-                            className="bg-[#151515] border-t border-white/5 px-6 py-3 flex items-center justify-between"
-                            style={{ backgroundColor: '#151515' }}
-                          >
-                            <div className="flex items-center space-x-2 text-xs text-slate-400">
-                              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                              <span className="font-semibold text-slate-200">Production Ready</span>
-                              <span className="text-slate-600">•</span>
-                              <span className="text-slate-400 hidden sm:inline">React • Node.js • Cloud Native Infrastructure</span>
-                            </div>
-
-                            <div className="flex items-center space-x-5">
-                              <Link
-                                to="/work"
-                                className="text-xs font-semibold text-slate-400 hover:text-white transition-colors hidden md:inline"
-                              >
-                                View Case Studies
-                              </Link>
-                              <Link
-                                to="/services"
-                                className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#005EDA] hover:text-blue-400 transition-colors"
-                              >
-                                <span>Explore All Services</span>
-                                <ArrowRight className="w-3.5 h-3.5" />
-                              </Link>
-                            </div>
-                          </div>
-
                         </div>
                       </div>
                     )}

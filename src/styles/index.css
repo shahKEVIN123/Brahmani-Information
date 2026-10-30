@@ -3,50 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --brand-navy-deep: #030713;
-  --brand-navy: #050B1B;
-  --brand-cosmic: #07152D;
-  --brand-blue: #126BFF;
-  --brand-blue-electric: #008CFF;
-  --brand-cyan: #46D9FF;
-  --text-main: #F5F8FF;
-  --text-muted: #A8B5CC;
+  --brand-blue: #005EDA;
+  --brand-blue-hover: #004BBB;
+  --brand-blue-light: #EFF6FF;
+  --brand-navy: #0F172A;
+  --brand-navy-light: #1E293B;
+  --surface-base: #FFFFFF;
+  --surface-subtle: #F8FAFC;
+  --surface-muted: #F1F5F9;
+  --border-subtle: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
 }
 
-@keyframes nebulaBreathe {
-  0% {
-    transform: scale(0.96) translate(0, 0);
-    opacity: 0.35;
-  }
-  50% {
-    transform: scale(1.06) translate(15px, -10px);
-    opacity: 0.55;
-  }
-  100% {
-    transform: scale(1.02) translate(-10px, 8px);
-    opacity: 0.4;
-  }
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+/* Custom Clean Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #F1F5F9;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #0d214f;
+  background: #CBD5E1;
   border-radius: 4px;
-  border: 2px solid #020617;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #005EDA;
+  background: #94A3B8;
 }
 
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -54,56 +52,58 @@
   }
 }
 
-/* Base focus style */
+/* Base focus styles */
 *:focus-visible {
   outline: 2px solid #005EDA;
   outline-offset: 3px;
 }
 
-/* Subtle digital grid / coordinate matrix */
-.bg-signal-grid {
-  background-image: 
-    linear-gradient(to right, rgba(0, 94, 218, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 94, 218, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* Subtle architectural grid pattern */
+.bg-corporate-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-.bg-radial-vignette {
-  background: radial-gradient(circle at 50% 50%, rgba(5, 16, 38, 0.4) 0%, rgba(2, 6, 23, 0.98) 100%);
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(0, 94, 218, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Glowing text and drop-shadow utilities */
-.text-glow-blue {
-  text-shadow: 0 0 20px rgba(0, 94, 218, 0.6), 0 0 40px rgba(56, 148, 255, 0.3);
+/* 2.5D Strategic Depth Utility Classes */
+.card-depth-sm {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04), 0 1px 3px -1px rgba(15, 23, 42, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.box-glow-blue {
-  box-shadow: 0 0 35px -5px rgba(0, 94, 218, 0.35);
+.card-depth-sm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
+  border-color: #CBD5E1;
 }
 
-.box-glow-blue-lg {
-  box-shadow: 0 0 60px -10px rgba(0, 94, 218, 0.5);
+.card-depth-lg {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(15, 23, 42, 0.02);
 }
 
-.border-glow-blue {
-  border-color: rgba(0, 94, 218, 0.5);
-  box-shadow: 0 0 15px rgba(0, 94, 218, 0.25);
+.border-accent-offset {
+  position: relative;
 }
 
-/* Hide default browser cursor on desktop so only custom signal cursor is active */
-@media (hover: hover) and (pointer: fine) {
-  html,
-  body,
-  *,
-  *::before,
-  *::after {
-    cursor: none !important;
-  }
-}
-
-/* Hide custom cursor element on touch devices or small screens */
-@media (hover: none) and (pointer: coarse) {
-  .custom-cursor-element {
-    display: none !important;
-  }
+.border-accent-offset::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 94, 218, 0.3), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

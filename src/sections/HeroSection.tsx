@@ -33,7 +33,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContactModal }) 
   }, []);
 
   return (
-    <section 
+    <section
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-[#030713]"
       aria-label="Hero Introduction"
@@ -44,10 +44,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContactModal }) 
       {/* 2. Main Hero Content & Celestial Ecosystem Composition */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Column: Hero Typography & Call-To-Action Actions */}
           <div className="lg:col-span-7 xl:col-span-6 flex flex-col justify-center text-left">
-            
+
             {/* Step 1: Small Brand Label with Active Cosmic Signal Beacon */}
             <motion.div
               initial={{ opacity: 0, x: -16 }}
@@ -80,7 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContactModal }) 
                 >
                   BUILDING WHAT’S
                 </motion.span>
-                
+
                 {/* Line 2 with Electric-Blue & Cyan Luminous Gradient */}
                 <motion.span
                   initial={{ opacity: 0, y: 35, filter: 'blur(10px)' }}
@@ -89,7 +89,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContactModal }) 
                   className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-[#F5F8FF] to-[#46D9FF]"
                 >
                   NEXT IN DIGITAL.
-                  
+
                   {/* Subtle underlying blue cosmic energy streak */}
                   <motion.span
                     initial={{ scaleX: 0 }}
@@ -184,7 +184,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContactModal }) 
       </div>
 
       {/* 3. Bottom Smooth Interstellar Transition to Next Section */}
-      <div 
+      <div
         className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, #030713 100%)',

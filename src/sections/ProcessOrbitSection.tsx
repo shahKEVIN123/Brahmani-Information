@@ -18,7 +18,7 @@ export const ProcessOrbitSection: React.FC = () => {
   const activeStage = PROCESS_STAGES[activeStepIndex];
 
   return (
-    <section 
+    <section
       id="process"
       className="relative py-28 lg:py-36 bg-[#020617] border-t border-[#005EDA]/10 overflow-hidden"
       aria-label="Process and Methodology"
@@ -28,7 +28,7 @@ export const ProcessOrbitSection: React.FC = () => {
       <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-[#005EDA]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-24">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -50,12 +50,12 @@ export const ProcessOrbitSection: React.FC = () => {
 
         {/* Continuous 5-Stage Orbital Journey Pipeline */}
         <div className="relative">
-          
+
           {/* Top Progress Track Bar */}
           <div className="relative mb-12">
             {/* Base line */}
             <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 bg-[#051026] border-y border-[#005EDA]/20 rounded-full" />
-            
+
             {/* Active glowing blue progress line */}
             <motion.div
               className="absolute top-1/2 left-0 -translate-y-1/2 h-1 bg-gradient-to-r from-[#001455] via-[#005EDA] to-[#3894FF] rounded-full shadow-[0_0_12px_#3894FF]"
@@ -79,13 +79,12 @@ export const ProcessOrbitSection: React.FC = () => {
                   >
                     {/* Circle Node */}
                     <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 border ${
-                        isCurrent
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 border ${isCurrent
                           ? 'bg-[#005EDA] border-white text-white shadow-[0_0_20px_#3894FF] scale-110'
                           : isCompleted
-                          ? 'bg-[#001455] border-[#005EDA] text-[#3894FF]'
-                          : 'bg-[#030816] border-[#005EDA]/30 text-slate-500 group-hover:border-[#005EDA]/60'
-                      }`}
+                            ? 'bg-[#001455] border-[#005EDA] text-[#3894FF]'
+                            : 'bg-[#030816] border-[#005EDA]/30 text-slate-500 group-hover:border-[#005EDA]/60'
+                        }`}
                     >
                       {isCompleted ? (
                         <CheckCircle className="w-5 h-5 text-[#3894FF]" />
@@ -98,9 +97,8 @@ export const ProcessOrbitSection: React.FC = () => {
 
                     {/* Stage Label under the dot */}
                     <div className="mt-3 text-center hidden sm:block">
-                      <span className={`text-xs font-mono font-bold uppercase tracking-wider block transition-colors ${
-                        isCurrent ? 'text-white' : isCompleted ? 'text-[#3894FF]' : 'text-slate-500'
-                      }`}>
+                      <span className={`text-xs font-mono font-bold uppercase tracking-wider block transition-colors ${isCurrent ? 'text-white' : isCompleted ? 'text-[#3894FF]' : 'text-slate-500'
+                        }`}>
                         {stage.title}
                       </span>
                     </div>
@@ -112,7 +110,7 @@ export const ProcessOrbitSection: React.FC = () => {
 
           {/* Active Stage Detail Display Card */}
           <div className="mt-12 bg-gradient-to-br from-[#051026] via-[#020617] to-[#001455]/50 border border-[#005EDA]/40 rounded-3xl p-6 sm:p-10 shadow-[0_15px_50px_rgba(0,0,0,0.6)] backdrop-blur-md">
-            
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStage.step}

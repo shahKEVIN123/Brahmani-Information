@@ -48,7 +48,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section 
+    <section
       id="contact"
       className="relative py-28 lg:py-36 bg-[#020617] border-t border-[#005EDA]/10 overflow-hidden"
       aria-label="Contact Brahmani Information"
@@ -58,7 +58,7 @@ export const ContactSection: React.FC = () => {
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#005EDA]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-20">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -80,10 +80,10 @@ export const ContactSection: React.FC = () => {
 
         {/* Contact Form Container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Column: Form */}
           <div className="lg:col-span-8 bg-gradient-to-b from-[#051026] via-[#020617] to-[#001455]/40 border border-[#005EDA]/30 rounded-3xl p-6 sm:p-10 shadow-[0_15px_50px_rgba(0,0,0,0.5)]">
-            
+
             <AnimatePresence mode="wait">
               {isSubmitted ? (
                 <motion.div
@@ -123,7 +123,7 @@ export const ContactSection: React.FC = () => {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  
+
                   {errorMessage && (
                     <div className="flex items-center space-x-2.5 p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-xs text-red-200">
                       <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
@@ -259,7 +259,7 @@ export const ContactSection: React.FC = () => {
               <p className="text-slate-300 text-sm leading-relaxed">
                 We believe in direct, clear dialogue without sales rhetoric or technical ambiguity.
               </p>
-              
+
               <div className="space-y-3 pt-2 text-xs text-slate-300">
                 <div className="flex items-center space-x-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
@@ -280,8 +280,8 @@ export const ContactSection: React.FC = () => {
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#3894FF] block mb-1">
                 PRIMARY SIGNAL INLET
               </span>
-              <a 
-                href={`mailto:${COMPANY_INFO.email}`} 
+              <a
+                href={`mailto:${COMPANY_INFO.email}`}
                 className="text-white hover:text-[#3894FF] font-medium text-sm transition-colors block"
               >
                 {COMPANY_INFO.email}

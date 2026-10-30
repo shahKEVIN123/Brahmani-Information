@@ -21,7 +21,7 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
   const activeService = SERVICES_DATA.find((s) => s.id === activeNodeId) || SERVICES_DATA[0];
 
   return (
-    <section 
+    <section
       id="services"
       className="relative py-28 lg:py-36 bg-[#020617] border-t border-[#005EDA]/10 overflow-hidden"
       aria-label="Services and Capabilities"
@@ -31,7 +31,7 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
       <div className="absolute bottom-20 left-10 w-80 h-80 bg-[#005EDA]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-20">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -53,7 +53,7 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
 
         {/* Unique Interactive Node System */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Column: Interactive Digital Nodes (Not generic cards) */}
           <div className="lg:col-span-5 space-y-4">
             {SERVICES_DATA.map((service) => {
@@ -64,11 +64,10 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
                   key={service.id}
                   onClick={() => setActiveNodeId(service.id)}
                   onMouseEnter={() => setActiveNodeId(service.id)}
-                  className={`relative group cursor-pointer rounded-2xl p-5 transition-all duration-300 border ${
-                    isActive
+                  className={`relative group cursor-pointer rounded-2xl p-5 transition-all duration-300 border ${isActive
                       ? 'bg-gradient-to-r from-[#001455] to-[#051026] border-[#3894FF] shadow-[0_0_30px_rgba(0,94,218,0.35)] translate-x-2'
                       : 'bg-[#051026]/60 border-[#005EDA]/20 hover:border-[#005EDA]/50 hover:bg-[#071638]'
-                  }`}
+                    }`}
                   role="button"
                   tabIndex={0}
                   aria-pressed={isActive}
@@ -93,11 +92,10 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       {/* Node Beacon Indicator */}
-                      <div className={`relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 ${
-                        isActive 
-                          ? 'bg-[#005EDA] text-white shadow-[0_0_15px_#005EDA]' 
+                      <div className={`relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 ${isActive
+                          ? 'bg-[#005EDA] text-white shadow-[0_0_15px_#005EDA]'
                           : 'bg-[#051026] border border-[#005EDA]/30 text-slate-300 group-hover:border-[#005EDA]/60'
-                      }`}>
+                        }`}>
                         {icons[service.id]}
                       </div>
 
@@ -113,9 +111,8 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
                       </div>
                     </div>
 
-                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${
-                      isActive ? 'text-[#3894FF] translate-x-1' : 'text-slate-500 group-hover:text-slate-300'
-                    }`} />
+                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isActive ? 'text-[#3894FF] translate-x-1' : 'text-slate-500 group-hover:text-slate-300'
+                      }`} />
                   </div>
 
                   {/* Short snippet visible on non-active too */}
@@ -130,7 +127,7 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
           {/* Right Column: Active Node Expanded Ecosystem Stage */}
           <div className="lg:col-span-7">
             <div className="relative bg-gradient-to-br from-[#051026] via-[#020617] to-[#001455]/50 border border-[#005EDA]/40 rounded-3xl p-6 sm:p-10 shadow-[0_15px_50px_rgba(0,0,0,0.6)] backdrop-blur-md min-h-[460px] flex flex-col justify-between">
-              
+
               {/* Background faint orbital compass lines */}
               <div className="absolute right-0 top-0 w-64 h-64 border-b border-l border-[#005EDA]/15 rounded-bl-full pointer-events-none" />
 
@@ -177,7 +174,7 @@ export const ServicesNodesSection: React.FC<ServicesNodesSectionProps> = ({ onSe
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {activeService.deliverables.map((item, idx) => (
-                          <div 
+                          <div
                             key={idx}
                             className="flex items-start space-x-2.5 p-3 rounded-xl bg-[#030816] border border-[#005EDA]/20"
                           >

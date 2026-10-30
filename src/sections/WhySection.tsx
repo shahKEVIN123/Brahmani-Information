@@ -13,7 +13,7 @@ export const WhySection: React.FC = () => {
   ];
 
   return (
-    <section 
+    <section
       id="why-us"
       className="relative py-28 lg:py-36 bg-[#020617] border-t border-[#005EDA]/10 overflow-hidden"
       aria-label="Why Brahmani Information"
@@ -22,7 +22,7 @@ export const WhySection: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#001455]/20 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Title */}
         <div className="max-w-3xl mx-auto text-center mb-20 lg:mb-28">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -41,7 +41,7 @@ export const WhySection: React.FC = () => {
 
         {/* Continuous Signal Path Pipeline */}
         <div className="relative">
-          
+
           {/* Desktop Central Signal Conduit Line */}
           <div className="hidden lg:block absolute left-1/2 top-4 bottom-4 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#001455] via-[#005EDA] to-[#001455] pointer-events-none">
             {/* Glowing moving signal pulse down the conduit */}
@@ -57,16 +57,15 @@ export const WhySection: React.FC = () => {
               const isEven = index % 2 === 0;
 
               return (
-                <div 
+                <div
                   key={point.title}
-                  className={`relative flex flex-col ${
-                    isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  } items-center justify-between gap-8 lg:gap-16`}
+                  className={`relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    } items-center justify-between gap-8 lg:gap-16`}
                 >
                   {/* Content Block */}
                   <div className="w-full lg:w-5/12">
                     <div className="group relative p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#051026] to-[#020617] border border-[#005EDA]/30 hover:border-[#3894FF]/60 transition-all duration-300 shadow-[0_4px_30px_rgba(0,20,85,0.25)] hover:shadow-[0_0_35px_rgba(0,94,218,0.3)] cursor-pointer">
-                      
+
                       {/* Top Metric Header */}
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-10 h-10 rounded-xl bg-[#001455] border border-[#005EDA]/40 flex items-center justify-center text-[#3894FF]">

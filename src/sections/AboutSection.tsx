@@ -32,7 +32,7 @@ export const AboutSection: React.FC = () => {
   };
 
   return (
-    <section 
+    <section
       id="about"
       className="relative py-28 lg:py-36 bg-[#020617] overflow-hidden border-t border-[#005EDA]/10"
       aria-label="About Brahmani Information"
@@ -42,7 +42,7 @@ export const AboutSection: React.FC = () => {
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-[#005EDA]/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-24">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -63,16 +63,16 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* The 4-Point Interactive Orbit System */}
-        <div 
+        <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center"
           onMouseEnter={() => setAutoRotate(false)}
           onMouseLeave={() => setAutoRotate(true)}
         >
-          
+
           {/* Left: The Circular Orbit Visualization */}
           <div className="lg:col-span-6 flex items-center justify-center">
             <div className="relative w-72 sm:w-96 lg:w-[420px] aspect-square flex items-center justify-center">
-              
+
               {/* Background Circular Orbit Ring */}
               <div className="absolute inset-8 rounded-full border border-[#005EDA]/25 shadow-[0_0_40px_rgba(0,94,218,0.15)]" />
               <div className="absolute inset-16 rounded-full border border-dashed border-[#005EDA]/15 animate-spin duration-[40000ms]" />
@@ -100,7 +100,7 @@ export const AboutSection: React.FC = () => {
               {/* Four Cardinal Orbit Nodes: IDEA (top), DESIGN (right), TECHNOLOGY (bottom), IMPACT (left) */}
               {ORBIT_PILLARS.map((pillar) => {
                 const isActive = activePointKey === pillar.key;
-                
+
                 let posClass = "";
                 if (pillar.key === "IDEA") posClass = "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2";
                 if (pillar.key === "DESIGN") posClass = "top-1/2 right-0 translate-x-1/2 -translate-y-1/2";
@@ -118,18 +118,16 @@ export const AboutSection: React.FC = () => {
                     aria-label={`Select ${pillar.title}`}
                   >
                     <div
-                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-2xl transition-all duration-300 border ${
-                        isActive
+                      className={`flex flex-col items-center justify-center p-3 sm:p-4 rounded-2xl transition-all duration-300 border ${isActive
                           ? 'bg-[#001455] border-[#3894FF] shadow-[0_0_25px_rgba(0,94,218,0.6)] scale-110'
                           : 'bg-[#051026]/90 border-[#005EDA]/30 hover:border-[#005EDA]/60 hover:bg-[#071638]'
-                      }`}
+                        }`}
                     >
                       <div className="mb-1">
                         {iconMap[pillar.key]}
                       </div>
-                      <span className={`text-[11px] sm:text-xs font-bold tracking-wider uppercase font-display ${
-                        isActive ? 'text-white' : 'text-slate-300'
-                      }`}>
+                      <span className={`text-[11px] sm:text-xs font-bold tracking-wider uppercase font-display ${isActive ? 'text-white' : 'text-slate-300'
+                        }`}>
                         {pillar.key}
                       </span>
                     </div>
@@ -143,7 +141,7 @@ export const AboutSection: React.FC = () => {
           {/* Right: Active Pillar Detail Showcase */}
           <div className="lg:col-span-6">
             <div className="relative bg-gradient-to-br from-[#051026]/90 via-[#020617] to-[#001455]/40 border border-[#005EDA]/30 rounded-3xl p-6 sm:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-sm min-h-[360px] flex flex-col justify-center">
-              
+
               {/* Top signal indicator bar */}
               <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#005EDA]/20">
                 <div className="flex items-center space-x-3">
@@ -195,11 +193,10 @@ export const AboutSection: React.FC = () => {
                       setActivePointKey(p.key);
                       setAutoRotate(false);
                     }}
-                    className={`py-2 px-1 text-center text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded-lg transition-all ${
-                      activePointKey === p.key
+                    className={`py-2 px-1 text-center text-[10px] sm:text-xs font-mono uppercase tracking-wider rounded-lg transition-all ${activePointKey === p.key
                         ? 'bg-[#005EDA]/20 text-[#3894FF] border border-[#005EDA]/50 font-bold'
                         : 'text-slate-400 hover:text-white hover:bg-white/5'
-                    }`}
+                      }`}
                   >
                     {p.key}
                   </button>

@@ -9,7 +9,7 @@ export const WorkConstellationSection: React.FC = () => {
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
 
   return (
-    <section 
+    <section
       id="work"
       className="relative py-28 lg:py-36 bg-[#020617] border-t border-[#005EDA]/10 overflow-hidden"
       aria-label="Selected Work and Digital Constellations"
@@ -19,7 +19,7 @@ export const WorkConstellationSection: React.FC = () => {
       <div className="absolute bottom-10 right-20 w-80 h-80 bg-[#005EDA]/10 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-24">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -41,7 +41,7 @@ export const WorkConstellationSection: React.FC = () => {
 
         {/* Floating Digital Constellation Frames Grid (Asymmetric staggered composition) */}
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          
+
           {/* Subtle connecting SVG orbital lines in background */}
           <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none -z-0" aria-hidden="true">
             <path
@@ -68,15 +68,14 @@ export const WorkConstellationSection: React.FC = () => {
                 key={project.id}
                 onMouseEnter={() => setHoveredProjectId(project.id)}
                 onMouseLeave={() => setHoveredProjectId(null)}
-                className={`relative group rounded-3xl transition-all duration-500 ${
-                  isStaggered ? 'lg:translate-y-8' : ''
-                }`}
+                className={`relative group rounded-3xl transition-all duration-500 ${isStaggered ? 'lg:translate-y-8' : ''
+                  }`}
                 style={{
                   perspective: '1000px',
                 }}
               >
                 {/* Outer frame container with tilt interaction */}
-                <div 
+                <div
                   onClick={() => setSelectedProject(project)}
                   role="button"
                   tabIndex={0}
@@ -86,15 +85,14 @@ export const WorkConstellationSection: React.FC = () => {
                       setSelectedProject(project);
                     }
                   }}
-                  className={`relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#051026] via-[#020617] to-[#001455]/40 border transition-all duration-500 overflow-hidden cursor-pointer ${
-                    isHovered 
-                      ? 'border-[#3894FF] shadow-[0_0_40px_rgba(0,94,218,0.35)] -translate-y-2 rotate-1' 
+                  className={`relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#051026] via-[#020617] to-[#001455]/40 border transition-all duration-500 overflow-hidden cursor-pointer ${isHovered
+                      ? 'border-[#3894FF] shadow-[0_0_40px_rgba(0,94,218,0.35)] -translate-y-2 rotate-1'
                       : 'border-[#005EDA]/25 hover:border-[#005EDA]/50'
-                  }`}
+                    }`}
                 >
                   {/* Blue signal traveling around border on hover */}
                   {isHovered && (
-                    <motion.div 
+                    <motion.div
                       className="absolute inset-0 rounded-3xl pointer-events-none"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -121,7 +119,7 @@ export const WorkConstellationSection: React.FC = () => {
                     {/* Architectural Preview Graphic */}
                     <div className="flex-1 p-5 flex flex-col justify-center relative overflow-hidden">
                       <div className="absolute inset-0 bg-signal-grid opacity-20 pointer-events-none" />
-                      
+
                       {/* Abstract Interface Wireframe Preview */}
                       <div className="relative z-10 space-y-2.5">
                         <div className="flex items-center justify-between">
@@ -186,11 +184,10 @@ export const WorkConstellationSection: React.FC = () => {
 
                       <button
                         onClick={() => setSelectedProject(project)}
-                        className={`inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all ${
-                          isHovered 
-                            ? 'bg-[#005EDA] text-white shadow-[0_0_15px_#005EDA]' 
+                        className={`inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all ${isHovered
+                            ? 'bg-[#005EDA] text-white shadow-[0_0_15px_#005EDA]'
                             : 'bg-[#051026] text-slate-200 border border-[#005EDA]/30 hover:border-[#005EDA]'
-                        }`}
+                          }`}
                       >
                         <span>View Project</span>
                         <ArrowRight className="w-3.5 h-3.5" />

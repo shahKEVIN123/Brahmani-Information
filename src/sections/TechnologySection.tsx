@@ -19,7 +19,7 @@ export const TechnologySection: React.FC = () => {
   };
 
   return (
-    <section 
+    <section
       id="tech"
       className="relative py-28 lg:py-36 bg-[#020617] border-t border-[#005EDA]/10 overflow-hidden"
       aria-label="Technologies and Expertise"
@@ -28,7 +28,7 @@ export const TechnologySection: React.FC = () => {
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-[#001455]/20 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-20">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/30 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-4">
@@ -60,7 +60,7 @@ export const TechnologySection: React.FC = () => {
                   <span className={`px-2.5 py-0.5 rounded text-[10px] font-mono tracking-wider uppercase border ${getCategoryBadge(tech.category)}`}>
                     {tech.category}
                   </span>
-                  
+
                   {/* Subtle signal dot on hover */}
                   <div className="w-1.5 h-1.5 rounded-full bg-[#005EDA] opacity-40 group-hover:opacity-100 group-hover:shadow-[0_0_8px_#3894FF] transition-all" />
                 </div>

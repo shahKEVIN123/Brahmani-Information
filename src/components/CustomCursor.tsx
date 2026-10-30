@@ -206,8 +206,8 @@ export const CustomCursor: React.FC = () => {
           boxShadow: isText
             ? '0 0 10px 1px rgba(56, 148, 255, 0.95)'
             : isInteractive
-            ? '0 0 14px 2.5px rgba(56, 148, 255, 0.95), 0 0 25px rgba(0, 94, 218, 0.5)'
-            : '0 0 8px 1.5px rgba(0, 94, 218, 0.7), 0 0 16px rgba(0, 94, 218, 0.25)',
+              ? '0 0 14px 2.5px rgba(56, 148, 255, 0.95), 0 0 25px rgba(0, 94, 218, 0.5)'
+              : '0 0 8px 1.5px rgba(0, 94, 218, 0.7), 0 0 16px rgba(0, 94, 218, 0.25)',
         }}
         transition={{ duration: 0.16, ease: 'easeOut' }}
       />

@@ -11,13 +11,13 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenContactM
   const [isPrimaryHovered, setIsPrimaryHovered] = useState(false);
 
   return (
-    <section 
+    <section
       className="relative py-32 lg:py-44 bg-[#01040f] overflow-hidden border-t border-[#005EDA]/15"
       aria-label="Call to Action"
     >
       {/* Expanding Orbital System reacting to CTA hover */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        
+
         {/* Core signal expanding orbit 1 */}
         <motion.div
           className="rounded-full border border-[#005EDA]/30"
@@ -62,7 +62,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenContactM
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        
+
         {/* Signal beacon */}
         <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#051026] border border-[#005EDA]/40 text-xs font-semibold tracking-widest text-[#3894FF] uppercase mb-8 shadow-[0_0_20px_rgba(0,94,218,0.3)]">
           <SparkleIcon className="w-3.5 h-3.5 text-[#005EDA] animate-spin duration-3000" />

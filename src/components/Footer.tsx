@@ -1,132 +1,170 @@
 import React from 'react';
-import { SparkleIcon } from './SparkleIcon';
-import { COMPANY_INFO, SERVICES_DATA } from '../data/companyData';
-import { ArrowUp } from 'lucide-react';
+import { Mail, ArrowRight, ShieldCheck, Cpu } from 'lucide-react';
+import { Link } from '../router/Router';
+import { COMPANY_INFO, SERVICES_LIST } from '../data/companyData';
 
 export const Footer: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="relative bg-[#01040e] border-t border-[#005EDA]/15 pt-20 pb-12 overflow-hidden text-slate-400">
+    <footer className="bg-[#0B132B] text-slate-300 pt-16 pb-12 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Tier: Pre-footer Callout */}
+        <div className="pb-14 border-b border-slate-800/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#38BDF8] block mb-2">
+              Ready to collaborate?
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
+              Let’s build something purposeful together.
+            </h3>
+          </div>
+          <Link
+            to="/start-a-project"
+            className="inline-flex items-center space-x-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_16px_rgba(0,94,218,0.3)] hover:shadow-[0_6px_22px_rgba(0,94,218,0.45)] transition-all duration-200"
+          >
+            <span>Start a Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
-      {/* Background ambient lighting */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px] bg-[#001455]/15 rounded-full blur-[160px] pointer-events-none" />
+        {/* Main Multi-Column Content */}
+        <div className="py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+          
+          {/* Col 1: Brand & Philosophy (4 cols) */}
+          <div className="lg:col-span-4 space-y-5">
+            <Link to="/" className="inline-block">
+              <div className="bg-white/95 rounded-xl p-2.5 inline-block shadow-sm">
+                <img
+                  src="/brahmani-logo-transparent.png"
+                  alt="Brahmani Information Logo"
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
+            </Link>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-[#005EDA]/15">
-
-          {/* Brand Info & Official Logo */}
-          <div className="lg:col-span-5 space-y-6">
-            <a href="#home" className="inline-block" aria-label="Brahmani Information Home">
-              <img
-                src="/brahmani-logo-darkmode.png"
-                alt="Brahmani Information"
-                className="h-10 w-auto object-contain filter drop-shadow-[0_2px_10px_rgba(0,94,218,0.3)]"
-              />
-            </a>
-
-            <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               {COMPANY_INFO.description}
             </p>
 
-            <div className="flex items-center space-x-2 text-xs font-mono text-[#3894FF]">
-              <SparkleIcon className="w-3.5 h-3.5 text-[#005EDA]" />
-              <span>THE BRAHMANI SIGNAL • EST. 2026</span>
+            <div className="pt-2 flex items-center space-x-3 text-xs text-slate-400">
+              <div className="flex items-center space-x-1.5 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/60">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#38BDF8]" />
+                <span>Enterprise Standards</span>
+              </div>
+              <div className="flex items-center space-x-1.5 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/60">
+                <Cpu className="w-3.5 h-3.5 text-[#38BDF8]" />
+                <span>Modern Engineering</span>
+              </div>
             </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Col 2: Navigation (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white">
-              NAVIGATION
+            <h4 className="text-xs uppercase font-bold tracking-wider text-white">
+              Company
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="#home" className="hover:text-white transition-colors">Home</a>
+                <Link to="/" className="text-slate-400 hover:text-white transition-colors">
+                  Home
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About</a>
+                <Link to="/about" className="text-slate-400 hover:text-white transition-colors">
+                  About Us
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Services</a>
+                <Link to="/work" className="text-slate-400 hover:text-white transition-colors">
+                  Work / Portfolio
+                </Link>
               </li>
               <li>
-                <a href="#why-us" className="hover:text-white transition-colors">Why Brahmani</a>
+                <Link to="/process" className="text-slate-400 hover:text-white transition-colors">
+                  Our Process
+                </Link>
               </li>
               <li>
-                <a href="#work" className="hover:text-white transition-colors">Selected Work</a>
+                <Link to="/technology" className="text-slate-400 hover:text-white transition-colors">
+                  Technology Stack
+                </Link>
               </li>
               <li>
-                <a href="#process" className="hover:text-white transition-colors">Process</a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+                <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Digital Services Nodes */}
+          {/* Col 3: Services Group 1 (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white">
-              SERVICES
+            <h4 className="text-xs uppercase font-bold tracking-wider text-white">
+              Core Services (1–6)
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
-              {SERVICES_DATA.map((service) => (
-                <li key={service.id}>
-                  <a href="#services" className="hover:text-white transition-colors">
-                    {service.title}
-                  </a>
+            <ul className="space-y-2 text-xs">
+              {SERVICES_LIST.slice(0, 6).map((srv) => (
+                <li key={srv.slug}>
+                  <Link
+                    to={`/services/${srv.slug}`}
+                    className="text-slate-400 hover:text-[#38BDF8] transition-colors flex items-center space-x-1.5"
+                  >
+                    <span className="text-slate-600 font-mono text-[10px]">{srv.number}</span>
+                    <span>{srv.title}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Direct Contact Inlets */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white">
-              CONNECT
+          {/* Col 4: Services Group 2 & Contact Inlet (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs uppercase font-bold tracking-wider text-white">
+              Core Services (7–12)
             </h4>
-            <div className="space-y-2 text-xs sm:text-sm">
-              <p className="text-slate-300">
-                Official Inquiries:
-              </p>
+            <ul className="space-y-2 text-xs">
+              {SERVICES_LIST.slice(6, 12).map((srv) => (
+                <li key={srv.slug}>
+                  <Link
+                    to={`/services/${srv.slug}`}
+                    className="text-slate-400 hover:text-[#38BDF8] transition-colors flex items-center space-x-1.5"
+                  >
+                    <span className="text-slate-600 font-mono text-[10px]">{srv.number}</span>
+                    <span>{srv.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="pt-4 border-t border-slate-800">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">
+                Direct Communication
+              </span>
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="text-[#3894FF] hover:underline block truncate"
+                className="text-sm font-medium text-white hover:text-[#38BDF8] transition-colors inline-flex items-center space-x-2"
               >
-                {COMPANY_INFO.email}
+                <Mail className="w-3.5 h-3.5 text-[#38BDF8]" />
+                <span>{COMPANY_INFO.email}</span>
               </a>
-            </div>
-
-            {/* Scroll back to top button */}
-            <div className="pt-4">
-              <button
-                onClick={scrollToTop}
-                className="inline-flex items-center space-x-2 px-3 py-2 rounded-lg bg-[#051026] border border-[#005EDA]/30 text-xs font-mono text-slate-300 hover:text-white hover:border-[#3894FF] transition-all"
-                aria-label="Scroll to top"
-              >
-                <span>Back to Orbit</span>
-                <ArrowUp className="w-3.5 h-3.5 text-[#3894FF]" />
-              </button>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Bar with Required Copyright Text */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>
-            © 2026 Brahmani Information. All rights reserved.
-          </p>
-
-          <div className="flex items-center space-x-6 text-[11px] font-mono">
-            <span>DIGITAL TECHNOLOGY & IT SOLUTIONS</span>
+        {/* Bottom Tier: Copyright & Disclaimers */}
+        <div className="pt-8 mt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>© {COMPANY_INFO.established} {COMPANY_INFO.name}. All rights reserved.</p>
+          <div className="flex items-center space-x-6">
+            <span>Modern Web & Digital Solutions</span>
             <span>•</span>
-            <span className="text-[#3894FF]">SECURE TRANSMISSION</span>
+            <Link to="/contact" className="hover:text-slate-400 transition-colors">
+              Inquiries
+            </Link>
+            <span>•</span>
+            <Link to="/start-a-project" className="hover:text-slate-400 transition-colors">
+              Project Intake
+            </Link>
           </div>
         </div>
 

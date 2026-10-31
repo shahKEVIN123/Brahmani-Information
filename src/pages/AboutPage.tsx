@@ -33,7 +33,7 @@ export const AboutPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
-        visual={<HeroImageVisual src="/assets/heroes/about-hero.png" alt="Brahmani Information Digital Technology Architecture and Craftsmanship" />}
+        visual={<HeroImageVisual src="/brahmani_only_right_visual.png" fallbackSrc="/assets/brahmani_only_right_visual.png" alt="Brahmani Information Digital Technology Architecture and Craftsmanship" />}
       />
 
       {/* 2. Company Introduction */}

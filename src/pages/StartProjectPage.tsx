@@ -43,7 +43,7 @@ export const StartProjectPage: React.FC = () => {
     if (errorMessage) setErrorMessage('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.projectBrief.trim()) {
@@ -59,11 +59,37 @@ export const StartProjectPage: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/start-project', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          company: formData.company.trim(),
+          phone: formData.phone.trim(),
+          selectedService,
+          selectedTimeline,
+          selectedBudget,
+          projectBrief: formData.projectBrief.trim(),
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to submit project request. Please try again.');
+      }
+
       setIsSubmitted(true);
       window.scrollTo({ top: 300, behavior: 'smooth' });
-    }, 1200);
+    } catch (err: any) {
+      setErrorMessage(err.message || 'An unexpected error occurred while sending your project brief. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

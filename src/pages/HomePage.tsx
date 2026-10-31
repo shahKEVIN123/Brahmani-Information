@@ -81,7 +81,7 @@ export const HomePage: React.FC = () => {
       <section
         id="hero"
         aria-label="Hero Introduction"
-        className="relative pt-32 pb-16 lg:pt-36 lg:pb-20 bg-gradient-to-b from-[#0A0A0A] via-[#111111] to-[#0E0E0E] border-b border-white/10 overflow-hidden"
+        className="relative pt-32 pb-16 lg:pt-36 lg:pb-12 bg-gradient-to-b from-[#0A0A0A] via-[#111111] to-[#0E0E0E] border-b border-white/10 overflow-hidden"
       >
         {/* Subtle Architectural Grid */}
         <div className="absolute inset-0 bg-corporate-grid opacity-30 pointer-events-none" />
@@ -135,22 +135,6 @@ export const HomePage: React.FC = () => {
                   <span>Explore Our Work</span>
                   <ArrowRight className="ml-2 w-4 h-4 text-slate-400 group-hover:text-white" />
                 </Link>
-              </div>
-
-              {/* Balanced Bottom Status / Metric Strip */}
-              <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5 hero-entrance-metrics">
-                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-300 truncate">Available for Projects</span>
-                </div>
-                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-[#005EDA] flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-300 truncate">Enterprise Standards</span>
-                </div>
-                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-300 truncate">React & Node Stack</span>
-                </div>
               </div>
             </div>
 

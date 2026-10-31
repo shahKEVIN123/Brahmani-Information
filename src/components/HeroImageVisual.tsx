@@ -8,6 +8,7 @@ interface HeroImageVisualProps {
   frameless?: boolean;
   aspectRatio?: string;
   objectFit?: 'cover' | 'contain';
+  fallbackSrc?: string;
 }
 
 export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
@@ -17,6 +18,7 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
   frameless = false,
   aspectRatio,
   objectFit = 'cover',
+  fallbackSrc,
 }) => {
   // High-Fidelity Frameless Floating Presentation (ideal for transparent 2.5D device mockups)
   if (frameless) {
@@ -38,6 +40,7 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
             aspectRatio="2.4/1"
             className="drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)]"
             containerClassName="rounded-2xl bg-transparent"
+            fallbackSrc={fallbackSrc}
           />
         </div>
       </div>
@@ -63,6 +66,7 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
           objectFit={objectFit}
           containerClassName="w-full h-full bg-[#151515]"
           className="group-hover:scale-[1.02] transition-transform duration-500"
+          fallbackSrc={fallbackSrc}
         />
 
         {/* Subtle Brand Accent Reflection Edge */}

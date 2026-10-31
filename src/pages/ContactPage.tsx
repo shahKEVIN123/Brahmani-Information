@@ -27,7 +27,7 @@ export const ContactPage: React.FC = () => {
     if (errorMessage) setErrorMessage('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
@@ -43,11 +43,33 @@ export const ContactPage: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
 
-    // Form submission processing
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          company: formData.company.trim(),
+          projectType: formData.projectType,
+          message: formData.message.trim(),
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to submit inquiry. Please try again.');
+      }
+
       setIsSubmitted(true);
-    }, 1000);
+    } catch (err: any) {
+      setErrorMessage(err.message || 'An unexpected error occurred while sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

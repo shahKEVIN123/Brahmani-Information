@@ -1,9 +1,10 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight, Sparkles, Cpu, ShieldCheck } from 'lucide-react';
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
 import { HeroImageVisual } from '../components/HeroImageVisual';
+import { OptimizedImage } from '../components/OptimizedImage';
 import { SERVICES_LIST } from '../data/companyData';
 
 export const ServicesPage: React.FC = () => {
@@ -15,8 +16,8 @@ export const ServicesPage: React.FC = () => {
         badge="Services Index"
         title={
           <>
-            <span className="text-white block sm:inline">Comprehensive Digital & </span>
-            <span className="text-[#005EDA] block sm:inline">Technology Solutions.</span>
+            <span className="text-white block sm:inline">Modern Engineering & </span>
+            <span className="text-[#005EDA] block sm:inline">Technology Services.</span>
           </>
         }
         description="Twelve specialized disciplines engineered to solve complex operational challenges, accelerate digital transformation, and deliver modern software products."
@@ -33,7 +34,7 @@ export const ServicesPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
         }
-        visual={<HeroImageVisual src="/assets/heroes/services-hero.png" alt="Comprehensive Digital and Technology Solutions Architecture" />}
+        visual={<HeroImageVisual src="/assets/heroes/services-hero.png" alt="Modern Engineering and Technology Services Architecture" />}
       />
 
       {/* Main 12 Categories Editorial Index */}
@@ -50,17 +51,29 @@ export const ServicesPage: React.FC = () => {
             {SERVICES_LIST.map((srv) => (
               <div
                 key={srv.slug}
-                className="bg-[#151515] rounded-2xl border border-white/10 p-7 sm:p-8 flex flex-col justify-between hover:bg-[#1A1A1A] hover:border-[#005EDA]/60 hover:shadow-depth-md transition-all duration-300 group"
+                className="bg-[#151515] rounded-2xl border border-white/10 p-6 sm:p-7 flex flex-col justify-between hover:bg-[#1A1A1A] hover:border-[#005EDA]/60 hover:shadow-depth-md transition-all duration-300 group"
               >
                 <div className="space-y-4">
                   
-                  {/* Service Number & Category Indicator */}
+                  {/* Service Visual Preview with Zero Layout Shift & Responsive Delivery */}
+                  <div className="w-full rounded-xl overflow-hidden bg-[#0A0A0A] border border-white/10 relative">
+                    <OptimizedImage
+                      src={`/assets/services/${srv.slug}.png`}
+                      alt={srv.title}
+                      aspectRatio="16/9"
+                      objectFit="cover"
+                      className="group-hover:scale-105 transition-transform duration-500"
+                      containerClassName="w-full h-44 sm:h-48 rounded-xl bg-[#0A0A0A]"
+                    />
+                  </div>
+
+                  {/* Category Indicator */}
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                    <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-400/20">
-                      {srv.number}
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                    <span className="text-[11px] font-mono text-[#38BDF8] uppercase tracking-wider font-semibold">
                       IT Discipline
+                    </span>
+                    <span className="text-[11px] font-mono text-slate-500 uppercase">
+                      Brahmani Standard
                     </span>
                   </div>
 
@@ -118,7 +131,14 @@ export const ServicesPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">01 // DISCOVERY TO LAUNCH</span>
+              <div className="flex items-center space-x-2.5 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Discovery to Launch
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
                 Design & Front-End Synergy
               </h4>
@@ -128,7 +148,14 @@ export const ServicesPage: React.FC = () => {
             </div>
 
             <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">02 // ARCHITECTURE & RESILIENCE</span>
+              <div className="flex items-center space-x-2.5 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <Cpu className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Architecture & Resilience
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
                 Full-Stack & Cloud Integration
               </h4>
@@ -138,7 +165,14 @@ export const ServicesPage: React.FC = () => {
             </div>
 
             <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">03 // INTEGRITY & EVOLUTION</span>
+              <div className="flex items-center space-x-2.5 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Integrity & Evolution
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
                 QA & Continuous Maintenance
               </h4>

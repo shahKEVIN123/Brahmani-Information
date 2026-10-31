@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface HeroImageVisualProps {
   src: string;
@@ -17,8 +18,6 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
   aspectRatio,
   objectFit = 'cover',
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   // High-Fidelity Frameless Floating Presentation (ideal for transparent 2.5D device mockups)
   if (frameless) {
     return (
@@ -31,18 +30,14 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
 
         {/* Floating Device Showcase Graphic */}
         <div className="relative group transition-transform duration-300 hover:scale-[1.015]">
-          {!isLoaded && (
-            <div className="w-full aspect-[2.4/1] bg-white/5 rounded-2xl animate-pulse" />
-          )}
-
-          <img
+          <OptimizedImage
             src={src}
             alt={alt}
-            onLoad={() => setIsLoaded(true)}
-            className={`w-full h-auto object-contain transition-all duration-500 ease-out ${
-              isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            } drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)]`}
-            loading="eager"
+            priority={true}
+            objectFit="contain"
+            aspectRatio="2.4/1"
+            className="drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)]"
+            containerClassName="rounded-2xl bg-transparent"
           />
         </div>
       </div>
@@ -61,21 +56,13 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
 
       {/* Main Art-Directed Visual Canvas */}
       <div className={`relative rounded-2xl border border-white/10 bg-[#151515] shadow-[0_20px_45px_-12px_rgba(0,0,0,0.8),0_4px_12px_rgba(0,94,218,0.1)] overflow-hidden ${aspectRatio || 'aspect-[16/10]'} group`}>
-        
-        {/* Placeholder skeleton while loading */}
-        {!isLoaded && (
-          <div className="absolute inset-0 bg-white/5 animate-pulse" />
-        )}
-
-        {/* Generated Topic-Specific Artwork */}
-        <img
+        <OptimizedImage
           src={src}
           alt={alt}
-          onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full ${objectFit === 'contain' ? 'object-contain' : 'object-cover'} object-center transition-all duration-500 ease-out ${
-            isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          } group-hover:scale-[1.02]`}
-          loading="eager"
+          priority={true}
+          objectFit={objectFit}
+          containerClassName="w-full h-full bg-[#151515]"
+          className="group-hover:scale-[1.02] transition-transform duration-500"
         />
 
         {/* Subtle Brand Accent Reflection Edge */}

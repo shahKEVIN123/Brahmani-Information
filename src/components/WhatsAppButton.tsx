@@ -70,6 +70,10 @@ export const WhatsAppButton: React.FC = () => {
                   <img
                     src="/brahmani-logo-cropped.png"
                     alt="Brahmani Information"
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain"
                   />
                 </div>

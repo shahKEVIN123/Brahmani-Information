@@ -130,12 +130,16 @@ export const Navbar: React.FC = () => {
             aria-label={`${COMPANY_INFO.name} Home`}
           >
             <img
+              id="navbar-brand-logo"
               src="/Brahmani Information Logo.png"
               alt="Brahmani Information"
+              width="240"
+              height="56"
               className={`w-auto object-contain transition-all duration-300 ${
                 isScrolled ? 'h-11 sm:h-12' : 'h-12 sm:h-14'
               }`}
               loading="eager"
+              decoding="async"
             />
           </Link>
 

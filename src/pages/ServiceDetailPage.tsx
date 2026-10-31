@@ -1,11 +1,13 @@
 import React from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Layers, ShieldCheck, Cpu } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Layers, ShieldCheck, Cpu, Compass, Code2, Rocket } from 'lucide-react';
 import { Link, useParams } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
 import { HeroImageVisual } from '../components/HeroImageVisual';
 import { SERVICES_LIST, ServiceDetail } from '../data/companyData';
 import { NotFoundPage } from './NotFoundPage';
+
+const STAGE_ICONS = [Compass, Layers, Code2, Rocket];
 
 interface ServiceDetailPageProps {
   slugOverride?: string;
@@ -78,22 +80,13 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
           { label: service.title },
         ]}
         actions={
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to="/start-a-project"
-              className="inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
-            >
-              <span>Consult on {service.title}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center space-x-2 px-5 py-3 text-sm font-medium text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>All Services</span>
-            </Link>
-          </div>
+          <Link
+            to="/start-a-project"
+            className="inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+          >
+            <span>Consult on {service.title}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         }
         visual={
           <HeroImageVisual
@@ -186,26 +179,29 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
           <SectionHeader
             badge="Execution Framework"
             title={`Our Process for ${service.title}.`}
-            description="A disciplined, step-by-step roadmap tailored to ensure predictable milestones and exceptional output."
+            description="A disciplined, milestone-driven roadmap tailored to ensure predictable delivery and exceptional output."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {service.processStages.map((st) => (
-              <div
-                key={st.step}
-                className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm"
-              >
-                <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-400/20 inline-block">
-                  Stage {st.step}
-                </span>
-                <h4 className="text-base font-bold text-white font-display">
-                  {st.title}
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  {st.description}
-                </p>
-              </div>
-            ))}
+            {service.processStages.map((st, i) => {
+              const StageIcon = STAGE_ICONS[i % STAGE_ICONS.length];
+              return (
+                <div
+                  key={st.title}
+                  className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3.5 shadow-depth-sm hover:border-[#005EDA]/40 transition-colors"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-400/20 text-[#38BDF8] flex items-center justify-center">
+                    <StageIcon className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-base font-bold text-white font-display">
+                    {st.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    {st.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
         </div>
@@ -291,7 +287,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       </section>
 
       {/* 7. Conversion CTA */}
-      <section className="py-20 bg-[#0A0A0A] border-t border-white/10 text-center">
+      <section className="py-20 bg-[#0A0A0A] text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Ready to Begin Your {service.title} Project?

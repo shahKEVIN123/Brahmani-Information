@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ArrowRight, ShieldCheck, Clock, FileText, Send, AlertCircle, HelpCircle } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ShieldCheck, Clock, FileText, Send, AlertCircle, HelpCircle, Layers } from 'lucide-react';
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { HeroImageVisual } from '../components/HeroImageVisual';
@@ -138,12 +138,12 @@ export const StartProjectPage: React.FC = () => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-12">
               
-              {/* Step 1: Select Primary Capability */}
+              {/* Section 1: Select Primary Capability */}
               <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 space-y-6 shadow-depth-sm">
                 <div className="flex items-center space-x-3 pb-3 border-b border-white/10">
-                  <span className="w-7 h-7 rounded-lg bg-[#005EDA] text-white font-mono text-xs flex items-center justify-center font-bold">
-                    1
-                  </span>
+                  <div className="w-8 h-8 rounded-lg bg-[#005EDA] text-white flex items-center justify-center shrink-0">
+                    <Layers className="w-4 h-4" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-bold text-white font-display">
                       Select Primary Project Discipline
@@ -166,8 +166,8 @@ export const StartProjectPage: React.FC = () => {
                           : 'bg-[#1A1A1A] border-white/10 text-slate-200 hover:border-white/20 hover:bg-[#202020]'
                       }`}
                     >
-                      <span className={`text-[10px] font-mono block ${selectedService === srv.title ? 'text-blue-100' : 'text-slate-400'}`}>
-                        {srv.number}
+                      <span className={`text-[10px] font-mono uppercase tracking-wider block ${selectedService === srv.title ? 'text-blue-100' : 'text-slate-400'}`}>
+                        IT Discipline
                       </span>
                       <span className="text-xs font-bold font-display block mt-1 line-clamp-1">
                         {srv.title}
@@ -177,12 +177,12 @@ export const StartProjectPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Step 2: Timeline & Budget Scope */}
+              {/* Section 2: Timeline & Budget Scope */}
               <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 space-y-8 shadow-depth-sm">
                 <div className="flex items-center space-x-3 pb-3 border-b border-white/10">
-                  <span className="w-7 h-7 rounded-lg bg-[#005EDA] text-white font-mono text-xs flex items-center justify-center font-bold">
-                    2
-                  </span>
+                  <div className="w-8 h-8 rounded-lg bg-[#005EDA] text-white flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-bold text-white font-display">
                       Target Timeline & Scope Tier
@@ -240,12 +240,12 @@ export const StartProjectPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Step 3: Project Brief & Contact Information */}
+              {/* Section 3: Project Brief & Contact Information */}
               <div className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 space-y-6 shadow-depth-sm">
                 <div className="flex items-center space-x-3 pb-3 border-b border-white/10">
-                  <span className="w-7 h-7 rounded-lg bg-[#005EDA] text-white font-mono text-xs flex items-center justify-center font-bold">
-                    3
-                  </span>
+                  <div className="w-8 h-8 rounded-lg bg-[#005EDA] text-white flex items-center justify-center shrink-0">
+                    <FileText className="w-4 h-4" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-bold text-white font-display">
                       Project Brief & Contact Information

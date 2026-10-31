@@ -94,31 +94,52 @@ export const TechnologyPage: React.FC = () => {
             description="Detailed breakdown of each tier of our engineering stack across frontend, backend, design, database, infrastructure, and security."
           />
 
-          {TECHNOLOGIES_DATA.map((cat, idx) => (
-            <div
-              key={cat.category}
-              className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 shadow-depth-sm space-y-8"
-            >
-              {/* Category Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 gap-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20 font-mono font-bold text-sm">
-                    0{idx + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
-                      {cat.category} Architecture
-                    </h3>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      {cat.description}
-                    </p>
-                  </div>
-                </div>
+          {TECHNOLOGIES_DATA.map((cat) => {
+            const getCategoryIcon = (category: string) => {
+              switch (category) {
+                case 'Frontend':
+                  return Code2;
+                case 'Backend':
+                  return Server;
+                case 'Design':
+                  return Palette;
+                case 'Database':
+                  return Database;
+                case 'DevOps & Infrastructure':
+                  return Cpu;
+                case 'Security & Authentication':
+                  return ShieldCheck;
+                default:
+                  return Code2;
+              }
+            };
+            const CategoryIcon = getCategoryIcon(cat.category);
 
-                <span className="text-xs font-mono font-semibold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20 self-start sm:self-center">
-                  Production Verified
-                </span>
-              </div>
+            return (
+              <div
+                key={cat.category}
+                className="bg-[#151515] rounded-3xl border border-white/10 p-8 sm:p-10 shadow-depth-sm space-y-8"
+              >
+                {/* Category Header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 gap-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20 shrink-0">
+                      <CategoryIcon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                        {cat.category} Architecture
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        {cat.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="text-xs font-mono font-semibold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20 self-start sm:self-center">
+                    Production Verified
+                  </span>
+                </div>
 
               {/* Technologies Grid in this category */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -148,7 +169,8 @@ export const TechnologyPage: React.FC = () => {
                 ))}
               </div>
             </div>
-          ))}
+          );
+        })}
 
         </div>
       </section>

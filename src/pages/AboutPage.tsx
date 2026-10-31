@@ -154,18 +154,32 @@ export const AboutPage: React.FC = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">01 // PRIVACY</span>
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
+              <div className="flex items-center space-x-2 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Confidentiality
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
-                NDA & Confidentiality
+                NDA & Privacy Protection
               </h4>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Complete intellectual property protection and confidentiality agreements in place before project discussions begin.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">02 // SCOPE</span>
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
+              <div className="flex items-center space-x-2 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <Target className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Predictable Scope
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
                 Milestone Scoping
               </h4>
@@ -174,8 +188,15 @@ export const AboutPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">03 // OWNERSHIP</span>
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
+              <div className="flex items-center space-x-2 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <Code2 className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Full Ownership
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
                 100% Code Handover
               </h4>
@@ -184,8 +205,15 @@ export const AboutPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3">
-              <span className="text-xs font-mono font-bold text-[#38BDF8]">04 // SUPPORT</span>
+            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
+              <div className="flex items-center space-x-2 text-[#38BDF8]">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                  <HeartHandshake className="w-4 h-4" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                  Continuity
+                </span>
+              </div>
               <h4 className="text-base font-bold text-white font-display">
                 Lifecycle Continuity
               </h4>

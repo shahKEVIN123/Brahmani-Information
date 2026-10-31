@@ -15,10 +15,14 @@ import { TechnologyPage } from './pages/TechnologyPage';
 import { ContactPage } from './pages/ContactPage';
 import { StartProjectPage } from './pages/StartProjectPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { CinematicBrandIntro } from './components/CinematicBrandIntro';
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
+      {/* First-Visit Cinematic Brand Opening Experience */}
+      <CinematicBrandIntro />
+
       <div className="relative min-h-screen flex flex-col justify-between bg-[#0A0A0A] text-slate-100 font-sans selection:bg-[#005EDA]/30 selection:text-white">
         
         {/* Global Reusable Responsive Navbar */}

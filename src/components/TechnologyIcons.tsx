@@ -110,6 +110,8 @@ export const TechIcon: React.FC<TechIconProps> = ({ name, className = 'w-6 h-6' 
     <img
       src={iconSrc}
       alt={`${name} logo`}
+      width="24"
+      height="24"
       className={`${className} object-contain select-none pointer-events-none`}
       loading="lazy"
       decoding="async"

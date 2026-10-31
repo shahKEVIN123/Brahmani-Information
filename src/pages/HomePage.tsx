@@ -97,7 +97,7 @@ export const HomePage: React.FC = () => {
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left">
               
               {/* Brand Label Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 shadow-2xs mb-5 self-start">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 shadow-2xs mb-5 self-start hero-entrance-badge">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#005EDA]"></span>
@@ -108,18 +108,18 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Sophisticated Two-Color Hero Headline: Deep Navy + Brahmani Brand Blue */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] font-display mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold tracking-tight leading-[1.12] font-display mb-6 hero-entrance-title">
                 <span className="text-white block">WE BUILD DIGITAL EXPERIENCES</span>
                 <span className="text-[#005EDA] block mt-1">THAT HELP BUSINESSES MOVE FORWARD.</span>
               </h1>
 
               {/* Exact Master Prompt Supporting Text */}
-              <p className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed mb-8 hero-entrance-desc">
                 We design and develop modern websites and digital experiences that turn ideas into purposeful digital products.
               </p>
 
               {/* Button System */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-8">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-8 hero-entrance-cta">
                 <Link
                   to="/start-a-project"
                   className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_16px_rgba(0,94,218,0.28)] hover:shadow-[0_6px_22px_rgba(0,94,218,0.4)] transition-all duration-200 active:scale-95"
@@ -138,7 +138,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Balanced Bottom Status / Metric Strip */}
-              <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-2.5 hero-entrance-metrics">
                 <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#151515] border border-white/10 shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
                   <span className="text-xs font-medium text-slate-300 truncate">Available for Projects</span>
@@ -155,7 +155,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Right Column: lg:col-span-6 xl:col-span-6 */}
-            <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end">
+            <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end hero-entrance-visual">
               <HeroVideoVisual />
             </div>
 

@@ -23,10 +23,11 @@
   --text-muted: #64748B;
 }
 
-/* Smooth Scrolling */
+/* Hardware-Accelerated Native Scrolling for Maximum Performance */
 html {
-  scroll-behavior: smooth;
   color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Clean Scrollbar for Dark Theme */

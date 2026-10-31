@@ -33,7 +33,8 @@ export const HeroWorkflowVisual: React.FC = () => {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          disablePictureInPicture
           aria-label="Brahmani Information Digital Experiences Video"
         >
           <source src="/hero-video.mp4" type="video/mp4" />

@@ -29,22 +29,6 @@ import {
   WHY_US_PILLARS,
 } from '../data/companyData';
 
-// Service-specific real raster PNG image assets mapping
-const serviceImageMap: Record<string, string> = {
-  'web-development': '/assets/services/web-development.png',
-  'mobile-app-development': '/assets/services/mobile-app-development.png',
-  'ai-machine-learning': '/assets/services/ai-machine-learning.png',
-  'data-analytics': '/assets/services/data-analytics.png',
-  'ui-ux-design': '/assets/services/ui-ux-design.png',
-  'qa-software-testing': '/assets/services/qa-software-testing.png',
-  'cloud-devops': '/assets/services/cloud-devops.png',
-  'cybersecurity': '/assets/services/cybersecurity.png',
-  'crm-erp-solutions': '/assets/services/crm-erp-solutions.png',
-  'digital-marketing': '/assets/services/digital-marketing.png',
-  'software-development': '/assets/services/software-development.png',
-  'maintenance-support': '/assets/services/maintenance-support.png',
-};
-
 export const HomePage: React.FC = () => {
   // Interactive state for Technology Index circular cloud inspection
   const [selectedTechName, setSelectedTechName] = useState<string>('React');
@@ -206,60 +190,46 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* 4 Cards Per Row Grid (12 Services Across 3 Rows on Desktop) */}
+          {/* 4 Cards Per Row Grid (12 Services Across 3 Rows on Desktop) - Ultra-Fast Lightweight Vector Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
             {SERVICES_LIST.map((service) => {
-              const imageSrc = serviceImageMap[service.slug] || '/assets/services/web-development.png';
+              const ServiceIcon = getServiceIcon(service.slug);
               return (
                 <Link
                   key={service.slug}
                   to={`/services/${service.slug}`}
-                  className="group flex flex-col bg-[#151515] rounded-2xl border border-white/10 hover:border-[#005EDA]/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] hover:shadow-[0_16px_36px_-8px_rgba(0,94,218,0.25)] transition-all duration-300 hover:-translate-y-1.5 overflow-hidden"
+                  className="group flex flex-col justify-between bg-[#151515] hover:bg-[#1A1A1A] rounded-2xl border border-white/10 hover:border-[#005EDA]/60 p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] hover:shadow-[0_16px_36px_-8px_rgba(0,94,218,0.25)] transition-all duration-300 hover:-translate-y-1.5"
                 >
-                  {/* TOP: Large Service-Specific Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1A1A1A] border-b border-white/5">
-                    <img
-                      src={imageSrc}
-                      alt={`${service.title} architectural capability`}
-                      className="w-full h-full object-cover object-center transform transition-transform duration-500 ease-out group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    
-                    {/* Floating Monospace Number Badge */}
-                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-[#151515]/95 backdrop-blur-sm border border-white/10 shadow-sm text-[11px] font-mono font-bold text-slate-300 group-hover:text-[#005EDA] group-hover:border-[#005EDA]/40 transition-colors">
-                      {service.number}
+                  <div className="space-y-4">
+                    {/* Top Row: Crisp Vector Icon */}
+                    <div>
+                      <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] border border-blue-400/20 flex items-center justify-center group-hover:scale-105 group-hover:bg-[#005EDA] group-hover:text-white transition-all duration-200">
+                        <ServiceIcon className="w-6 h-6" />
+                      </div>
                     </div>
+
+                    {/* Service Name */}
+                    <div className="pt-1">
+                      <h3 className="text-base sm:text-lg font-bold font-display text-white group-hover:text-[#005EDA] transition-colors leading-snug">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    {/* Short, Clear Description */}
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-3">
+                      {service.shortDesc}
+                    </p>
                   </div>
 
-                  {/* BOTTOM HALF: Content Area */}
-                  <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
-                    <div>
-                      {/* MIDDLE: Service Name + Action Arrow */}
-                      <div className="flex items-start justify-between gap-2 mb-2.5">
-                        <h3 className="text-base sm:text-lg font-bold font-display text-white group-hover:text-[#005EDA] transition-colors leading-snug">
-                          {service.title}
-                        </h3>
-                        <div className="w-7 h-7 rounded-full bg-[#222222] group-hover:bg-[#005EDA] text-slate-300 group-hover:text-white flex items-center justify-center transition-all duration-200 shrink-0 mt-0.5 shadow-sm">
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                        </div>
-                      </div>
-
-                      {/* BOTTOM: Short, Clear Description */}
-                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-3">
-                        {service.shortDesc}
-                      </p>
-                    </div>
-
-                    {/* Sub-Service Capability Tag & Explore Trigger */}
-                    <div className="pt-4 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
-                      <span className="font-mono text-[11px] text-slate-400 truncate max-w-[130px]">
-                        {service.subServices[0]?.title || 'Core Capability'}
-                      </span>
-                      <span className="font-semibold text-[#38BDF8] group-hover:text-[#60A5FA] group-hover:translate-x-1 transition-transform inline-flex items-center text-[12px]">
-                        Explore
-                        <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
-                      </span>
-                    </div>
+                  {/* Sub-Service Capability Tag & Explore Trigger */}
+                  <div className="pt-4 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
+                    <span className="font-mono text-[11px] text-slate-400 truncate max-w-[130px]">
+                      {service.subServices[0]?.title || 'Core Capability'}
+                    </span>
+                    <span className="font-semibold text-[#38BDF8] group-hover:text-[#60A5FA] group-hover:translate-x-1 transition-transform inline-flex items-center text-[12px]">
+                      Explore
+                      <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                    </span>
                   </div>
                 </Link>
               );

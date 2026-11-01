@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://brahmani-information.com/</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://brahmaniinformation.com/</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
+
   <url>
-    <loc>https://brahmani-information.com/#about</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://brahmaniinformation.com/about</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
+
   <url>
-    <loc>https://brahmani-information.com/#services</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://brahmaniinformation.com/services</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
+
   <url>
-    <loc>https://brahmani-information.com/#work</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://brahmaniinformation.com/work</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
+
   <url>
-    <loc>https://brahmani-information.com/#process</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://brahmaniinformation.com/process</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
+
   <url>
-    <loc>https://brahmani-information.com/#contact</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://brahmaniinformation.com/technology</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
+
+  <url>
+    <loc>https://brahmaniinformation.com/contact</loc>
+    <lastmod>2026-11-01</lastmod>
+  </url>
+
 </urlset>

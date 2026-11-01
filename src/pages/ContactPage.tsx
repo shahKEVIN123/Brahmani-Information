@@ -92,7 +92,13 @@ export const ContactPage: React.FC = () => {
           { label: 'Home', href: '/' },
           { label: 'Contact', href: '/contact' },
         ]}
-        visual={<HeroImageVisual src="/assets/heroes/contact-hero.png" alt="Direct Digital Communication and Technical Consultation" />}
+        visual={
+          <HeroImageVisual
+            src="/contact-hero.png"
+            fallbackSrc="/assets/heroes/contact-hero.png"
+            alt="Direct Digital Communication and Technical Consultation"
+          />
+        }
       />
 
       {/* 2. Main Contact Form & Information */}

@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Link } from '../router/Router';
+import { MotionReveal } from './motion/MotionReveal';
 
 interface BreadcrumbItem {
   label: string;
@@ -57,34 +59,36 @@ export const PageHero: React.FC<PageHeroProps> = ({
       <div className="absolute inset-0 bg-corporate-grid opacity-50 pointer-events-none" />
 
       {/* Soft Ambient Depth Accents */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none animate-soft-float" />
       <div className="absolute -bottom-10 left-10 w-72 h-72 bg-blue-900/10 rounded-full blur-2xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb Navigation */}
         {breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center space-x-2 text-xs text-slate-400 font-medium">
-              {breadcrumbs.map((item, index) => {
-                const isLast = index === breadcrumbs.length - 1;
-                return (
-                  <React.Fragment key={item.label}>
-                    {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-slate-500" />}
-                    <li>
-                      {item.href && !isLast ? (
-                        <Link to={item.href} className="hover:text-[#005EDA] transition-colors">
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <span className="text-slate-200 font-semibold">{item.label}</span>
-                      )}
-                    </li>
-                  </React.Fragment>
-                );
-              })}
-            </ol>
-          </nav>
+          <MotionReveal preset="fadeDown" duration={0.4} delay={0.05}>
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex items-center space-x-2 text-xs text-slate-400 font-medium">
+                {breadcrumbs.map((item, index) => {
+                  const isLast = index === breadcrumbs.length - 1;
+                  return (
+                    <React.Fragment key={item.label}>
+                      {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-slate-500" />}
+                      <li>
+                        {item.href && !isLast ? (
+                          <Link to={item.href} className="hover:text-[#005EDA] transition-colors">
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <span className="text-slate-200 font-semibold">{item.label}</span>
+                        )}
+                      </li>
+                    </React.Fragment>
+                  );
+                })}
+              </ol>
+            </nav>
+          </MotionReveal>
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
@@ -95,7 +99,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {/* Badge */}
             {badge && (
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-semibold uppercase tracking-wider text-[#38BDF8] mb-5 self-start">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#005EDA]"></span>
+                </span>
                 <span>{badge}</span>
               </div>
             )}
@@ -111,13 +118,17 @@ export const PageHero: React.FC<PageHeroProps> = ({
             </p>
 
             {/* Actions */}
-            {actions && <div className="mt-8 flex flex-wrap gap-4 items-center">{actions}</div>}
+            {actions && (
+              <div className="mt-8 flex flex-wrap gap-4 items-center">{actions}</div>
+            )}
           </div>
 
           {/* Right Visual Area */}
           {visual && (
             <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end w-full mt-6 lg:mt-0">
-              {visual}
+              <MotionReveal preset="scaleUp" duration={0.8} delay={0.25} className="w-full">
+                {visual}
+              </MotionReveal>
             </div>
           )}
 

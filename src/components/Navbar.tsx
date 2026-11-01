@@ -263,10 +263,10 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               to="/start-a-project"
-              className="inline-flex items-center space-x-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_14px_rgba(0,94,218,0.25)] hover:shadow-[0_6px_20px_rgba(0,94,218,0.35)] transition-all duration-200 active:scale-95"
+              className="btn-shimmer inline-flex items-center space-x-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-[0_4px_14px_rgba(0,94,218,0.25)] hover:shadow-[0_6px_20px_rgba(0,94,218,0.35)] transition-all duration-200 active:scale-95 group"
             >
               <span>Start a Project</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 

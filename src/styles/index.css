@@ -48,28 +48,10 @@ html {
   background: #3B3B3B;
 }
 
-/* Reduced motion accessibility */
+/* Accessibility: Respect gentle motion preferences while preserving smooth visual flow */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  /* Exempt brand opening intro and flight transition from 0.01ms reduction */
-  #cinematic-brand-intro,
-  #cinematic-brand-intro *,
-  body.intro-entering .hero-entrance-badge,
-  body.intro-entering .hero-entrance-title,
-  body.intro-entering .hero-entrance-desc,
-  body.intro-entering .hero-entrance-cta,
-  body.intro-entering .hero-entrance-metrics,
-  body.intro-entering .hero-entrance-visual {
-    animation-duration: revert !important;
-    transition-duration: revert !important;
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -146,64 +128,100 @@ html {
 }
 
 /* ======================================================== */
+/* MODERN ANIMATION & INTERACTION SYSTEM UTILITIES          */
+/* ======================================================== */
+
+/* Premium CTA Button Shimmer Effect */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.btn-shimmer:hover::after {
+  left: 130%;
+  transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Form Input Focus Glow Micro-Interaction */
+.input-interactive {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.input-interactive:focus {
+  border-color: #005EDA !important;
+  box-shadow: 0 0 0 3px rgba(0, 94, 218, 0.22), 0 4px 14px rgba(0, 94, 218, 0.12) !important;
+  background-color: #1a1a1a !important;
+}
+
+/* Hardware Accelerated Layer Optimization */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Clean Line Expand Utility */
+.line-expand-trigger .line-expand-target {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line-expand-trigger:hover .line-expand-target {
+  transform: scaleX(1);
+}
+
+/* Smooth Soft Floating Animation for Ambient Elements */
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-soft-float {
+  animation: softFloat 7s ease-in-out infinite;
+}
+
+/* Animated Border Flow for Highlight Cards */
+@keyframes borderGlowPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.border-glow-pulse {
+  animation: borderGlowPulse 3s ease-in-out infinite;
+}
+
+/* ======================================================== */
 /* CINEMATIC BRAND OPENING & HERO AWAKENING TRANSITIONS     */
 /* ======================================================== */
 
 /* Hide real navbar logo while cinematic logo is in flight */
 body.intro-running #navbar-brand-logo {
   opacity: 0 !important;
-}
-
-/* While intro is active before entering, keep hero elements pristine underneath */
-body.intro-active .hero-entrance-badge,
-body.intro-active .hero-entrance-title,
-body.intro-active .hero-entrance-desc,
-body.intro-active .hero-entrance-cta,
-body.intro-active .hero-entrance-metrics,
-body.intro-active .hero-entrance-visual {
-  opacity: 0;
-  transform: translateY(14px);
-}
-
-/* As brand logo flies into navbar, home hero awakens smoothly */
-body.intro-entering .hero-entrance-badge {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.1s;
-}
-
-body.intro-entering .hero-entrance-title {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.22s;
-}
-
-body.intro-entering .hero-entrance-desc {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.36s;
-}
-
-body.intro-entering .hero-entrance-cta {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.5s;
-}
-
-body.intro-entering .hero-entrance-metrics {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.65s;
-}
-
-body.intro-entering .hero-entrance-visual {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.3s;
 }

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, ExternalLink, Layers, X, Shield, Terminal, Globe } from 'lucide-react';
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
 import { HeroImageVisual } from '../components/HeroImageVisual';
 import { WORK_PROJECTS, WorkProject } from '../data/companyData';
+import { MotionReveal } from '../components/motion/MotionReveal';
+import { ScrollSection } from '../components/motion/ScrollSection';
+import { InteractiveCard } from '../components/motion/InteractiveCard';
 
 export const WorkPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -36,10 +40,10 @@ export const WorkPage: React.FC = () => {
         actions={
           <Link
             to="/start-a-project"
-            className="inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+            className="btn-shimmer inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all group"
           >
             <span>Start Your Project</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         }
         visual={
@@ -52,229 +56,243 @@ export const WorkPage: React.FC = () => {
       />
 
       {/* 2. Portfolio Filter & Editorial Projects List */}
-      <section className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10">
+      <ScrollSection className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10" viewportAmount={0.12}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 pb-10 border-b border-white/10 mb-12">
-            <span className="text-xs font-mono text-slate-400 uppercase tracking-wider mr-2">
-              Filter by Discipline:
-            </span>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-                  selectedCategory === cat
-                    ? 'bg-[#005EDA] text-white shadow-sm'
-                    : 'bg-[#151515] text-slate-300 hover:bg-[#1E1E1E] hover:text-white border border-white/10'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <MotionReveal preset="fadeDown" duration={0.5}>
+            <div className="flex flex-wrap items-center gap-2 pb-10 border-b border-white/10 mb-12">
+              <span className="text-xs font-mono text-slate-400 uppercase tracking-wider mr-2">
+                Filter by Discipline:
+              </span>
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 active:scale-95 ${
+                    selectedCategory === cat
+                      ? 'bg-[#005EDA] text-white shadow-sm ring-2 ring-blue-400/30'
+                      : 'bg-[#151515] text-slate-300 hover:bg-[#1E1E1E] hover:text-white border border-white/10'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </MotionReveal>
 
           {/* Large Editorial Project Presentation */}
           <div className="space-y-16">
             {filteredProjects.map((project, idx) => (
-              <div
+              <MotionReveal
                 key={project.id}
-                className="bg-[#151515] rounded-3xl border border-white/10 overflow-hidden shadow-depth-sm hover:shadow-depth-md transition-all duration-300"
+                preset={idx % 2 === 0 ? 'fadeUp' : 'scaleUp'}
+                duration={0.7}
+                viewportAmount={0.12}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                  
-                  {/* Left Column: Project Narrative & Architectural Details */}
-                  <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
-                    
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20">
-                          {project.category}
-                        </span>
-                        <span className="text-xs text-slate-400 font-mono">
-                          {project.clientType}
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
-                        {project.name}
-                      </h3>
-
-                      <p className="text-sm sm:text-base font-medium text-slate-300">
-                        {project.tagline}
-                      </p>
-
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      {/* Problem & Solution Callout */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                        <div className="bg-[#1A1A1A] p-4 rounded-xl border border-white/10 text-xs text-slate-400 space-y-1">
-                          <span className="font-mono font-bold text-slate-200 uppercase block">
-                            The Challenge:
-                          </span>
-                          <p>{project.challenge}</p>
-                        </div>
-                        <div className="bg-[#1A1A1A] p-4 rounded-xl border border-white/10 text-xs text-slate-400 space-y-1">
-                          <span className="font-mono font-bold text-[#38BDF8] uppercase block">
-                            Our Solution:
-                          </span>
-                          <p>{project.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tech Badges & CTA */}
-                    <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-xs font-mono px-3 py-1 rounded-lg bg-[#1E1E1E] text-slate-300 border border-white/10 shadow-xs"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      <button
-                        onClick={() => setActiveProjectModal(project)}
-                        className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#38BDF8] hover:underline"
-                      >
-                        <span>View Project Specifications</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-
-                  </div>
-
-                  {/* Right Column: 2.5D Mockup / Interface Canvas */}
-                  <div className="lg:col-span-5 bg-gradient-to-br from-[#111111] to-[#0A0A0A] p-8 sm:p-10 text-white flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10">
-                    
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                        <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-                          LIVE ARCHITECTURAL HIGHLIGHT
-                        </span>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
-                          VERIFIED PRODUCTION
-                        </span>
-                      </div>
-
-                      <div className="bg-[#151515] rounded-2xl p-4 sm:p-5 border border-white/10 space-y-3 font-mono text-xs">
-                        <div className="text-slate-400 text-[11px] pb-1 border-b border-white/10 flex items-center justify-between">
-                          <span>telemetry.metric</span>
-                          <span className="text-[#38BDF8]">60fps Sync</span>
-                        </div>
-                        <p className="text-slate-300 text-xs leading-relaxed font-sans">
-                          "{project.highlight}"
-                        </p>
-                      </div>
-
-                      <div className="space-y-2 pt-2">
-                        <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
-                          Verified Deliverables:
-                        </span>
-                        {project.metrics.map((m) => (
-                          <div key={m} className="flex items-center space-x-2 text-xs text-slate-300">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                            <span>{m}</span>
+                <InteractiveCard lineAccent={true} className="rounded-3xl">
+                  <div className="bg-[#151515] rounded-3xl border border-white/10 overflow-hidden shadow-depth-sm hover:shadow-depth-md transition-all duration-300 group/proj">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                      
+                      {/* Left Column: Project Narrative & Architectural Details */}
+                      <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-center space-x-3">
+                            <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20">
+                              {project.category}
+                            </span>
+                            <span className="text-xs text-slate-400 font-mono">
+                              {project.clientType}
+                            </span>
                           </div>
-                        ))}
+
+                          <h3 className="text-2xl sm:text-3xl font-bold text-white font-display group-hover/proj:text-[#005EDA] transition-colors">
+                            {project.name}
+                          </h3>
+
+                          <p className="text-sm sm:text-base font-medium text-slate-300">
+                            {project.tagline}
+                          </p>
+
+                          <p className="text-sm text-slate-400 leading-relaxed">
+                            {project.description}
+                          </p>
+
+                          {/* Problem & Solution Callout */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div className="bg-[#1A1A1A] p-4 rounded-xl border border-white/10 text-xs text-slate-400 space-y-1 group-hover/proj:border-white/15 transition-colors">
+                              <span className="font-mono font-bold text-slate-200 uppercase block">
+                                The Challenge:
+                              </span>
+                              <p>{project.challenge}</p>
+                            </div>
+                            <div className="bg-[#1A1A1A] p-4 rounded-xl border border-white/10 text-xs text-slate-400 space-y-1 group-hover/proj:border-white/15 transition-colors">
+                              <span className="font-mono font-bold text-[#38BDF8] uppercase block">
+                                Our Solution:
+                              </span>
+                              <p>{project.solution}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Tech Badges & CTA */}
+                        <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.technologies.map((tech) => (
+                              <span
+                                key={tech}
+                                className="text-xs font-mono px-3 py-1 rounded-lg bg-[#1E1E1E] text-slate-300 border border-white/10 shadow-xs"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+
+                          <button
+                            onClick={() => setActiveProjectModal(project)}
+                            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#38BDF8] hover:text-[#60A5FA] group/btn transition-colors cursor-pointer"
+                          >
+                            <span>View Project Specifications</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                          </button>
+                        </div>
+
                       </div>
-                    </div>
 
-                    <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
-                      <span>Brahmani Codebase</span>
-                      <span className="text-[#38BDF8]">Zero Regressions</span>
-                    </div>
+                      {/* Right Column: 2.5D Mockup / Interface Canvas */}
+                      <div className="lg:col-span-5 bg-gradient-to-br from-[#111111] to-[#0A0A0A] p-8 sm:p-10 text-white flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10 relative overflow-hidden">
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
+                              LIVE ARCHITECTURAL HIGHLIGHT
+                            </span>
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                              VERIFIED PRODUCTION
+                            </span>
+                          </div>
 
+                          <div className="bg-[#151515] rounded-2xl p-4 sm:p-5 border border-white/10 space-y-3 font-mono text-xs group-hover/proj:border-blue-500/30 transition-colors shadow-sm">
+                            <div className="text-slate-400 text-[11px] pb-1 border-b border-white/10 flex items-center justify-between">
+                              <span>telemetry.metric</span>
+                              <span className="text-[#38BDF8]">60fps Sync</span>
+                            </div>
+                            <p className="text-slate-300 text-xs leading-relaxed font-sans">
+                              "{project.highlight}"
+                            </p>
+                          </div>
+
+                          <div className="space-y-2 pt-2">
+                            <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+                              Verified Deliverables:
+                            </span>
+                            {project.metrics.map((m) => (
+                              <div key={m} className="flex items-center space-x-2 text-xs text-slate-300">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                <span>{m}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+                          <span>Brahmani Codebase</span>
+                          <span className="text-[#38BDF8]">Zero Regressions</span>
+                        </div>
+
+                      </div>
+
+                    </div>
                   </div>
-
-                </div>
-              </div>
+                </InteractiveCard>
+              </MotionReveal>
             ))}
           </div>
 
         </div>
-      </section>
+      </ScrollSection>
 
-      {/* 3. Interactive Project Modal */}
-      {activeProjectModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn">
-          <div className="bg-[#151515] rounded-3xl border border-white/10 shadow-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
-            
-            <button
-              onClick={() => setActiveProjectModal(null)}
-              className="absolute top-6 right-6 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-              aria-label="Close project modal"
+      {/* 3. Interactive Project Modal with Smooth Motion */}
+      <AnimatePresence>
+        {activeProjectModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-[#151515] rounded-3xl border border-white/10 shadow-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto"
             >
-              <X className="w-5 h-5" />
-            </button>
+              <button
+                onClick={() => setActiveProjectModal(null)}
+                className="absolute top-6 right-6 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                aria-label="Close project modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            <div>
-              <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20 inline-block mb-3">
-                {activeProjectModal.category}
-              </span>
-              <h3 className="text-2xl font-bold text-white font-display">
-                {activeProjectModal.name}
-              </h3>
-              <p className="text-sm font-medium text-slate-300 mt-1">
-                {activeProjectModal.tagline}
-              </p>
-            </div>
-
-            <div className="space-y-4 text-sm text-slate-400 leading-relaxed border-t border-b border-white/10 py-4">
-              <p>{activeProjectModal.description}</p>
-              
-              <div className="bg-[#1A1A1A] p-4 rounded-xl border border-white/10 space-y-2">
-                <span className="text-xs font-mono font-bold text-slate-200 uppercase block">
-                  Key Architectural Metric:
+              <div>
+                <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20 inline-block mb-3">
+                  {activeProjectModal.category}
                 </span>
-                <p className="text-xs text-slate-300 font-medium">
-                  {activeProjectModal.highlight}
+                <h3 className="text-2xl font-bold text-white font-display">
+                  {activeProjectModal.name}
+                </h3>
+                <p className="text-sm font-medium text-slate-300 mt-1">
+                  {activeProjectModal.tagline}
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <span className="text-xs font-mono font-bold text-slate-200 uppercase block">
-                  Technologies Deployed:
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {activeProjectModal.technologies.map((t) => (
-                    <span key={t} className="px-3 py-1 rounded-md bg-[#1E1E1E] text-xs font-mono text-slate-300 border border-white/10">
-                      {t}
-                    </span>
-                  ))}
+              <div className="space-y-4 text-sm text-slate-400 leading-relaxed border-t border-b border-white/10 py-4">
+                <p>{activeProjectModal.description}</p>
+                
+                <div className="bg-[#1A1A1A] p-4 rounded-xl border border-white/10 space-y-2">
+                  <span className="text-xs font-mono font-bold text-slate-200 uppercase block">
+                    Key Architectural Metric:
+                  </span>
+                  <p className="text-xs text-slate-300 font-medium">
+                    {activeProjectModal.highlight}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <span className="text-xs font-mono font-bold text-slate-200 uppercase block">
+                    Technologies Deployed:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {activeProjectModal.technologies.map((t) => (
+                      <span key={t} className="px-3 py-1 rounded-md bg-[#1E1E1E] text-xs font-mono text-slate-300 border border-white/10">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex items-center justify-between pt-2">
-              <Link
-                to="/start-a-project"
-                className="inline-flex items-center space-x-2 px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl transition-all"
-              >
-                <span>Inquire About Similar Project</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button
-                onClick={() => setActiveProjectModal(null)}
-                className="text-xs font-medium text-slate-400 hover:text-white"
-              >
-                Close
-              </button>
-            </div>
-
+              <div className="flex items-center justify-between pt-2">
+                <Link
+                  to="/start-a-project"
+                  className="btn-shimmer inline-flex items-center space-x-2 px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl transition-all group"
+                >
+                  <span>Inquire About Similar Project</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <button
+                  onClick={() => setActiveProjectModal(null)}
+                  className="text-xs font-medium text-slate-400 hover:text-white cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
 
       {/* 4. Conversion CTA */}
-      <section className="py-20 bg-[#0A0A0A] border-t border-white/10 text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollSection className="py-20 bg-[#0A0A0A] border-t border-white/10 text-center" viewportAmount={0.2}>
+        <MotionReveal preset="scaleUp" duration={0.7} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Have a Complex Software Challenge?
           </h2>
@@ -283,13 +301,13 @@ export const WorkPage: React.FC = () => {
           </p>
           <Link
             to="/start-a-project"
-            className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+            className="btn-shimmer inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all group"
           >
             <span>Start a Project</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
-      </section>
+        </MotionReveal>
+      </ScrollSection>
 
     </div>
   );

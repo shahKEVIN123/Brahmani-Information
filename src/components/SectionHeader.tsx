@@ -22,10 +22,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       } ${className}`}
     >
       {badge && (
-        <div
-          className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-semibold uppercase tracking-wider text-[#38BDF8] mb-4`}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-semibold uppercase tracking-wider text-[#38BDF8] mb-4">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#005EDA]"></span>
+          </span>
           <span>{badge}</span>
         </div>
       )}

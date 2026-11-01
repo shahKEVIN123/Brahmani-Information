@@ -6,6 +6,9 @@ import { SectionHeader } from '../components/SectionHeader';
 import { HeroImageVisual } from '../components/HeroImageVisual';
 import { SERVICES_LIST, ServiceDetail } from '../data/companyData';
 import { NotFoundPage } from './NotFoundPage';
+import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
+import { ScrollSection } from '../components/motion/ScrollSection';
+import { InteractiveCard } from '../components/motion/InteractiveCard';
 
 const STAGE_ICONS = [Compass, Layers, Code2, Rocket];
 
@@ -82,10 +85,10 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
         actions={
           <Link
             to="/start-a-project"
-            className="inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+            className="btn-shimmer inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all group"
           >
             <span>Consult on {service.title}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         }
         visual={
@@ -97,7 +100,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
       />
 
       {/* 2. Overview & Problem/Value Section */}
-      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
+      <ScrollSection className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10 overflow-hidden" viewportAmount={0.15}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -105,36 +108,38 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
               <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
                 Overview & Engineering Scope
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white font-display leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white font-display leading-tight mt-1">
                 Engineering with Purpose, Precision, and Measurable Longevity.
               </h2>
-              <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-400 leading-relaxed pt-2">
                 {service.overview}
               </p>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 sm:p-8 space-y-4 shadow-depth-sm">
-                <h3 className="text-sm font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
-                  Core Architectural Standards
-                </h3>
-                <div className="space-y-3">
-                  {service.capabilities.map((cap) => (
-                    <div key={cap} className="flex items-start space-x-3 text-xs sm:text-sm text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-[#005EDA] shrink-0 mt-0.5" />
-                      <span>{cap}</span>
+              <InteractiveCard lineAccent={true} className="rounded-2xl">
+                  <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 sm:p-8 space-y-4 shadow-depth-sm">
+                    <h3 className="text-sm font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
+                      Core Architectural Standards
+                    </h3>
+                    <div className="space-y-3">
+                      {service.capabilities.map((cap) => (
+                        <div key={cap} className="flex items-start space-x-3 text-xs sm:text-sm text-slate-300">
+                          <CheckCircle2 className="w-4 h-4 text-[#005EDA] shrink-0 mt-0.5" />
+                          <span>{cap}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
+                </InteractiveCard>
             </div>
 
           </div>
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 3. What We Offer (Detailed Sub-Services Breakdown) */}
-      <section className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10">
+      <ScrollSection className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10" viewportAmount={0.15}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -143,37 +148,38 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             description="Our specialized sub-disciplines ensure granular expertise across every stage of design, engineering, and maintenance."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <MotionStagger staggerDelay={0.06} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {service.subServices.map((sub, index) => (
-              <div
-                key={sub.title}
-                className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm hover:border-[#005EDA]/50 transition-colors flex flex-col justify-between"
-              >
-                <div className="space-y-2.5">
-                  <span className="text-[11px] font-mono text-slate-400 font-semibold block">
-                    SUB-SERVICE // 0{index + 1}
-                  </span>
-                  <h4 className="text-base font-bold text-white font-display">
-                    {sub.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                    {sub.description}
-                  </p>
-                </div>
+              <MotionStaggerItem key={sub.title}>
+                <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                  <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3 shadow-depth-sm hover:border-[#005EDA]/50 transition-colors flex flex-col justify-between h-full">
+                    <div className="space-y-2.5">
+                      <span className="text-[11px] font-mono text-slate-400 font-semibold block">
+                        SUB-SERVICE // 0{index + 1}
+                      </span>
+                      <h4 className="text-base font-bold text-white font-display">
+                        {sub.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        {sub.description}
+                      </p>
+                    </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#38BDF8]">
-                  <span>Brahmani Standard</span>
-                  <span>Active Service</span>
-                </div>
-              </div>
+                    <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#38BDF8]">
+                      <span>Brahmani Standard</span>
+                      <span>Active Service</span>
+                    </div>
+                  </div>
+                </InteractiveCard>
+              </MotionStaggerItem>
             ))}
-          </div>
+          </MotionStagger>
 
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 4. Specialized Delivery Process */}
-      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
+      <ScrollSection className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10" viewportAmount={0.15}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -182,78 +188,80 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
             description="A disciplined, milestone-driven roadmap tailored to ensure predictable delivery and exceptional output."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <MotionStagger staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {service.processStages.map((st, i) => {
               const StageIcon = STAGE_ICONS[i % STAGE_ICONS.length];
               return (
-                <div
-                  key={st.title}
-                  className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3.5 shadow-depth-sm hover:border-[#005EDA]/40 transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-400/20 text-[#38BDF8] flex items-center justify-center">
-                    <StageIcon className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-base font-bold text-white font-display">
-                    {st.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                    {st.description}
-                  </p>
-                </div>
+                <MotionStaggerItem key={st.title}>
+                  <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                    <div className="bg-[#151515] rounded-2xl border border-white/10 p-6 space-y-3.5 shadow-depth-sm hover:border-[#005EDA]/40 transition-colors h-full">
+                      <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-400/20 text-[#38BDF8] flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <StageIcon className="w-4 h-4" />
+                      </div>
+                      <h4 className="text-base font-bold text-white font-display">
+                        {st.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        {st.description}
+                      </p>
+                    </div>
+                  </InteractiveCard>
+                </MotionStaggerItem>
               );
             })}
-          </div>
+          </MotionStagger>
 
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 5. Technologies Used for this Service */}
       {service.technologies && service.technologies.length > 0 && (
-        <section className="py-16 lg:py-20 bg-[#0A0A0A] border-b border-white/10">
+        <ScrollSection className="py-16 lg:py-20 bg-[#0A0A0A] border-b border-white/10" viewportAmount={0.15}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 mb-8 gap-4">
-              <div>
-                <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block mb-1">
-                  Technology Foundation
-                </span>
-                <h3 className="text-xl font-bold text-white font-display">
-                  Tools & Technologies for {service.title}
-                </h3>
-              </div>
-              <Link
-                to="/technology"
-                className="text-xs font-semibold text-[#38BDF8] hover:underline inline-flex items-center space-x-1"
-              >
-                <span>Full Technology Index</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              {service.technologies.map((tech) => (
-                <div
-                  key={tech}
-                  className="px-4 py-2 rounded-xl bg-[#151515] border border-white/10 text-xs sm:text-sm font-mono text-slate-300 shadow-sm"
-                >
-                  {tech}
+            <MotionReveal preset="fadeDown" duration={0.5}>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 mb-8 gap-4">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider block mb-1">
+                    Technology Foundation
+                  </span>
+                  <h3 className="text-xl font-bold text-white font-display">
+                    Tools & Technologies for {service.title}
+                  </h3>
                 </div>
+                <Link
+                  to="/technology"
+                  className="text-xs font-semibold text-[#38BDF8] hover:text-[#60A5FA] inline-flex items-center space-x-1 group"
+                >
+                  <span>Full Technology Index</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </MotionReveal>
+
+            <MotionStagger staggerDelay={0.04} className="flex flex-wrap gap-3">
+              {service.technologies.map((tech) => (
+                <MotionStaggerItem key={tech}>
+                  <div className="px-4 py-2 rounded-xl bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 hover:border-[#005EDA]/50 text-xs sm:text-sm font-mono text-slate-300 shadow-sm transition-all duration-200 hover:-translate-y-0.5 cursor-default">
+                    {tech}
+                  </div>
+                </MotionStaggerItem>
               ))}
-            </div>
+            </MotionStagger>
           </div>
-        </section>
+        </ScrollSection>
       )}
 
       {/* 6. Service Navigation: Next & Previous */}
-      <section className="py-12 bg-[#0E0E0E] border-b border-white/10">
+      <ScrollSection className="py-12 bg-[#0E0E0E] border-b border-white/10" viewportAmount={0.2}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             
             <Link
               to={`/services/${prevService.slug}`}
-              className="group p-5 rounded-2xl bg-[#151515] hover:bg-[#1A1A1A] border border-white/10 hover:border-[#005EDA]/40 transition-all flex items-center space-x-4"
+              className="group p-5 rounded-2xl bg-[#151515] hover:bg-[#1A1A1A] border border-white/10 hover:border-[#005EDA]/40 transition-all flex items-center space-x-4 hover:-translate-x-1"
             >
               <div className="w-9 h-9 rounded-xl bg-[#1E1E1E] border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-[#005EDA] group-hover:border-[#005EDA] transition-colors shrink-0">
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
               </div>
               <div>
                 <span className="text-[11px] font-mono text-slate-400 block uppercase">
@@ -267,7 +275,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
 
             <Link
               to={`/services/${nextService.slug}`}
-              className="group p-5 rounded-2xl bg-[#151515] hover:bg-[#1A1A1A] border border-white/10 hover:border-[#005EDA]/40 transition-all flex items-center justify-between sm:justify-end sm:space-x-4 text-right"
+              className="group p-5 rounded-2xl bg-[#151515] hover:bg-[#1A1A1A] border border-white/10 hover:border-[#005EDA]/40 transition-all flex items-center justify-between sm:justify-end sm:space-x-4 text-right hover:translate-x-1"
             >
               <div>
                 <span className="text-[11px] font-mono text-slate-400 block uppercase">
@@ -278,17 +286,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
                 </span>
               </div>
               <div className="w-9 h-9 rounded-xl bg-[#1E1E1E] border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-[#005EDA] group-hover:border-[#005EDA] transition-colors shrink-0">
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </Link>
 
           </div>
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 7. Conversion CTA */}
-      <section className="py-20 bg-[#0A0A0A] text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollSection className="py-20 bg-[#0A0A0A] text-center" viewportAmount={0.2}>
+        <MotionReveal preset="scaleUp" duration={0.7} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Ready to Begin Your {service.title} Project?
           </h2>
@@ -298,20 +306,20 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/start-a-project"
-              className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+              className="btn-shimmer inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all group"
             >
               <span>Start a Project</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl transition-colors"
+              className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-[#151515] hover:bg-[#1E1E1E] border border-white/10 rounded-xl transition-colors active:scale-95"
             >
               <span>General Inquiries</span>
             </Link>
           </div>
-        </div>
-      </section>
+        </MotionReveal>
+      </ScrollSection>
 
     </div>
   );

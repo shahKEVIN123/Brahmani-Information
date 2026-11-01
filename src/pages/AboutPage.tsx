@@ -5,6 +5,9 @@ import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
 import { HeroImageVisual } from '../components/HeroImageVisual';
 import { COMPANY_INFO } from '../data/companyData';
+import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
+import { ScrollSection } from '../components/motion/ScrollSection';
+import { InteractiveCard } from '../components/motion/InteractiveCard';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -27,17 +30,17 @@ export const AboutPage: React.FC = () => {
         actions={
           <Link
             to="/start-a-project"
-            className="inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+            className="btn-shimmer inline-flex items-center space-x-2 px-6 py-3 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all group"
           >
             <span>Start a Project</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         }
         visual={<HeroImageVisual src="/brahmani_only_right_visual.png" fallbackSrc="/assets/brahmani_only_right_visual.png" alt="Brahmani Information Digital Technology Architecture and Craftsmanship" />}
       />
 
-      {/* 2. Company Introduction */}
-      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
+      {/* 2. Company Introduction — Progressive Directional Storytelling */}
+      <ScrollSection className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10 overflow-hidden" viewportAmount={0.15}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -49,7 +52,7 @@ export const AboutPage: React.FC = () => {
                 className="mb-0"
               />
 
-              <div className="space-y-4 text-base text-slate-400 leading-relaxed">
+              <div className="space-y-4 text-base text-slate-400 leading-relaxed pt-2">
                 <p>
                   At Brahmani Information, we reject superficial digital trends in favor of durable software engineering and clean ergonomics. Whether developing dynamic web applications, architecting bespoke APIs, or crafting design systems, our focus is always on solving genuine business challenges.
                 </p>
@@ -60,39 +63,41 @@ export const AboutPage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-6 shadow-depth-sm">
-                <h3 className="text-lg font-bold text-white font-display">
-                  Core Mission & Vision
-                </h3>
+              <InteractiveCard lineAccent={true} className="rounded-2xl">
+                <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-6 shadow-depth-sm">
+                  <h3 className="text-lg font-bold text-white font-display">
+                    Core Mission & Vision
+                  </h3>
 
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-[#1A1A1A] border border-white/10 space-y-1.5 shadow-sm">
-                    <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
-                      Our Mission
-                    </span>
-                    <p className="text-sm text-slate-300 leading-relaxed">
-                      {COMPANY_INFO.mission}
-                    </p>
-                  </div>
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-xl bg-[#1A1A1A] border border-white/10 space-y-1.5 shadow-sm group hover:border-[#005EDA]/40 transition-colors">
+                      <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
+                        Our Mission
+                      </span>
+                      <p className="text-sm text-slate-300 leading-relaxed">
+                        {COMPANY_INFO.mission}
+                      </p>
+                    </div>
 
-                  <div className="p-4 rounded-xl bg-[#1A1A1A] border border-white/10 space-y-1.5 shadow-sm">
-                    <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
-                      Our Vision
-                    </span>
-                    <p className="text-sm text-slate-300 leading-relaxed">
-                      {COMPANY_INFO.vision}
-                    </p>
+                    <div className="p-4 rounded-xl bg-[#1A1A1A] border border-white/10 space-y-1.5 shadow-sm group hover:border-[#005EDA]/40 transition-colors">
+                      <span className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider">
+                        Our Vision
+                      </span>
+                      <p className="text-sm text-slate-300 leading-relaxed">
+                        {COMPANY_INFO.vision}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </InteractiveCard>
             </div>
 
           </div>
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 3. Design + Technology Philosophy */}
-      <section className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10">
+      <ScrollSection className="py-20 lg:py-28 bg-[#0A0A0A] border-b border-white/10" viewportAmount={0.15}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -102,49 +107,61 @@ export const AboutPage: React.FC = () => {
             align="center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20">
-                <Compass className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-white font-display">
-                Intentional Architecture
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                We design system structures before writing lines of code. This ensures clear data flows, predictable state management, and straightforward maintainability for internal teams.
-              </p>
-            </div>
+          <MotionStagger staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm hover:border-[#005EDA]/40 transition-all duration-300 h-full">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20 group-hover:scale-110 transition-transform">
+                    <Compass className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white font-display">
+                    Intentional Architecture
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    We design system structures before writing lines of code. This ensures clear data flows, predictable state management, and straightforward maintainability for internal teams.
+                  </p>
+                </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
 
-            <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20">
-                <Target className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-white font-display">
-                Ergonomic Precision
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Interfaces should feel natural and effortless to operate. We prioritize accessible touch targets, legible typography, and intuitive user paths across all viewports.
-              </p>
-            </div>
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm hover:border-[#005EDA]/40 transition-all duration-300 h-full">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20 group-hover:scale-110 transition-transform">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white font-display">
+                    Ergonomic Precision
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    Interfaces should feel natural and effortless to operate. We prioritize accessible touch targets, legible typography, and intuitive user paths across all viewports.
+                  </p>
+                </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
 
-            <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20">
-                <Code2 className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-white font-display">
-                Modular Code Integrity
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                We write clean, modular, and self-documenting code. Standardized component repositories allow software to adapt seamlessly as organizational needs evolve.
-              </p>
-            </div>
-          </div>
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="bg-[#151515] rounded-2xl border border-white/10 p-8 space-y-4 shadow-depth-sm hover:border-[#005EDA]/40 transition-all duration-300 h-full">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-[#38BDF8] flex items-center justify-center border border-blue-400/20 group-hover:scale-110 transition-transform">
+                    <Code2 className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white font-display">
+                    Modular Code Integrity
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    We write clean, modular, and self-documenting code. Standardized component repositories allow software to adapt seamlessly as organizational needs evolve.
+                  </p>
+                </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
+          </MotionStagger>
 
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 4. Our Collaborative Approach */}
-      <section className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10">
+      <ScrollSection className="py-20 lg:py-24 bg-[#0E0E0E] border-b border-white/10" viewportAmount={0.15}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <SectionHeader
@@ -153,82 +170,98 @@ export const AboutPage: React.FC = () => {
             description="We treat every client engagement as a serious technical partnership defined by transparency."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
-              <div className="flex items-center space-x-2 text-[#38BDF8]">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
-                  <ShieldCheck className="w-4 h-4" />
+          <MotionStagger staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors h-full">
+                  <div className="flex items-center space-x-2 text-[#38BDF8]">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                      <ShieldCheck className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                      Confidentiality
+                    </span>
+                  </div>
+                  <h4 className="text-base font-bold text-white font-display">
+                    NDA & Privacy Protection
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Complete intellectual property protection and confidentiality agreements in place before project discussions begin.
+                  </p>
                 </div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                  Confidentiality
-                </span>
-              </div>
-              <h4 className="text-base font-bold text-white font-display">
-                NDA & Privacy Protection
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Complete intellectual property protection and confidentiality agreements in place before project discussions begin.
-              </p>
-            </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
 
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
-              <div className="flex items-center space-x-2 text-[#38BDF8]">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
-                  <Target className="w-4 h-4" />
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors h-full">
+                  <div className="flex items-center space-x-2 text-[#38BDF8]">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                      <Target className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                      Predictable Scope
+                    </span>
+                  </div>
+                  <h4 className="text-base font-bold text-white font-display">
+                    Milestone Scoping
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Clear scope definitions with transparent timelines and measurable deliverables tied to specific validation gates.
+                  </p>
                 </div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                  Predictable Scope
-                </span>
-              </div>
-              <h4 className="text-base font-bold text-white font-display">
-                Milestone Scoping
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Clear scope definitions with transparent timelines and measurable deliverables tied to specific validation gates.
-              </p>
-            </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
 
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
-              <div className="flex items-center space-x-2 text-[#38BDF8]">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
-                  <Code2 className="w-4 h-4" />
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors h-full">
+                  <div className="flex items-center space-x-2 text-[#38BDF8]">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                      <Code2 className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                      Full Ownership
+                    </span>
+                  </div>
+                  <h4 className="text-base font-bold text-white font-display">
+                    100% Code Handover
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Full source code ownership, repository access, and deployment documentation delivered cleanly upon launch.
+                  </p>
                 </div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                  Full Ownership
-                </span>
-              </div>
-              <h4 className="text-base font-bold text-white font-display">
-                100% Code Handover
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Full source code ownership, repository access, and deployment documentation delivered cleanly upon launch.
-              </p>
-            </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
 
-            <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors">
-              <div className="flex items-center space-x-2 text-[#38BDF8]">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
-                  <HeartHandshake className="w-4 h-4" />
+            <MotionStaggerItem>
+              <InteractiveCard lineAccent={true} className="rounded-2xl h-full">
+                <div className="p-6 rounded-2xl border border-white/10 bg-[#151515] space-y-3.5 hover:border-[#005EDA]/40 transition-colors h-full">
+                  <div className="flex items-center space-x-2 text-[#38BDF8]">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
+                      <HeartHandshake className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                      Continuity
+                    </span>
+                  </div>
+                  <h4 className="text-base font-bold text-white font-display">
+                    Lifecycle Continuity
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Proactive maintenance, dependency patching, and on-demand engineering to keep your software performant.
+                  </p>
                 </div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                  Continuity
-                </span>
-              </div>
-              <h4 className="text-base font-bold text-white font-display">
-                Lifecycle Continuity
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Proactive maintenance, dependency patching, and on-demand engineering to keep your software performant.
-              </p>
-            </div>
-          </div>
+              </InteractiveCard>
+            </MotionStaggerItem>
+          </MotionStagger>
 
         </div>
-      </section>
+      </ScrollSection>
 
       {/* 5. CTA */}
-      <section className="py-20 bg-gradient-to-b from-[#0E0E0E] to-[#0A0A0A] border-t border-white/10 text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollSection className="py-20 bg-gradient-to-b from-[#0E0E0E] to-[#0A0A0A] border-t border-white/10 text-center" viewportAmount={0.2}>
+        <MotionReveal preset="scaleUp" duration={0.7} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white font-display mb-4">
             Partner with Brahmani Information.
           </h2>
@@ -237,13 +270,13 @@ export const AboutPage: React.FC = () => {
           </p>
           <Link
             to="/start-a-project"
-            className="inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all"
+            className="btn-shimmer inline-flex items-center space-x-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl shadow-sm transition-all group"
           >
             <span>Start a Project</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
-      </section>
+        </MotionReveal>
+      </ScrollSection>
 
     </div>
   );

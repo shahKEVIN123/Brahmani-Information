@@ -10,8 +10,19 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
+export const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Universal CORS & Preflight handler (prevents 405 on OPTIONS / cross-origin requests)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 // Security & Parsing Middlewares
 app.use(express.json({ limit: '50kb' }));
@@ -39,8 +50,8 @@ function rateLimit(req, res, next) {
   next();
 }
 
-// Clean up tracker periodically to prevent memory leaks
-setInterval(() => {
+// Clean up tracker periodically to prevent memory leaks (unref so it doesn't block process exit)
+const cleanupTimer = setInterval(() => {
   const now = Date.now();
   const windowMs = 5 * 60 * 1000;
   for (const [ip, timestamps] of submissionTracker.entries()) {
@@ -52,6 +63,9 @@ setInterval(() => {
     }
   }
 }, 10 * 60 * 1000);
+if (cleanupTimer.unref) {
+  cleanupTimer.unref();
+}
 
 // API Health Check
 app.get('/api/health', (req, res) => {
@@ -115,10 +129,10 @@ app.post('/api/contact', rateLimit, async (req, res) => {
 const distPath = path.resolve(__dirname, '../dist');
 app.use(express.static(distPath));
 
-// Catch-all route for SPA navigation
-app.get('*', (req, res, next) => {
+// Catch-all fallback for SPA client-side routing
+app.use((req, res, next) => {
   if (req.path.startsWith('/api')) {
-    return next();
+    return res.status(404).json({ success: false, error: `Route ${req.method} ${req.path} not found.` });
   }
   res.sendFile(path.join(distPath, 'index.html'), (err) => {
     if (err) {
@@ -127,13 +141,17 @@ app.get('*', (req, res, next) => {
   });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🚀 Brahmani Information Backend Server running on port ${PORT}`);
-  console.log(`📧 Form Submissions configured for:`);
-  console.log(`   To: ${process.env.EMAIL_TO || 'info@brahmaniinformation.com'}`);
-  console.log(`   CC: ${process.env.EMAIL_CC || 'shahkevin1911@gmail.com'}`);
-  console.log(`====================================================`);
-});
+// Only bind to port if executed directly as entrypoint (e.g. node server/server.js)
+const isDirectEntry = process.argv[1] && (process.argv[1].endsWith('server.js') || process.argv[1].endsWith('server'));
+if (isDirectEntry) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🚀 Brahmani Information Backend Server running on port ${PORT}`);
+    console.log(`📧 Form Submissions configured for:`);
+    console.log(`   To: ${process.env.EMAIL_TO || 'info@brahmaniinformation.com'}`);
+    console.log(`   CC: ${process.env.EMAIL_CC || 'shahkevin1911@gmail.com'}`);
+    console.log(`====================================================`);
+  });
+}
 
+export default app;

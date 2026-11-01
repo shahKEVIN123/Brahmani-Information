@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Compass,
   Layers,
@@ -12,6 +13,8 @@ import {
   Sparkles,
   ChevronRight
 } from 'lucide-react';
+import { MotionReveal, MotionStagger, MotionStaggerItem } from './motion/MotionReveal';
+import { ScrollSection } from './motion/ScrollSection';
 
 interface DeliveryDiscipline {
   id: string;
@@ -437,10 +440,11 @@ export const PredictableDeliverySection: React.FC = () => {
   };
 
   return (
-    <section
+    <ScrollSection
       id="predictable-delivery"
       aria-label="Predictable Delivery"
       className="py-20 lg:py-28 bg-[#0E0E0E] border-b border-white/10 relative overflow-hidden"
+      viewportAmount={0.12}
     >
       {/* Background Subtle Gradient & Grid in Dark Theme */}
       <div
@@ -457,10 +461,12 @@ export const PredictableDeliverySection: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA] animate-pulse" />
               <span>PREDICTABLE DELIVERY</span>
             </div>
+
             <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight font-display text-white leading-[1.12]">
               <span>Engineered for Certainty. </span>
               <span className="text-[#005EDA]">Delivered Without Surprises.</span>
             </h2>
+
             <p className="text-base sm:text-lg text-slate-400 max-w-2xl mt-3 leading-relaxed">
               We eliminate delivery friction through structured discipline governance, verified milestones, and continuous technical rigor.
             </p>
@@ -470,217 +476,237 @@ export const PredictableDeliverySection: React.FC = () => {
         {/* Stable Split Cockpit: Vertical Discipline Selector (Left) + Rock-Solid Execution Console (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-12">
           
-          {/* Left Column: Interactive Discipline Cards (5 cols) - Stable, no translate jumping */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-2.5">
+          {/* Left Column: Interactive Discipline Cards (5 cols) - Staggered & Active State Indicator */}
+          <MotionStagger staggerDelay={0.06} className="lg:col-span-5 flex flex-col justify-between gap-2.5">
             {disciplines.map((item, idx) => {
               const isActive = activeTab === idx;
               const IconComponent = icons[idx] || Compass;
 
               return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActiveTab(idx)}
-                  className={`group relative p-3.5 sm:p-4 rounded-2xl transition-all duration-200 text-left flex items-center justify-between cursor-pointer border ${
-                    isActive
-                      ? 'bg-[#151515] border-[#005EDA] shadow-[0_4px_20px_rgba(0,94,218,0.25)] ring-1 ring-[#005EDA]/50'
-                      : 'bg-[#111111] hover:bg-[#151515] border-white/5 hover:border-white/10'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3.5">
-                    <div
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all shrink-0 ${
-                        isActive
-                          ? 'bg-[#005EDA] text-white shadow-md shadow-blue-500/30'
-                          : 'bg-white/5 text-slate-400 group-hover:bg-[#005EDA]/20 group-hover:text-[#38BDF8]'
-                      }`}
-                    >
-                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-
-                    <div>
-                      <h4
-                        className={`text-sm font-bold font-display leading-tight transition-colors ${
-                          isActive ? 'text-[#38BDF8]' : 'text-white group-hover:text-blue-300'
+                <MotionStaggerItem key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab(idx)}
+                    className={`w-full group relative p-3.5 sm:p-4 rounded-2xl transition-all duration-300 text-left flex items-center justify-between cursor-pointer border ${
+                      isActive
+                        ? 'bg-[#151515] border-[#005EDA] shadow-[0_8px_24px_rgba(0,94,218,0.3)] ring-1 ring-[#005EDA]/60'
+                        : 'bg-[#111111] hover:bg-[#161616] border-white/5 hover:border-white/10 hover:shadow-xs'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-3.5">
+                      <div
+                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all duration-300 shrink-0 ${
+                          isActive
+                            ? 'bg-[#005EDA] text-white shadow-md shadow-blue-500/30 scale-105'
+                            : 'bg-white/5 text-slate-400 group-hover:bg-[#005EDA]/20 group-hover:text-[#38BDF8]'
                         }`}
                       >
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-slate-400 mt-0.5 line-clamp-1 font-normal">
-                        {item.tagline}
-                      </p>
-                    </div>
-                  </div>
+                        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </div>
 
-                  <div className="pl-2 shrink-0">
-                    <div
-                      className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center transition-all ${
-                        isActive
-                          ? 'bg-[#005EDA]/20 text-[#38BDF8]'
-                          : 'text-slate-600 group-hover:text-slate-400'
-                      }`}
-                    >
-                      <ChevronRight className="w-4 h-4" />
+                      <div>
+                        <h4
+                          className={`text-sm font-bold font-display leading-tight transition-colors ${
+                            isActive ? 'text-[#38BDF8]' : 'text-white group-hover:text-blue-300'
+                          }`}
+                        >
+                          {item.title}
+                        </h4>
+                        <p className="text-xs text-slate-400 mt-0.5 line-clamp-1 font-normal">
+                          {item.tagline}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </button>
+
+                    <div className="pl-2 shrink-0">
+                      <div
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                          isActive
+                            ? 'bg-[#005EDA]/20 text-[#38BDF8] translate-x-0.5'
+                            : 'text-slate-600 group-hover:text-slate-400'
+                        }`}
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </button>
+                </MotionStaggerItem>
               );
             })}
-          </div>
+          </MotionStagger>
 
-          {/* Right Column: Rock-Solid Execution Console (7 cols) - Constant Height */}
-          <div className="lg:col-span-7 bg-[#111111] rounded-3xl border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.6)] p-5 sm:p-7 lg:p-8 flex flex-col justify-between min-h-[580px] sm:min-h-[600px] lg:min-h-[590px]">
-            
-            <div className="space-y-4">
-              {/* Top Meta Bar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3.5">
-                <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-mono font-bold text-[#38BDF8]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
-                  <span>{currentDiscipline.statusBadge}</span>
-                </span>
-                <span className="text-[11px] font-mono font-medium text-slate-400">
-                  VERIFIED EXECUTION ARTIFACT
-                </span>
-              </div>
-
-              {/* Title & Narrative - Fixed Height Container to Prevent Shifting */}
-              <div className="space-y-2 min-h-[96px] sm:min-h-[84px] flex flex-col justify-start">
-                <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 text-[#38BDF8] flex items-center justify-center shrink-0 border border-white/10">
-                    <CurrentIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+          {/* Right Column: Rock-Solid Execution Console (7 cols) - Animated Tab Crossfade */}
+          <MotionReveal preset="scaleUp" duration={0.7} delay={0.2} className="lg:col-span-7">
+            <div className="bg-[#111111] rounded-3xl border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.6)] p-5 sm:p-7 lg:p-8 flex flex-col justify-between min-h-[580px] sm:min-h-[600px] lg:min-h-[590px]">
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-4"
+                >
+                  {/* Top Meta Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3.5">
+                    <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-xs font-mono font-bold text-[#38BDF8]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#005EDA]" />
+                      <span>{currentDiscipline.statusBadge}</span>
+                    </span>
+                    <span className="text-[11px] font-mono font-medium text-slate-400">
+                      VERIFIED EXECUTION ARTIFACT
+                    </span>
                   </div>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold font-display text-white tracking-tight line-clamp-1 sm:line-clamp-none">
-                    {currentDiscipline.headline}
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
-                  {currentDiscipline.description}
-                </p>
-              </div>
 
-              {/* Verified Deliverables Matrix - Fixed Height Container */}
-              <div className="pt-1 space-y-2 min-h-[104px] sm:min-h-[92px]">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
-                  Verified Discipline Deliverables
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
-                  {currentDiscipline.deliverables.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-start space-x-2 p-2 sm:p-2.5 rounded-xl bg-[#151515] border border-white/5"
-                    >
-                      <div className="w-3.5 h-3.5 rounded-full bg-blue-500/20 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-2.5 h-2.5 stroke-[3]" />
+                  {/* Title & Narrative - Fixed Height Container to Prevent Shifting */}
+                  <div className="space-y-2 min-h-[96px] sm:min-h-[84px] flex flex-col justify-start">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 text-[#38BDF8] flex items-center justify-center shrink-0 border border-white/10">
+                        <CurrentIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                      <span className="text-xs font-medium text-slate-300 leading-tight truncate">
-                        {item}
-                      </span>
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold font-display text-white tracking-tight line-clamp-1 sm:line-clamp-none">
+                        {currentDiscipline.headline}
+                      </h3>
                     </div>
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
+                      {currentDiscipline.description}
+                    </p>
+                  </div>
+
+                  {/* Verified Deliverables Matrix - Fixed Height Container */}
+                  <div className="pt-1 space-y-2 min-h-[104px] sm:min-h-[92px]">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
+                      Verified Discipline Deliverables
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                      {currentDiscipline.deliverables.map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-start space-x-2 p-2 sm:p-2.5 rounded-xl bg-[#151515] border border-white/5"
+                        >
+                          <div className="w-3.5 h-3.5 rounded-full bg-blue-500/20 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
+                            <Check className="w-2.5 h-2.5 stroke-[3]" />
+                          </div>
+                          <span className="text-xs font-medium text-slate-300 leading-tight truncate">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Live Visual Telemetry Simulation - Uniform 235px Height Box */}
+                  <div className="pt-1">
+                    <div className="h-[235px] sm:h-[225px] overflow-hidden">
+                      {renderDisciplineTelemetry()}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Bottom Cockpit Controls - Stable Pinned Footer */}
+              <div className="pt-5 border-t border-white/10 flex items-center justify-between mt-auto">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/5 transition-colors cursor-pointer"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Previous Discipline</span>
+                  <span className="sm:hidden">Prev</span>
+                </button>
+
+                <div className="flex items-center space-x-1.5">
+                  {disciplines.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setActiveTab(i)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        activeTab === i ? 'w-6 bg-[#005EDA]' : 'w-2 bg-white/20 hover:bg-white/40'
+                      }`}
+                      aria-label={`View discipline`}
+                    />
                   ))}
                 </div>
+
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-[#005EDA] hover:bg-[#004BBB] shadow-sm transition-all cursor-pointer"
+                >
+                  <span className="hidden sm:inline">Next Discipline</span>
+                  <span className="sm:hidden">Next</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
 
-              {/* Live Visual Telemetry Simulation - Uniform 235px Height Box */}
-              <div className="pt-1">
-                <div className="h-[235px] sm:h-[225px] overflow-hidden">
-                  {renderDisciplineTelemetry()}
-                </div>
-              </div>
             </div>
-
-            {/* Bottom Cockpit Controls - Stable Pinned Footer */}
-            <div className="pt-5 border-t border-white/10 flex items-center justify-between mt-auto">
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/5 transition-colors cursor-pointer"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Previous Discipline</span>
-                <span className="sm:hidden">Prev</span>
-              </button>
-
-              <div className="flex items-center space-x-1.5">
-                {disciplines.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => setActiveTab(i)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      activeTab === i ? 'w-6 bg-[#005EDA]' : 'w-2 bg-white/20 hover:bg-white/40'
-                    }`}
-                    aria-label={`View discipline`}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={handleNext}
-                className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-[#005EDA] hover:bg-[#004BBB] shadow-sm transition-all cursor-pointer"
-              >
-                <span className="hidden sm:inline">Next Discipline</span>
-                <span className="sm:hidden">Next</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-          </div>
+          </MotionReveal>
 
         </div>
 
-        {/* 4 Foundation Assurance Cards (Clean High-Trust Value Pillars - Zero Numbers) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 sm:mt-10">
-          <div className="p-4 rounded-2xl bg-[#111111] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-colors">
-            <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
-              <Sparkles className="w-4 h-4" />
+        {/* 4 Foundation Assurance Cards */}
+        <MotionStagger staggerDelay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 sm:mt-10">
+          <MotionStaggerItem>
+            <div className="p-4 rounded-2xl bg-[#111111] hover:bg-[#161616] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-white font-display">Weekly Working Demos</h5>
+                <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                  Regular sprint demonstrations verifying real functional software in staging.
+                </p>
+              </div>
             </div>
-            <div>
-              <h5 className="text-xs font-bold text-white font-display">Weekly Working Demos</h5>
-              <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
-                Regular sprint demonstrations verifying real functional software in staging.
-              </p>
-            </div>
-          </div>
+          </MotionStaggerItem>
 
-          <div className="p-4 rounded-2xl bg-[#111111] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-colors">
-            <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-              <ShieldCheck className="w-4 h-4" />
+          <MotionStaggerItem>
+            <div className="p-4 rounded-2xl bg-[#111111] hover:bg-[#161616] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-white font-display">Zero Scope Guesswork</h5>
+                <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                  Strict architectural roadmaps that eliminate unexpected roadblocks and delays.
+                </p>
+              </div>
             </div>
-            <div>
-              <h5 className="text-xs font-bold text-white font-display">Zero Scope Guesswork</h5>
-              <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
-                Strict architectural roadmaps that eliminate unexpected roadblocks and delays.
-              </p>
-            </div>
-          </div>
+          </MotionStaggerItem>
 
-          <div className="p-4 rounded-2xl bg-[#111111] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-colors">
-            <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
-              <Code2 className="w-4 h-4" />
+          <MotionStaggerItem>
+            <div className="p-4 rounded-2xl bg-[#111111] hover:bg-[#161616] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
+                <Code2 className="w-4 h-4" />
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-white font-display">100% Code Ownership</h5>
+                <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                  Full source code, repositories, and documentation delivered to you from day one.
+                </p>
+              </div>
             </div>
-            <div>
-              <h5 className="text-xs font-bold text-white font-display">100% Code Ownership</h5>
-              <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
-                Full source code, repositories, and documentation delivered to you from day one.
-              </p>
-            </div>
-          </div>
+          </MotionStaggerItem>
 
-          <div className="p-4 rounded-2xl bg-[#111111] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-colors">
-            <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
-              <Activity className="w-4 h-4" />
+          <MotionStaggerItem>
+            <div className="p-4 rounded-2xl bg-[#111111] hover:bg-[#161616] border border-white/10 shadow-xs flex items-start space-x-3 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
+                <Activity className="w-4 h-4" />
+              </div>
+              <div>
+                <h5 className="text-xs font-bold text-white font-display">Continuous SLA Care</h5>
+                <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
+                  Post-launch monitoring, security patches, and 99.99% infrastructure availability.
+                </p>
+              </div>
             </div>
-            <div>
-              <h5 className="text-xs font-bold text-white font-display">Continuous SLA Care</h5>
-              <p className="text-[11px] text-slate-400 leading-snug mt-0.5">
-                Post-launch monitoring, security patches, and 99.99% infrastructure availability.
-              </p>
-            </div>
-          </div>
-        </div>
+          </MotionStaggerItem>
+        </MotionStagger>
 
       </div>
-    </section>
+    </ScrollSection>
   );
 };

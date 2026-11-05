@@ -36,6 +36,18 @@ export interface WorkProject {
   metrics: string[];
   metricsOrHighlight?: string;
   signalCoordinate?: { x: number; y: number };
+  liveUrl?: string;
+  caseStudyUrl?: string;
+  featured?: boolean;
+  status?: string;
+  developedBy?: string;
+  thumbnail?: string;
+  overview?: string;
+  screenshots?: {
+    title: string;
+    caption: string;
+    src: string;
+  }[];
 }
 
 export interface ProcessStage {
@@ -456,6 +468,55 @@ export const SERVICES_LIST: ServiceDetail[] = [
 ];
 
 export const WORK_PROJECTS: WorkProject[] = [
+  {
+    id: "noble-finance",
+    name: "Noble Finance",
+    tagline: "Finance CRM & Telecalling Management System",
+    category: "Enterprise Software",
+    description: "A comprehensive loan CRM and telecalling management platform engineered for financial services, featuring real-time call tracking, lead qualification workflows, scheduled client meeting dispatch, and automated team performance monitoring.",
+    challenge: "Noble Finance managed high volumes of loan enquiries across manual telephone logs and disparate spreadsheets, causing lead leakage, missed client consultations, lack of agent session visibility, and tedious manual End-of-Day (EOD) reporting.",
+    solution: "Brahmani Information engineered a unified, high-performance web CRM with role-based access for telecallers and managers, automated lead status pipelines, instant meeting status tracking (Scheduled, Completed, Rescheduled), and 1-click Excel reporting.",
+    technologies: ["React", "Node.js", "Tailwind CSS", "REST API", "Session Auth", "Excel Integration"],
+    highlight: "166+ Scheduled Consultations & 179+ Interested Loan Leads Tracked with Zero Latency",
+    metricsOrHighlight: "Real-time Telecaller Session Monitoring & 1-Click Excel Reporting",
+    signalCoordinate: { x: 50, y: 45 },
+    clientType: "Financial Services / Loan Management",
+    liveUrl: "https://nobalfinance.com/login",
+    caseStudyUrl: "/work/noble-finance",
+    featured: true,
+    status: "Officially Launched",
+    developedBy: "Brahmani Information",
+    thumbnail: "/assets/projects/noble-finance/dashboard.png",
+    overview: "Noble Finance is a loan-focused financial services enterprise specializing in personal loans, business loans, and commercial credit consulting. Brahmani Information architected a purpose-built telecalling and client meeting management platform that automates lead management, tracks active agent work sessions, coordinates client consultations, and delivers instant operational visibility.",
+    metrics: [
+      "166+ Client meetings tracked across Scheduled, Completed, and Rescheduled states",
+      "179+ High-intent loan leads qualified with prioritized recall queues",
+      "Real-time telecaller session timer and agent productivity telemetry",
+      "One-click operational Excel export for meetings, attendance, and EOD reports"
+    ],
+    screenshots: [
+      {
+        title: "Official Employee Login Portal",
+        caption: "Secure authentication interface for telecallers and managers with role-based dashboard access.",
+        src: "/assets/projects/noble-finance/login.png"
+      },
+      {
+        title: "Telecalling Manager Command Center",
+        caption: "Centralized overview tracking active session duration, today's calls, interested leads, pending follow-ups, and upcoming appointments.",
+        src: "/assets/projects/noble-finance/dashboard.png"
+      },
+      {
+        title: "Client Meetings & Loan Consultations",
+        caption: "High-density consultation tracker with status filters (Scheduled, Completed, Rescheduled, Cancelled) and rapid search.",
+        src: "/assets/projects/noble-finance/meetings.png"
+      },
+      {
+        title: "Team Performance & Telecaller Analytics",
+        caption: "Comprehensive employee ledger capturing total calls, today's calls, qualified leads, pending follow-ups, and last activity timestamps.",
+        src: "/assets/projects/noble-finance/performance.png"
+      }
+    ]
+  },
   {
     id: "project-logistics",
     name: "Apex Global Logistics Portal",

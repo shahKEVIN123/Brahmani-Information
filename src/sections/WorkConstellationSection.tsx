@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, X, ExternalLink } from 'lucide-react';
+import { Link } from '../router/Router';
 import { WORK_PROJECTS, WorkProject } from '../data/companyData';
 import { SparkleIcon } from '../components/SparkleIcon';
 
@@ -116,33 +117,50 @@ export const WorkConstellationSection: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Architectural Preview Graphic */}
-                    <div className="flex-1 p-5 flex flex-col justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-signal-grid opacity-20 pointer-events-none" />
-
-                      {/* Abstract Interface Wireframe Preview */}
-                      <div className="relative z-10 space-y-2.5">
-                        <div className="flex items-center justify-between">
-                          <div className="h-3 w-1/3 rounded bg-[#005EDA]/30" />
-                          <div className="h-2 w-1/6 rounded bg-[#3894FF]/40" />
+                    {/* Architectural Preview Graphic / Real System Mockup */}
+                    {project.thumbnail ? (
+                      <div className="flex-1 relative overflow-hidden bg-black group/thumb">
+                        <img
+                          src={project.thumbnail}
+                          alt={project.name}
+                          className="w-full h-full object-cover object-top opacity-90 group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-white pointer-events-none">
+                          <span className="bg-[#051026]/90 px-2 py-0.5 rounded border border-[#005EDA]/30 text-emerald-400">
+                            Active Production
+                          </span>
+                          <span className="text-[#38BDF8]">Live Interface</span>
                         </div>
-                        <div className="grid grid-cols-3 gap-2 py-1">
-                          <div className="h-14 rounded-lg bg-[#051026] border border-[#005EDA]/30 p-2 flex flex-col justify-between">
-                            <span className="text-[9px] font-mono text-[#3894FF]">TELEMETRY</span>
-                            <div className="h-1.5 w-3/4 rounded bg-white/20" />
-                          </div>
-                          <div className="h-14 rounded-lg bg-[#051026] border border-[#005EDA]/30 p-2 flex flex-col justify-between">
-                            <span className="text-[9px] font-mono text-[#3894FF]">STATE</span>
-                            <div className="h-1.5 w-1/2 rounded bg-white/20" />
-                          </div>
-                          <div className="h-14 rounded-lg bg-[#051026] border border-[#005EDA]/30 p-2 flex flex-col justify-between">
-                            <span className="text-[9px] font-mono text-[#3894FF]">PIPELINE</span>
-                            <div className="h-1.5 w-2/3 rounded bg-white/20" />
-                          </div>
-                        </div>
-                        <div className="h-2 w-full rounded bg-slate-800" />
                       </div>
-                    </div>
+                    ) : (
+                      <div className="flex-1 p-5 flex flex-col justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 bg-signal-grid opacity-20 pointer-events-none" />
+
+                        {/* Abstract Interface Wireframe Preview */}
+                        <div className="relative z-10 space-y-2.5">
+                          <div className="flex items-center justify-between">
+                            <div className="h-3 w-1/3 rounded bg-[#005EDA]/30" />
+                            <div className="h-2 w-1/6 rounded bg-[#3894FF]/40" />
+                          </div>
+                          <div className="grid grid-cols-3 gap-2 py-1">
+                            <div className="h-14 rounded-lg bg-[#051026] border border-[#005EDA]/30 p-2 flex flex-col justify-between">
+                              <span className="text-[9px] font-mono text-[#3894FF]">TELEMETRY</span>
+                              <div className="h-1.5 w-3/4 rounded bg-white/20" />
+                            </div>
+                            <div className="h-14 rounded-lg bg-[#051026] border border-[#005EDA]/30 p-2 flex flex-col justify-between">
+                              <span className="text-[9px] font-mono text-[#3894FF]">STATE</span>
+                              <div className="h-1.5 w-1/2 rounded bg-white/20" />
+                            </div>
+                            <div className="h-14 rounded-lg bg-[#051026] border border-[#005EDA]/30 p-2 flex flex-col justify-between">
+                              <span className="text-[9px] font-mono text-[#3894FF]">PIPELINE</span>
+                              <div className="h-1.5 w-2/3 rounded bg-white/20" />
+                            </div>
+                          </div>
+                          <div className="h-2 w-full rounded bg-slate-800" />
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Project Details */}
@@ -259,12 +277,34 @@ export const WorkConstellationSection: React.FC = () => {
                   {selectedProject.metricsOrHighlight}
                 </div>
 
-                <div className="flex justify-end pt-2">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {selectedProject.caseStudyUrl && (
+                      <Link
+                        to={selectedProject.caseStudyUrl}
+                        className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#005EDA] hover:bg-[#0066FF] shadow-sm transition-all"
+                      >
+                        <span>Explore Full Case Study</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                    {selectedProject.liveUrl && (
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-[#051026] hover:text-white border border-[#005EDA]/30 transition-colors"
+                      >
+                        <span>Visit Live Site</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-[#005EDA] hover:bg-[#0066FF] shadow-[0_0_20px_rgba(0,94,218,0.5)] transition-all"
+                    className="px-5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-[#020617] border border-white/10 transition-all cursor-pointer"
                   >
-                    Close Project Details
+                    Close
                   </button>
                 </div>
               </div>

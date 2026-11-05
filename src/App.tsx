@@ -10,6 +10,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { WorkPage } from './pages/WorkPage';
+import { NobleFinanceCaseStudyPage } from './pages/NobleFinanceCaseStudyPage';
 import { ProcessPage } from './pages/ProcessPage';
 import { TechnologyPage } from './pages/TechnologyPage';
 import { ContactPage } from './pages/ContactPage';
@@ -53,8 +54,9 @@ export const App: React.FC = () => {
               <Route path="/services/maintenance-support" element={<ServiceDetailPage slugOverride="maintenance-support" />} />
               <Route path="/services/:slug" element={<ServiceDetailPage />} />
 
-              {/* Portfolio, Process, Stack & Conversion Routes */}
+              {/* Portfolio, Case Studies, Process, Stack & Conversion Routes */}
               <Route path="/work" element={<WorkPage />} />
+              <Route path="/work/noble-finance" element={<NobleFinanceCaseStudyPage />} />
               <Route path="/process" element={<ProcessPage />} />
               <Route path="/technology" element={<TechnologyPage />} />
               <Route path="/contact" element={<ContactPage />} />

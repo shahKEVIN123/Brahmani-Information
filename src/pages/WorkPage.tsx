@@ -14,7 +14,7 @@ export const WorkPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeProjectModal, setActiveProjectModal] = useState<WorkProject | null>(null);
 
-  const categories = ['All', 'Web Application', 'UI/UX Design', 'Digital Solutions'];
+  const categories = ['All', 'Enterprise Software', 'Web Application', 'UI/UX Design', 'Digital Solutions'];
 
   const filteredProjects = selectedCategory === 'All'
     ? WORK_PROJECTS
@@ -98,7 +98,13 @@ export const WorkPage: React.FC = () => {
                       <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
                         
                         <div className="space-y-4">
-                          <div className="flex items-center space-x-3">
+                          <div className="flex flex-wrap items-center gap-2">
+                            {project.featured && (
+                              <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center space-x-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                <span>FEATURED • OFFICIALLY LAUNCHED</span>
+                              </span>
+                            )}
                             <span className="text-xs font-mono font-bold text-[#38BDF8] bg-blue-500/10 px-3 py-1 rounded-full border border-blue-400/20">
                               {project.category}
                             </span>
@@ -136,8 +142,8 @@ export const WorkPage: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Tech Badges & CTA */}
-                        <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                        {/* Tech Badges & Actions */}
+                        <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                           <div className="flex flex-wrap gap-1.5">
                             {project.technologies.map((tech) => (
                               <span
@@ -149,41 +155,109 @@ export const WorkPage: React.FC = () => {
                             ))}
                           </div>
 
-                          <button
-                            onClick={() => setActiveProjectModal(project)}
-                            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#38BDF8] hover:text-[#60A5FA] group/btn transition-colors cursor-pointer"
-                          >
-                            <span>View Project Specifications</span>
-                            <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                          </button>
+                          <div className="flex flex-wrap items-center gap-3">
+                            {project.caseStudyUrl && (
+                              <Link
+                                to={project.caseStudyUrl}
+                                className="btn-shimmer inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] transition-all group/cs"
+                              >
+                                <span>View Full Case Study</span>
+                                <ArrowRight className="w-3.5 h-3.5 group-hover/cs:translate-x-1 transition-transform" />
+                              </Link>
+                            )}
+
+                            {project.liveUrl && (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-[#1A1A1A] hover:bg-[#222222] hover:text-white border border-white/10 transition-colors"
+                              >
+                                <span>Live Website</span>
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </a>
+                            )}
+
+                            <button
+                              onClick={() => setActiveProjectModal(project)}
+                              className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#38BDF8] hover:text-[#60A5FA] group/btn transition-colors cursor-pointer py-1"
+                            >
+                              <span>Specs</span>
+                              <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                            </button>
+                          </div>
                         </div>
 
                       </div>
 
-                      {/* Right Column: 2.5D Mockup / Interface Canvas */}
-                      <div className="lg:col-span-5 bg-gradient-to-br from-[#111111] to-[#0A0A0A] p-8 sm:p-10 text-white flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10 relative overflow-hidden">
+                      {/* Right Column: Screenshot Preview or 2.5D Mockup */}
+                      <div className="lg:col-span-5 bg-gradient-to-br from-[#111111] to-[#0A0A0A] p-6 sm:p-8 text-white flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10 relative overflow-hidden">
                         
                         <div className="space-y-4">
                           <div className="flex items-center justify-between pb-3 border-b border-white/10">
                             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-                              LIVE ARCHITECTURAL HIGHLIGHT
+                              {project.thumbnail ? 'PRODUCTION SYSTEM PREVIEW' : 'LIVE ARCHITECTURAL HIGHLIGHT'}
                             </span>
                             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
                               VERIFIED PRODUCTION
                             </span>
                           </div>
 
-                          <div className="bg-[#151515] rounded-2xl p-4 sm:p-5 border border-white/10 space-y-3 font-mono text-xs group-hover/proj:border-blue-500/30 transition-colors shadow-sm">
-                            <div className="text-slate-400 text-[11px] pb-1 border-b border-white/10 flex items-center justify-between">
-                              <span>telemetry.metric</span>
-                              <span className="text-[#38BDF8]">60fps Sync</span>
-                            </div>
-                            <p className="text-slate-300 text-xs leading-relaxed font-sans">
-                              "{project.highlight}"
-                            </p>
-                          </div>
+                          {project.thumbnail ? (
+                            <div className="space-y-3">
+                              {project.caseStudyUrl ? (
+                                <Link to={project.caseStudyUrl} className="block group/thumb">
+                                  <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[16/10] shadow-lg group-hover/thumb:border-[#005EDA]/60 transition-colors">
+                                    <img
+                                      src={project.thumbnail}
+                                      alt={`${project.name} Production Interface`}
+                                      className="w-full h-full object-cover object-top group-hover/thumb:scale-105 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                                    <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white">
+                                      <span className="bg-[#051026]/90 px-2 py-0.5 rounded border border-[#005EDA]/30 text-[10px]">
+                                        Telecalling Portal
+                                      </span>
+                                      <span className="text-[#38BDF8] flex items-center space-x-1 text-[11px]">
+                                        <span>Case Study</span>
+                                        <ArrowRight className="w-3 h-3" />
+                                      </span>
+                                    </div>
+                                  </div>
+                                </Link>
+                              ) : (
+                                <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[16/10]">
+                                  <img
+                                    src={project.thumbnail}
+                                    alt={`${project.name} Production Interface`}
+                                    className="w-full h-full object-cover object-top"
+                                  />
+                                </div>
+                              )}
 
-                          <div className="space-y-2 pt-2">
+                              <div className="bg-[#151515] rounded-xl p-3 border border-white/10 space-y-1 font-mono text-xs">
+                                <div className="text-slate-400 text-[10px] pb-1 border-b border-white/10 flex items-center justify-between">
+                                  <span>operational.highlight</span>
+                                  <span className="text-[#38BDF8]">Live Telemetry</span>
+                                </div>
+                                <p className="text-slate-300 text-xs leading-relaxed font-sans">
+                                  "{project.highlight}"
+                                </p>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="bg-[#151515] rounded-2xl p-4 sm:p-5 border border-white/10 space-y-3 font-mono text-xs group-hover/proj:border-blue-500/30 transition-colors shadow-sm">
+                              <div className="text-slate-400 text-[11px] pb-1 border-b border-white/10 flex items-center justify-between">
+                                <span>telemetry.metric</span>
+                                <span className="text-[#38BDF8]">60fps Sync</span>
+                              </div>
+                              <p className="text-slate-300 text-xs leading-relaxed font-sans">
+                                "{project.highlight}"
+                              </p>
+                            </div>
+                          )}
+
+                          <div className="space-y-2 pt-1">
                             <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
                               Verified Deliverables:
                             </span>
@@ -196,7 +270,7 @@ export const WorkPage: React.FC = () => {
                           </div>
                         </div>
 
-                        <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
                           <span>Brahmani Codebase</span>
                           <span className="text-[#38BDF8]">Zero Regressions</span>
                         </div>
@@ -270,17 +344,39 @@ export const WorkPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-2">
-                <Link
-                  to="/start-a-project"
-                  className="btn-shimmer inline-flex items-center space-x-2 px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl transition-all group"
-                >
-                  <span>Inquire About Similar Project</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  {activeProjectModal.caseStudyUrl && (
+                    <Link
+                      to={activeProjectModal.caseStudyUrl}
+                      className="btn-shimmer inline-flex items-center space-x-1.5 px-4 py-2.5 text-xs font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-xl transition-all"
+                    >
+                      <span>Read Full Case Study</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+                  {activeProjectModal.liveUrl && (
+                    <a
+                      href={activeProjectModal.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1.5 px-3.5 py-2.5 text-xs font-semibold text-slate-200 bg-[#1E1E1E] hover:text-white rounded-xl border border-white/10 transition-colors"
+                    >
+                      <span>Visit Live Website</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  <Link
+                    to="/start-a-project"
+                    className="inline-flex items-center space-x-2 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:text-white bg-[#1A1A1A] hover:bg-[#222222] rounded-xl border border-white/10 transition-all group"
+                  >
+                    <span>Inquire Similar</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
                 <button
                   onClick={() => setActiveProjectModal(null)}
-                  className="text-xs font-medium text-slate-400 hover:text-white cursor-pointer"
+                  className="text-xs font-medium text-slate-400 hover:text-white cursor-pointer px-2 py-1"
                 >
                   Close
                 </button>

@@ -67,8 +67,8 @@ export const HeroImageVisual: React.FC<HeroImageVisualProps> = ({
           alt={alt}
           priority={true}
           objectFit={objectFit}
-          containerClassName="w-full h-full bg-[#151515]"
-          className="group-hover/visual:scale-[1.03] transition-transform duration-700 ease-out"
+          containerClassName={`w-full h-full bg-[#151515] ${objectFit === 'contain' ? 'p-3 sm:p-4 md:p-5 flex items-center justify-center' : ''}`}
+          className={objectFit === 'contain' ? 'w-full h-full object-contain' : 'group-hover/visual:scale-[1.03] transition-transform duration-700 ease-out'}
           fallbackSrc={fallbackSrc}
         />
       </div>

@@ -49,7 +49,22 @@ export const ProcessPage: React.FC = () => {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         }
-        visual={<HeroImageVisual src="/assets/heroes/process-hero.png" alt="Structured Digital Product Engineering Workflow" />}
+        visual={
+          <div className="relative w-full max-w-[560px] xl:max-w-[620px] mx-auto select-none flex items-center justify-center">
+            <img
+              src="/assets/heroes/process-hero.png?v=5"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.includes('/process-hero.png?v=5')) {
+                  target.src = '/process-hero.png?v=5';
+                }
+              }}
+              alt="Structured Digital Product Engineering Workflow"
+              className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-[1.02]"
+              loading="eager"
+            />
+          </div>
+        }
       />
 
       {/* 2. Process Overview & Philosophy */}

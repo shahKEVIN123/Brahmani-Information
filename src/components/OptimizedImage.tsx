@@ -34,6 +34,24 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [hasError, setHasError] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  // Check if image is already cached/complete
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+      setIsLoaded(true);
+    }
+  }, [src, isInView]);
+
+  // Safety fallback: if priority image doesn't report onLoad within 500ms, force visible so it's not hidden
+  useEffect(() => {
+    if (priority && !isLoaded) {
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [priority, isLoaded, src]);
 
   // Progressive IntersectionObserver trigger for below-the-fold images
   useEffect(() => {
@@ -97,6 +115,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
       {isInView && (
         <img
+          ref={imgRef}
           src={hasError && fallbackSrc ? fallbackSrc : src}
           alt={alt}
           srcSet={!hasError ? srcSet : undefined}
@@ -110,6 +129,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
           onError={() => {
             if (!hasError && fallbackSrc) {
               setHasError(true);
+            } else {
+              setIsLoaded(true);
             }
           }}
           className={`w-full h-full ${fitClass} transition-opacity duration-300 ${

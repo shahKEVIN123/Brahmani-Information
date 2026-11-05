@@ -112,7 +112,15 @@ export const StartProjectPage: React.FC = () => {
           { label: 'Home', href: '/' },
           { label: 'Start a Project', href: '/start-a-project' },
         ]}
-        visual={<HeroImageVisual src="/assets/heroes/start-project-hero.png" alt="Project Scoping and Architectural Roadmap Intake" />}
+        visual={
+          <HeroImageVisual
+            src="/assets/heroes/start-project-hero.png?v=4"
+            fallbackSrc="/start-project-hero.png?v=4"
+            alt="Project Scoping and Architectural Roadmap Intake"
+            objectFit="contain"
+            aspectRatio="aspect-[4/3]"
+          />
+        }
       />
 
       {/* 2. Conversion Intake Form Container */}

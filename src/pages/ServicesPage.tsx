@@ -37,7 +37,15 @@ export const ServicesPage: React.FC = () => {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         }
-        visual={<HeroImageVisual src="/assets/heroes/services-hero.png" alt="Modern Engineering and Technology Services Architecture" />}
+        visual={
+          <HeroImageVisual
+            src="/assets/heroes/services-hero.png?v=4"
+            fallbackSrc="/services-hero.png?v=4"
+            alt="Modern Engineering and Technology Services Architecture"
+            objectFit="contain"
+            aspectRatio="aspect-[3/2]"
+          />
+        }
       />
 
       {/* Main 12 Categories Editorial Index */}

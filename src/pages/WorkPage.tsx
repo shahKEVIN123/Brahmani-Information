@@ -48,9 +48,11 @@ export const WorkPage: React.FC = () => {
         }
         visual={
           <HeroImageVisual
-            src="/assets/heroes/work-hero.png"
+            src="/assets/heroes/work-hero.png?v=4"
+            fallbackSrc="/work-hero.png?v=4"
             alt="Brahmani Information Production Digital Product & Dashboard Engineering Showcase"
-            frameless={true}
+            objectFit="contain"
+            aspectRatio="aspect-[3/2]"
           />
         }
       />

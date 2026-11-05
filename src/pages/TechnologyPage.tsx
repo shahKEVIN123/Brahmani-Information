@@ -37,7 +37,15 @@ export const TechnologyPage: React.FC = () => {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         }
-        visual={<HeroImageVisual src="/assets/heroes/technology-hero.png" alt="Connected Multi-Tier Technology Stack and Enterprise Architecture" />}
+        visual={
+          <HeroImageVisual
+            src="/assets/heroes/technology-hero.png?v=4"
+            fallbackSrc="/technology-hero.png?v=4"
+            alt="Connected Multi-Tier Technology Stack and Enterprise Architecture"
+            objectFit="contain"
+            aspectRatio="aspect-[3/2]"
+          />
+        }
       />
 
       {/* 2. Architectural Philosophy: Why This Stack */}

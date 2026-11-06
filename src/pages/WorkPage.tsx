@@ -9,6 +9,7 @@ import { WORK_PROJECTS, WorkProject } from '../data/companyData';
 import { MotionReveal } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
+import { MobileWork } from '../components/mobile/MobileWork';
 
 export const WorkPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -21,7 +22,9 @@ export const WorkPage: React.FC = () => {
     : WORK_PROJECTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* 1. Work Hero */}
       <PageHero
@@ -406,7 +409,12 @@ export const WorkPage: React.FC = () => {
           </Link>
         </MotionReveal>
       </ScrollSection>
+      </div>
 
-    </div>
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileWork />
+      </div>
+    </>
   );
 };

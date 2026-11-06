@@ -31,6 +31,7 @@ import {
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
+import { MobileHome } from '../components/mobile/MobileHome';
 
 export const HomePage: React.FC = () => {
   // Interactive state for Technology Index circular cloud inspection
@@ -76,7 +77,9 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* ======================================================== */}
       {/* 1. HERO SECTION (DYNAMIC & HIGH-END ENTRANCE)             */}
@@ -363,6 +366,12 @@ export const HomePage: React.FC = () => {
           )}
         </div>
       </ScrollSection>
-    </div>
+      </div>
+
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileHome />
+      </div>
+    </>
   );
 };

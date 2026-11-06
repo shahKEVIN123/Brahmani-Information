@@ -9,10 +9,13 @@ import { SERVICES_LIST } from '../data/companyData';
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
+import { MobileServices } from '../components/mobile/MobileServices';
 
 export const ServicesPage: React.FC = () => {
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* Services Hero */}
       <PageHero
@@ -227,7 +230,12 @@ export const ServicesPage: React.FC = () => {
           </Link>
         </MotionReveal>
       </ScrollSection>
+      </div>
 
-    </div>
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileServices />
+      </div>
+    </>
   );
 };

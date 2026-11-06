@@ -8,10 +8,13 @@ import { COMPANY_INFO } from '../data/companyData';
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
+import { MobileAbout } from '../components/mobile/MobileAbout';
 
 export const AboutPage: React.FC = () => {
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* 1. About Hero */}
       <PageHero
@@ -277,7 +280,12 @@ export const AboutPage: React.FC = () => {
           </Link>
         </MotionReveal>
       </ScrollSection>
+      </div>
 
-    </div>
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileAbout />
+      </div>
+    </>
   );
 };

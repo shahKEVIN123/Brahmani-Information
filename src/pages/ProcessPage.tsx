@@ -9,6 +9,7 @@ import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/mo
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
 import { ScrollProgressSpine } from '../components/motion/ScrollProgressSpine';
+import { MobileProcess } from '../components/mobile/MobileProcess';
 
 const STAGE_ICONS: Record<string, React.ElementType> = {
   'DISCOVER': Compass,
@@ -24,7 +25,9 @@ export const ProcessPage: React.FC = () => {
   const stagesContainerRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* 1. Process Hero */}
       <PageHero
@@ -266,7 +269,12 @@ export const ProcessPage: React.FC = () => {
           </Link>
         </MotionReveal>
       </ScrollSection>
+      </div>
 
-    </div>
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileProcess />
+      </div>
+    </>
   );
 };

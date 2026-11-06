@@ -9,6 +9,7 @@ import { NotFoundPage } from './NotFoundPage';
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
+import { MobileServiceDetail } from '../components/mobile/MobileServiceDetail';
 
 const STAGE_ICONS = [Compass, Layers, Code2, Rocket];
 
@@ -70,7 +71,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
   };
 
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* 1. Service Hero */}
       <PageHero
@@ -320,7 +323,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slugOverri
           </div>
         </MotionReveal>
       </ScrollSection>
+      </div>
 
-    </div>
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileServiceDetail service={service} serviceIndex={serviceIndex} />
+      </div>
+    </>
   );
 };

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Menu,
-  X,
   ArrowRight,
   ChevronDown,
   Globe,
@@ -77,7 +75,6 @@ const SERVICE_TAGLINES: Record<string, string> = {
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const { pathname } = useLocation();
 
@@ -98,7 +95,6 @@ export const Navbar: React.FC = () => {
 
   // Close menus on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
   }, [pathname]);
 
@@ -270,89 +266,17 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center space-x-3">
+          {/* Mobile Right Action: Clean 'Start a Project' CTA Pill */}
+          <div className="flex lg:hidden items-center">
             <Link
               to="/start-a-project"
-              className="inline-flex items-center px-3.5 py-1.5 text-xs font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] rounded-lg shadow-sm"
+              className="inline-flex items-center px-3.5 py-1.5 text-xs font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] active:bg-[#003A94] rounded-lg shadow-sm transition-all"
             >
               Start
             </Link>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#005EDA]"
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#005EDA]" /> : <Menu className="w-6 h-6 text-slate-200" />}
-            </button>
           </div>
         </div>
       </div>
-
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div 
-          className="lg:hidden bg-[#0E0E0E] border-b border-white/10 px-4 pt-3 pb-6 shadow-2xl animate-fadeIn max-h-[85vh] overflow-y-auto"
-          style={{ backgroundColor: '#0e0e0e' }}
-        >
-          <div className="space-y-1">
-            {navLinks.map((link) => (
-              <div key={link.name}>
-                <NavLink
-                  to={link.href}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium ${
-                      isActive
-                        ? 'text-[#005EDA] bg-[#005EDA]/15 font-semibold'
-                        : 'text-slate-300 hover:text-white hover:bg-white/5'
-                    }`
-                  }
-                >
-                  <span>{link.name}</span>
-                  {link.hasDropdown && <ChevronDown className="w-4 h-4 text-slate-400" />}
-                </NavLink>
-
-                {link.hasDropdown && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-3 pr-1 py-2 border-l-2 border-white/10 ml-4 my-1">
-                    {SERVICES_LIST.map((srv) => {
-                      const IconComponent = SERVICE_ICONS[srv.slug] || Globe;
-                      return (
-                        <NavLink
-                          key={srv.slug}
-                          to={`/services/${srv.slug}`}
-                          className={({ isActive }) =>
-                            `flex items-center space-x-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                              isActive
-                                ? 'text-[#005EDA] font-semibold bg-[#005EDA]/15 border border-[#005EDA]/30'
-                                : 'text-slate-400 hover:text-white hover:bg-white/5'
-                            }`
-                          }
-                        >
-                          <div className="w-6 h-6 rounded bg-white/5 text-[#005EDA] flex items-center justify-center flex-shrink-0">
-                            <IconComponent className="w-3.5 h-3.5" />
-                          </div>
-                          <span className="truncate">{srv.title}</span>
-                        </NavLink>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            ))}
-
-            <div className="pt-4 mt-2 border-t border-white/10">
-              <Link
-                to="/start-a-project"
-                className="w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-[#005EDA] hover:bg-[#004BBB] shadow-md transition-all"
-              >
-                <span>Start a Project</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

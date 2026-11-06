@@ -55,11 +55,11 @@ export const WhatsAppButton: React.FC = () => {
   return (
     <div 
       ref={containerRef} 
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end select-none"
+      className="fixed bottom-[4.75rem] md:bottom-6 right-4 md:right-6 z-40 md:z-50 flex flex-col items-end select-none"
     >
       {/* Interactive WhatsApp Chat Popup Card */}
       {isOpen && (
-        <div className="mb-4 w-[340px] sm:w-[360px] bg-[#151515] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_4px_16px_rgba(0,0,0,0.4)] border border-white/10 overflow-hidden animate-fadeIn">
+        <div className="mb-3 w-[calc(100vw-2rem)] max-w-[340px] sm:w-[360px] bg-[#151515] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_4px_16px_rgba(0,0,0,0.4)] border border-white/10 overflow-hidden animate-fadeIn">
           
           {/* Card Header (Authentic WhatsApp Theme) */}
           <div className="bg-[#075E54] text-white p-4 flex items-center justify-between">

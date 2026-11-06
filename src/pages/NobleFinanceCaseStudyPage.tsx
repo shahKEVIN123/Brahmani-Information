@@ -28,6 +28,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
+import { MobileNobleFinance } from '../components/mobile/MobileNobleFinance';
 
 interface ScreenshotItem {
   id: string;
@@ -93,7 +94,9 @@ export const NobleFinanceCaseStudyPage: React.FC = () => {
   const [selectedScreenshot, setSelectedScreenshot] = useState<ScreenshotItem | null>(null);
 
   return (
-    <div className="space-y-0">
+    <>
+      {/* Desktop Experience (Unchanged, 100% Preserved) */}
+      <div className="hidden md:block space-y-0">
       
       {/* 1. Hero Section */}
       <PageHero
@@ -1083,8 +1086,13 @@ export const NobleFinanceCaseStudyPage: React.FC = () => {
           </div>
         )}
       </AnimatePresence>
+      </div>
 
-    </div>
+      {/* App-Like Mobile Website Experience */}
+      <div className="block md:hidden">
+        <MobileNobleFinance />
+      </div>
+    </>
   );
 };
 export default NobleFinanceCaseStudyPage;

@@ -39,10 +39,10 @@ export const TechnologyPage: React.FC = () => {
         }
         visual={
           <HeroImageVisual
-            src="/assets/heroes/technology-hero.png?v=4"
-            fallbackSrc="/technology-hero.png?v=4"
+            src="/assets/heroes/technology-hero.png?v=6"
+            fallbackSrc="/technology-hero.png?v=6"
             alt="Connected Multi-Tier Technology Stack and Enterprise Architecture"
-            objectFit="contain"
+            objectFit="cover"
             aspectRatio="aspect-[3/2]"
           />
         }

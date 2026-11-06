@@ -39,10 +39,10 @@ export const ServicesPage: React.FC = () => {
         }
         visual={
           <HeroImageVisual
-            src="/assets/heroes/services-hero.png?v=4"
-            fallbackSrc="/services-hero.png?v=4"
+            src="/assets/heroes/services-hero.png?v=6"
+            fallbackSrc="/services-hero.png?v=6"
             alt="Modern Engineering and Technology Services Architecture"
-            objectFit="contain"
+            objectFit="cover"
             aspectRatio="aspect-[3/2]"
           />
         }

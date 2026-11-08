@@ -94,9 +94,11 @@ export const ContactPage: React.FC = () => {
         ]}
         visual={
           <HeroImageVisual
-            src="/contact-hero.png"
-            fallbackSrc="/assets/heroes/contact-hero.png"
-            alt="Direct Digital Communication and Technical Consultation"
+            src="/assets/heroes/contact-hero.jpg?v=7"
+            fallbackSrc="/contact-hero.jpg?v=7"
+            alt="Direct Digital Communication and Technical Consultation - Brahmani Information"
+            objectFit="cover"
+            aspectRatio="aspect-[3/2]"
           />
         }
       />

@@ -3,7 +3,6 @@ import { Mail, Send, CheckCircle2, AlertCircle, ShieldCheck, Clock, MapPin, Arro
 import { Link } from '../router/Router';
 import { PageHero } from '../components/PageHero';
 import { SectionHeader } from '../components/SectionHeader';
-import { HeroImageVisual } from '../components/HeroImageVisual';
 import { COMPANY_INFO } from '../data/companyData';
 import { MotionReveal } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
@@ -93,13 +92,25 @@ export const ContactPage: React.FC = () => {
           { label: 'Contact', href: '/contact' },
         ]}
         visual={
-          <HeroImageVisual
-            src="/assets/heroes/contact-hero.jpg?v=7"
-            fallbackSrc="/contact-hero.jpg?v=7"
-            alt="Direct Digital Communication and Technical Consultation - Brahmani Information"
-            objectFit="cover"
-            aspectRatio="aspect-[3/2]"
-          />
+          <div className="relative w-full max-w-[560px] xl:max-w-[620px] mx-auto select-none flex items-center justify-center">
+            {/* Soft Ambient Depth Glow Behind Visual */}
+            <div 
+              className="absolute -inset-4 bg-gradient-to-tr from-blue-600/25 via-indigo-950/30 to-blue-500/15 rounded-3xl blur-2xl -z-10 pointer-events-none animate-soft-float" 
+              aria-hidden="true"
+            />
+            <img
+              src="/assets/heroes/contact-hero.jpg?v=8"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.includes('/contact-hero.jpg?v=8')) {
+                  target.src = '/contact-hero.jpg?v=8';
+                }
+              }}
+              alt="Direct Digital Communication and Technical Consultation - Brahmani Information"
+              className="w-full h-auto rounded-2xl object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-[1.02]"
+              loading="eager"
+            />
+          </div>
         }
       />
 

@@ -99,15 +99,15 @@ export const ContactPage: React.FC = () => {
               aria-hidden="true"
             />
             <img
-              src="/assets/heroes/contact-hero.jpg?v=8"
+              src="/assets/heroes/contact-hero.png?v=10"
               onError={(e) => {
                 const target = e.currentTarget;
-                if (!target.src.includes('/contact-hero.jpg?v=8')) {
-                  target.src = '/contact-hero.jpg?v=8';
+                if (!target.src.includes('/contact-hero.png?v=10')) {
+                  target.src = '/contact-hero.png?v=10';
                 }
               }}
               alt="Direct Digital Communication and Technical Consultation - Brahmani Information"
-              className="w-full h-auto rounded-2xl object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-[1.02]"
+              className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,94,218,0.35)] transition-transform duration-500 hover:scale-[1.02]"
               loading="eager"
             />
           </div>

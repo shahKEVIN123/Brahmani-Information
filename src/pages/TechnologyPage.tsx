@@ -9,13 +9,10 @@ import { TECHNOLOGIES_DATA } from '../data/companyData';
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
-import { MobileTechnology } from '../components/mobile/MobileTechnology';
 
 export const TechnologyPage: React.FC = () => {
   return (
-    <>
-      {/* Desktop Experience (Unchanged, 100% Preserved) */}
-      <div className="hidden md:block space-y-0">
+    <div className="space-y-0">
       
       {/* 1. Technology Hero */}
       <PageHero
@@ -270,12 +267,7 @@ export const TechnologyPage: React.FC = () => {
           </Link>
         </MotionReveal>
       </ScrollSection>
-      </div>
 
-      {/* App-Like Mobile Website Experience */}
-      <div className="block md:hidden">
-        <MobileTechnology />
-      </div>
-    </>
+    </div>
   );
 };

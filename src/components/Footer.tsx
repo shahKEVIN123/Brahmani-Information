@@ -6,7 +6,7 @@ import { MotionReveal } from './motion/MotionReveal';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="hidden md:block bg-[#0A0A0A] text-slate-300 pt-16 pb-12 border-t border-white/10">
+    <footer className="bg-[#0A0A0A] text-slate-300 pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Multi-Column Content */}

@@ -8,7 +8,6 @@ import { COMPANY_INFO } from '../data/companyData';
 import { MotionReveal } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
-import { MobileContact } from '../components/mobile/MobileContact';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -77,9 +76,7 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <>
-      {/* Desktop Experience (Unchanged, 100% Preserved) */}
-      <div className="hidden md:block space-y-0">
+    <div className="space-y-0">
       
       {/* 1. Contact Hero */}
       <PageHero
@@ -355,12 +352,7 @@ export const ContactPage: React.FC = () => {
           </div>
         </div>
       </ScrollSection>
-      </div>
 
-      {/* App-Like Mobile Website Experience */}
-      <div className="block md:hidden">
-        <MobileContact />
-      </div>
-    </>
+    </div>
   );
 };

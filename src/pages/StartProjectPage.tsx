@@ -7,7 +7,6 @@ import { COMPANY_INFO, SERVICES_LIST } from '../data/companyData';
 import { MotionReveal, MotionStagger, MotionStaggerItem } from '../components/motion/MotionReveal';
 import { ScrollSection } from '../components/motion/ScrollSection';
 import { InteractiveCard } from '../components/motion/InteractiveCard';
-import { MobileStartProject } from '../components/mobile/MobileStartProject';
 
 export const StartProjectPage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<string>('Web Development');
@@ -97,9 +96,7 @@ export const StartProjectPage: React.FC = () => {
   };
 
   return (
-    <>
-      {/* Desktop Experience (Unchanged, 100% Preserved) */}
-      <div className="hidden md:block space-y-0">
+    <div className="space-y-0">
       
       {/* 1. Page Hero */}
       <PageHero
@@ -445,12 +442,7 @@ export const StartProjectPage: React.FC = () => {
           </MotionStagger>
         </div>
       </ScrollSection>
-      </div>
 
-      {/* App-Like Mobile Website Experience */}
-      <div className="block md:hidden">
-        <MobileStartProject />
-      </div>
-    </>
+    </div>
   );
 };

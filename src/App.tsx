@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from './router/Router';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
-import { MobileBottomNav } from './components/mobile/MobileBottomNav';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -32,7 +31,7 @@ export const App: React.FC = () => {
         <Navbar />
 
         {/* Multi-Page Route Render Outlet with Smooth Page Transitions */}
-        <main id="main-content" className="flex-1 flex flex-col pb-20 md:pb-0">
+        <main id="main-content" className="flex-1 flex flex-col">
           <PageTransition>
             <Routes>
               {/* Primary Routes */}
@@ -74,9 +73,6 @@ export const App: React.FC = () => {
 
         {/* Global Persistent Bottom-Right WhatsApp Quick Contact */}
         <WhatsAppButton />
-
-        {/* App-Like Mobile Fixed Bottom Navigation (Mobile Only) */}
-        <MobileBottomNav />
 
       </div>
     </BrowserRouter>

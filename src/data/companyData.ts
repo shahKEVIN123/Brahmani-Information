@@ -82,6 +82,7 @@ export const COMPANY_INFO = {
   whatsappNumber: "+919328054690",
   phone: "+91 9328054690",
   address: "Ahmedabad, Gujarat, India",
+  instagram: "https://www.instagram.com/brahmaniinformation/",
   inquiryTypes: [
     "Web Application Development",
     "Custom Web Development",

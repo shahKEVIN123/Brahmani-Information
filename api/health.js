@@ -1,5 +1,8 @@
+import { validateSmtpConfig } from '../server/emailService.js';
+
 export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
+  const smtpStatus = validateSmtpConfig();
   res.status(200).json({
     status: 'ok',
     service: 'Brahmani Information Email API (Serverless)',
@@ -7,7 +10,8 @@ export default function handler(req, res) {
       to: process.env.EMAIL_TO || 'info@brahmaniinformation.com',
       cc: process.env.EMAIL_CC || 'shahkevin1911@gmail.com',
     },
-    smtpConfigured: Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS),
+    smtpConfigured: smtpStatus.valid,
+    missingVariables: smtpStatus.valid ? [] : smtpStatus.missing,
     timestamp: new Date().toISOString(),
   });
 }

@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { sendStartProjectEmail, sendContactEmail } from './emailService.js';
+import { sendStartProjectEmail, sendContactEmail, validateSmtpConfig } from './emailService.js';
 
 // Load environment variables
 dotenv.config();
@@ -69,6 +69,7 @@ if (cleanupTimer.unref) {
 
 // API Health Check
 app.get('/api/health', (req, res) => {
+  const smtpStatus = validateSmtpConfig();
   res.json({
     status: 'ok',
     service: 'Brahmani Information Email API',
@@ -76,7 +77,8 @@ app.get('/api/health', (req, res) => {
       to: process.env.EMAIL_TO || 'info@brahmaniinformation.com',
       cc: process.env.EMAIL_CC || 'shahkevin1911@gmail.com',
     },
-    smtpConfigured: Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS),
+    smtpConfigured: smtpStatus.valid,
+    missingVariables: smtpStatus.valid ? [] : smtpStatus.missing,
     timestamp: new Date().toISOString(),
   });
 });
@@ -94,11 +96,12 @@ app.post('/api/start-project', rateLimit, async (req, res) => {
       },
     });
   } catch (error) {
+    const statusCode = error.statusCode || (error.message.includes('required') || error.message.includes('valid') ? 400 : 500);
+    const clientMessage = error.clientMessage || error.message || 'Failed to submit project intake request. Please try again later.';
     console.error('[API /api/start-project Error]:', error.message);
-    const isValidationError = error.message.includes('required') || error.message.includes('valid');
-    return res.status(isValidationError ? 400 : 500).json({
+    return res.status(statusCode).json({
       success: false,
-      error: error.message || 'Failed to submit project intake request. Please try again later.',
+      error: clientMessage,
     });
   }
 });
@@ -116,11 +119,12 @@ app.post('/api/contact', rateLimit, async (req, res) => {
       },
     });
   } catch (error) {
+    const statusCode = error.statusCode || (error.message.includes('required') || error.message.includes('valid') ? 400 : 500);
+    const clientMessage = error.clientMessage || error.message || 'Failed to submit inquiry. Please try again later.';
     console.error('[API /api/contact Error]:', error.message);
-    const isValidationError = error.message.includes('required') || error.message.includes('valid');
-    return res.status(isValidationError ? 400 : 500).json({
+    return res.status(statusCode).json({
       success: false,
-      error: error.message || 'Failed to submit inquiry. Please try again later.',
+      error: clientMessage,
     });
   }
 });
@@ -144,12 +148,19 @@ app.use((req, res, next) => {
 // Only bind to port if executed directly as entrypoint (e.g. node server/server.js)
 const isDirectEntry = process.argv[1] && (process.argv[1].endsWith('server.js') || process.argv[1].endsWith('server'));
 if (isDirectEntry) {
+  const smtpCheck = validateSmtpConfig();
   app.listen(PORT, () => {
     console.log(`====================================================`);
     console.log(`🚀 Brahmani Information Backend Server running on port ${PORT}`);
     console.log(`📧 Form Submissions configured for:`);
     console.log(`   To: ${process.env.EMAIL_TO || 'info@brahmaniinformation.com'}`);
     console.log(`   CC: ${process.env.EMAIL_CC || 'shahkevin1911@gmail.com'}`);
+    if (smtpCheck.valid) {
+      console.log(`✅ SMTP Status: CONFIGURED (Host: ${smtpCheck.host}, User: ${smtpCheck.user})`);
+    } else {
+      console.warn(`⚠️ SMTP Status: INCOMPLETE (Missing: ${smtpCheck.missing.join(', ')})`);
+      console.warn(`   Configure these variables in your .env or cloud hosting dashboard.`);
+    }
     console.log(`====================================================`);
   });
 }

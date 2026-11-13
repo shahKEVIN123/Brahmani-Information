@@ -25,11 +25,12 @@ export default async function handler(req, res) {
       },
     });
   } catch (error) {
+    const statusCode = error.statusCode || (error.message.includes('required') || error.message.includes('valid') ? 400 : 500);
+    const clientMessage = error.clientMessage || error.message || 'Failed to submit project intake request. Please try again later.';
     console.error('[Vercel API /api/start-project Error]:', error.message);
-    const isValidationError = error.message.includes('required') || error.message.includes('valid');
-    return res.status(isValidationError ? 400 : 500).json({
+    return res.status(statusCode).json({
       success: false,
-      error: error.message || 'Failed to submit project intake request. Please try again later.',
+      error: clientMessage,
     });
   }
 }

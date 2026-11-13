@@ -9,6 +9,45 @@ const DEFAULT_TO = 'info@brahmaniinformation.com';
 const DEFAULT_CC = 'shahkevin1911@gmail.com';
 
 /**
+ * Custom error class for email service operations with HTTP status and user-safe messages.
+ */
+export class EmailServiceError extends Error {
+  constructor(message, statusCode = 500, code = 'EMAIL_ERROR', clientMessage = null) {
+    super(message);
+    this.name = 'EmailServiceError';
+    this.statusCode = statusCode;
+    this.code = code;
+    this.clientMessage = clientMessage || message;
+  }
+}
+
+/**
+ * Validates whether the required SMTP environment variables are present and configured.
+ */
+export function validateSmtpConfig() {
+  const host = process.env.SMTP_HOST ? process.env.SMTP_HOST.trim() : '';
+  const user = process.env.SMTP_USER ? process.env.SMTP_USER.trim() : '';
+  const rawPass = process.env.SMTP_PASS ? process.env.SMTP_PASS.trim() : '';
+  const pass = rawPass.replace(/^["']|["']$/g, '');
+  const port = parseInt(process.env.SMTP_PORT || '587', 10);
+  const secure = process.env.SMTP_SECURE === 'true' || port === 465;
+
+  const missing = [];
+  if (!host) missing.push('SMTP_HOST');
+  if (!user) missing.push('SMTP_USER');
+  if (!pass) missing.push('SMTP_PASS');
+
+  return {
+    valid: missing.length === 0,
+    missing,
+    host,
+    user,
+    port,
+    secure,
+  };
+}
+
+/**
  * Escapes HTML characters to prevent HTML/XSS injection in email clients.
  */
 function escapeHtml(text) {
@@ -41,25 +80,23 @@ function isValidEmail(email) {
  * Creates and returns the active nodemailer transporter using environment variables.
  */
 export async function getTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = parseInt(process.env.SMTP_PORT || '587', 10);
-  const secure = process.env.SMTP_SECURE === 'true' || port === 465;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-
   // Mock / JSON transporter for automated testing & verification
   if (process.env.SMTP_MOCK === 'true') {
     return nodemailer.createTransport({ jsonTransport: true });
   }
 
-  if (host && user && pass) {
+  const config = validateSmtpConfig();
+
+  if (config.valid) {
+    const rawPass = process.env.SMTP_PASS.trim();
+    const cleanPass = rawPass.replace(/^["']|["']$/g, '');
     return nodemailer.createTransport({
-      host,
-      port,
-      secure,
+      host: config.host,
+      port: config.port,
+      secure: config.secure,
       auth: {
-        user,
-        pass,
+        user: config.user,
+        pass: cleanPass,
       },
       tls: {
         rejectUnauthorized: process.env.SMTP_TLS_REJECT_UNAUTHORIZED !== 'false',
@@ -86,11 +123,15 @@ export async function getTransporter() {
     }
   }
 
-  const missing = [];
-  if (!host) missing.push('SMTP_HOST');
-  if (!user) missing.push('SMTP_USER');
-  if (!pass) missing.push('SMTP_PASS');
-  throw new Error(`Email server is missing credentials in .env: ${missing.join(', ')}. Please configure your SMTP password in .env file.`);
+  const logMessage = `[EmailService Configuration Error]: Missing required SMTP environment variables: ${config.missing.join(', ')}. Please configure these in your hosting environment (e.g. Vercel Project Settings or .env).`;
+  console.error(logMessage);
+
+  throw new EmailServiceError(
+    `Email server is missing credentials: ${config.missing.join(', ')}.`,
+    503,
+    'MISSING_SMTP_CREDENTIALS',
+    'Email service is temporarily unavailable due to missing server configuration. Please try again later or reach out to info@brahmaniinformation.com.'
+  );
 }
 
 /**
@@ -110,13 +151,13 @@ export async function sendStartProjectEmail(payload) {
 
   // Server-side validation
   if (!name || typeof name !== 'string' || !name.trim()) {
-    throw new Error('Full Name is required.');
+    throw new EmailServiceError('Full Name is required.', 400, 'VALIDATION_ERROR', 'Full Name is required.');
   }
   if (!email || !isValidEmail(email)) {
-    throw new Error('A valid work email address is required.');
+    throw new EmailServiceError('A valid work email address is required.', 400, 'VALIDATION_ERROR', 'A valid work email address is required.');
   }
   if (!projectBrief || typeof projectBrief !== 'string' || !projectBrief.trim()) {
-    throw new Error('Project Goals & Brief details are required.');
+    throw new EmailServiceError('Project Goals & Brief details are required.', 400, 'VALIDATION_ERROR', 'Project Goals & Brief details are required.');
   }
 
   const cleanName = sanitizeHeader(name);
@@ -290,7 +331,35 @@ Recipients:
     html: htmlContent,
   };
 
-  const result = await transporter.sendMail(mailOptions);
+  let result;
+  try {
+    result = await transporter.sendMail(mailOptions);
+  } catch (err) {
+    console.error('[EmailService sendStartProjectEmail Error]:', err.code || err.name, err.message);
+    if (err.code === 'EAUTH') {
+      throw new EmailServiceError(
+        `SMTP authentication failed for user "${process.env.SMTP_USER}": ${err.message}`,
+        500,
+        'SMTP_AUTH_FAILED',
+        'Email delivery failed: Authentication with the SMTP server was unsuccessful.'
+      );
+    }
+    if (['ETIMEDOUT', 'ECONNREFUSED', 'ESOCKET', 'EDNS', 'ENOTFOUND'].includes(err.code)) {
+      throw new EmailServiceError(
+        `SMTP connection failed (${err.code}): ${err.message}`,
+        504,
+        'SMTP_CONNECTION_ERROR',
+        'Email delivery failed: Could not establish a connection to the SMTP server. Please try again later.'
+      );
+    }
+    throw new EmailServiceError(
+      `Email delivery failed: ${err.message}`,
+      500,
+      'SMTP_DELIVERY_ERROR',
+      'An error occurred while sending your project intake request. Please try again later.'
+    );
+  }
+
   const previewUrl = nodemailer.getTestMessageUrl(result);
   if (previewUrl) {
     console.log('📬 [Test Preview URL]:', previewUrl);
@@ -318,13 +387,13 @@ export async function sendContactEmail(payload) {
 
   // Server-side validation
   if (!name || typeof name !== 'string' || !name.trim()) {
-    throw new Error('Your Name is required.');
+    throw new EmailServiceError('Your Name is required.', 400, 'VALIDATION_ERROR', 'Your Name is required.');
   }
   if (!email || !isValidEmail(email)) {
-    throw new Error('A valid work email address is required.');
+    throw new EmailServiceError('A valid work email address is required.', 400, 'VALIDATION_ERROR', 'A valid work email address is required.');
   }
   if (!message || typeof message !== 'string' || !message.trim()) {
-    throw new Error('Message details are required.');
+    throw new EmailServiceError('Message details are required.', 400, 'VALIDATION_ERROR', 'Message details are required.');
   }
 
   const cleanName = sanitizeHeader(name);
@@ -476,7 +545,35 @@ Recipients:
     html: htmlContent,
   };
 
-  const result = await transporter.sendMail(mailOptions);
+  let result;
+  try {
+    result = await transporter.sendMail(mailOptions);
+  } catch (err) {
+    console.error('[EmailService sendStartProjectEmail Error]:', err.code || err.name, err.message);
+    if (err.code === 'EAUTH') {
+      throw new EmailServiceError(
+        `SMTP authentication failed for user "${process.env.SMTP_USER}": ${err.message}`,
+        500,
+        'SMTP_AUTH_FAILED',
+        'Email delivery failed: Authentication with the SMTP server was unsuccessful.'
+      );
+    }
+    if (['ETIMEDOUT', 'ECONNREFUSED', 'ESOCKET', 'EDNS', 'ENOTFOUND'].includes(err.code)) {
+      throw new EmailServiceError(
+        `SMTP connection failed (${err.code}): ${err.message}`,
+        504,
+        'SMTP_CONNECTION_ERROR',
+        'Email delivery failed: Could not establish a connection to the SMTP server. Please try again later.'
+      );
+    }
+    throw new EmailServiceError(
+      `Email delivery failed: ${err.message}`,
+      500,
+      'SMTP_DELIVERY_ERROR',
+      'An error occurred while sending your project intake request. Please try again later.'
+    );
+  }
+
   const previewUrl = nodemailer.getTestMessageUrl(result);
   if (previewUrl) {
     console.log('📬 [Test Preview URL]:', previewUrl);

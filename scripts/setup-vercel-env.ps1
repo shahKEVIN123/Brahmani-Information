@@ -1,4 +1,4 @@
-﻿# scripts/setup-vercel-env.ps1
+# scripts/setup-vercel-env.ps1
 # Helper script to sync SMTP variables from your local .env to your Vercel project
 
 $ErrorActionPreference = "Stop"
@@ -82,3 +82,4 @@ Write-Host " All environment variables configured in Vercel successfully!" -Fore
 Write-Host " Please trigger a redeploy on Vercel to activate the changes." -ForegroundColor Green
 Write-Host " Test endpoint: https://brahmaniinformation.com/api/health" -ForegroundColor Green
 Write-Host "==========================================================" -ForegroundColor Green
+
